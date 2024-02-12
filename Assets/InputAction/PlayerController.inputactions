@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attack1",
+                    "name": "Attack",
                     "type": "Value",
                     "id": "9e1d0a74-4f19-4480-aeae-ca9e9c5a5d74",
                     "expectedControlType": "",
@@ -116,7 +116,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Attack1",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

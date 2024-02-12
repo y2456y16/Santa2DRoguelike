@@ -6,8 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerInputController : TopDownCharacterController
 {
     private Camera _camera;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _camera = Camera.main;
     }
 
@@ -29,13 +30,8 @@ public class PlayerInputController : TopDownCharacterController
         }
     }
 
-    public void OnAttack1(InputValue value)
+    public void OnAttack(InputValue value)
     {
-
-    }
-
-    public void OnAttack2(InputValue value)
-    {
-
+        IsAttacking = value.isPressed;
     }
 }
