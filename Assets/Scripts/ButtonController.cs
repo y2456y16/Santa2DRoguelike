@@ -21,6 +21,16 @@ public class ButtonController : MonoBehaviour
         optionUI.SetActive(false);
     }
 
+    public void OnStatusUIButton()
+    {
+        statusUI.SetActive(true);
+    }
+
+    public void OffStatusUIButton()
+    {
+        statusUI.SetActive(false);
+    }
+
 
     //SceneLoad
     public void MainSceneLoad()
