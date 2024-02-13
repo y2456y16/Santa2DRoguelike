@@ -10,6 +10,7 @@ public class StorySceneManager : MonoBehaviour
     [SerializeField] private GameObject character2;
     [SerializeField] private GameObject storyUI_1;
     [SerializeField] private GameObject storyUI_2;
+    [SerializeField] private GameObject storyUI_3;
 
     [SerializeField] private Animator character1_ani;
     [SerializeField] private Animator character2_ani;
@@ -42,6 +43,8 @@ public class StorySceneManager : MonoBehaviour
             character1_ani.SetBool("IsOO", true);
             yield return new WaitForSeconds(1f);
             storyUI_2.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            storyUI_3.SetActive(true);
         }
     }
 }

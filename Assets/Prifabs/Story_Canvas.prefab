@@ -953,6 +953,7 @@ MonoBehaviour:
   character2: {fileID: 6592973102594357768}
   storyUI_1: {fileID: 8118362239577651892}
   storyUI_2: {fileID: 4818381415179568024}
+  storyUI_3: {fileID: 8027258656139425687}
   character1_ani: {fileID: 2210455944777663418}
   character2_ani: {fileID: 5780970441426097444}
 --- !u!1 &8027258656139425687
