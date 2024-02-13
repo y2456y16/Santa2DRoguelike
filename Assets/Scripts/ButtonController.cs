@@ -7,6 +7,7 @@ public class ButtonController : MonoBehaviour
 {
     [SerializeField] private GameObject optionUI;
     [SerializeField] private GameObject statusUI;
+    [SerializeField] private GameObject status_optionUI;
 
     private StorySceneManager story;
 
@@ -19,6 +20,7 @@ public class ButtonController : MonoBehaviour
     //UI
     public void OnOptionUIButton()
     {
+        statusUI.SetActive(false);
         optionUI.SetActive(true);
     }
 
@@ -41,11 +43,15 @@ public class ButtonController : MonoBehaviour
     //UI
     public void OnStatusUIButton()
     {
+        status_optionUI.SetActive(true);
         statusUI.SetActive(true);
+        optionUI.SetActive(false);
     }
 
     public void OffStatusUIButton()
     {
-        statusUI.SetActive(false);
+        status_optionUI.SetActive(false);
+        statusUI.SetActive(true);
+        optionUI.SetActive(false);
     }
 }
