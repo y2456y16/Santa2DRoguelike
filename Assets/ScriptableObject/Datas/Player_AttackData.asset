@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b6335de8531ad409d6d990aaff368a, type: 3}
   m_Name: Player_AttackData
   m_EditorClassIdentifier: 
-  delay: 0.5
+  delay: 0.61
   power: 2
   target:
     serializedVersion: 2

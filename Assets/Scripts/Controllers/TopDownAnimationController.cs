@@ -9,12 +9,14 @@ public class TopDownAnimationController : TopDownAnimations
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int IsHit = Animator.StringToHash("IsHit");
 
-    //private HealthSystem _healthSystem;
+    //임시
+    private static readonly int Attack2 = Animator.StringToHash("Attack2");
+    private static readonly int Skill = Animator.StringToHash("Skill");
+
 
     protected override void Awake()
     {
         base.Awake();
-        //_healthSystem = GetComponent<HealthSystem>();
     }
 
     // Start is called before the first frame update
@@ -22,6 +24,10 @@ public class TopDownAnimationController : TopDownAnimations
     {
         controller.OnAttackEvent += Attacking;
         controller.OnMoveEvent += Move;
+
+        //임시
+        controller.OnAttackEvent2 += Attacking2;
+        controller.OnSkillEvent += SkillUse;
     }
 
     private void Move(Vector2 obj)
@@ -32,6 +38,16 @@ public class TopDownAnimationController : TopDownAnimations
     private void Attacking()
     {
         animator.SetTrigger(Attack);
+    }
+
+    //임시
+    private void Attacking2()
+    {
+        animator.SetTrigger(Attack2);
+    }
+    private void SkillUse()
+    {
+        animator.SetTrigger(Skill);
     }
 
     private void Hit()
