@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c01a116672b0ed043a1fc878e9c890c2
+guid: 09147760e9561644a91bc23eb6b40bc3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,91 +121,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: 1-bit_UI_byBatuhanK_0
-      rect:
-        serializedVersion: 2
-        x: 89
-        y: 180
-        width: 55
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 40254168226da864cb38a31c4f37d2eb
-      internalID: -1289371186
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1-bit_UI_byBatuhanK_1
-      rect:
-        serializedVersion: 2
-        x: 460
-        y: 161
-        width: 1
-        height: 18
-      alignment: 9
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 1}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4e1e00979fdeda40b150e97867f251d
-      internalID: 2065078326
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1-bit_UI_byBatuhanK_2
-      rect:
-        serializedVersion: 2
-        x: 94
-        y: 160
-        width: 44
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e6fed2ab092950c4bbaf60c855e78248
-      internalID: -1346627676
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1-bit_UI_byBatuhanK_3
-      rect:
-        serializedVersion: 2
-        x: 266
-        y: 52
-        width: 184
-        height: 93
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27b3cf65bb73af44880aaabb60969e3b
-      internalID: 1643731639
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -216,11 +132,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      1-bit_UI_byBatuhanK_0: -1289371186
-      1-bit_UI_byBatuhanK_1: 2065078326
-      1-bit_UI_byBatuhanK_2: -1346627676
-      1-bit_UI_byBatuhanK_3: 1643731639
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
