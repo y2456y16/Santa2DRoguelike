@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 73ab4bbbf607ca341992c1ece4f449cf
+guid: b6ba7df4bcf4cfe4282791ca82362357
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 25
+    spritePixelsToUnits: 20
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638434357700742951
+  platformSettingsDirtyTick: 638434483616748395
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: "\uC0B0\uD0C0\uC758 \uC2E0\uBC1C"
+  - name: SantaGiftBundle
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: -0.035714287}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 30
-      height: 29
-    spriteID: 85cc7214ece7b864ebdd0c9a0ab8cd29
+      width: 28
+      height: 28
+    spriteID: 5a60c5d461ff0b3438c96a62ab9abdf4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,20 +142,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -75822462
-    name: "\uC0B0\uD0C0\uC758 \uC2E0\uBC1C"
+    guid: 745548385
+    name: SantaGiftBundle
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: "\uC0B0\uD0C0\uC758 \uC2E0\uBC1C"
+    - name: SantaGiftBundle
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 30
-        height: 29
-      spriteId: 85cc7214ece7b864ebdd0c9a0ab8cd29
+        x: 1
+        y: 1
+        width: 28
+        height: 28
+      spriteId: 5a60c5d461ff0b3438c96a62ab9abdf4
     linkedCells: []
     parentIndex: -1
   platformSettings:

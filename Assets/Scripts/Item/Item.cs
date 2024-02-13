@@ -10,4 +10,10 @@ public class Item : MonoBehaviour
         Debug.Log("Equired Item");
         data.ApplyEffect(target);
     }
+
+    public void NewEquire(GameObject target)
+    {
+        Debug.Log("Equired Item Test"); // For Debug
+        data.NewApplyEffect?.Invoke(target);
+    }
 }
