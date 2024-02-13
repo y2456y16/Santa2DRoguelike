@@ -9,7 +9,7 @@ public class ButtonController : MonoBehaviour
     [SerializeField] private GameObject statusUI;
 
 
-
+    //IntroScene ------------------------------------------------------------------------
     //UI
     public void OnOptionUIButton()
     {
@@ -21,6 +21,17 @@ public class ButtonController : MonoBehaviour
         optionUI.SetActive(false);
     }
 
+    //SceneLoad
+    public void MainSceneLoad()
+    {
+        if (!optionUI.activeSelf)
+        {
+            SceneManager.LoadScene("TestMainScene");
+        }
+    }
+
+    //MainScene ------------------------------------------------------------------------
+    //UI
     public void OnStatusUIButton()
     {
         statusUI.SetActive(true);
@@ -29,12 +40,5 @@ public class ButtonController : MonoBehaviour
     public void OffStatusUIButton()
     {
         statusUI.SetActive(false);
-    }
-
-
-    //SceneLoad
-    public void MainSceneLoad()
-    {
-        SceneManager.LoadScene("TestMainScene");
     }
 }
