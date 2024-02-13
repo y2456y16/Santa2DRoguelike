@@ -8,6 +8,12 @@ public class ButtonController : MonoBehaviour
     [SerializeField] private GameObject optionUI;
     [SerializeField] private GameObject statusUI;
 
+    private StorySceneManager story;
+
+    private void Awake()
+    {
+        story = GetComponentInChildren<StorySceneManager>();
+    }
 
     //IntroScene ------------------------------------------------------------------------
     //UI
@@ -27,7 +33,7 @@ public class ButtonController : MonoBehaviour
         //설정UI가 active true 상태이면, 버튼을 눌러도 실행되지 않도록 설정
         if (!optionUI.activeSelf)
         {
-            SceneManager.LoadScene("TestMainScene");
+            story.storyUI_1.SetActive(true);
         }
     }
 
