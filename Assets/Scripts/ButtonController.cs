@@ -8,6 +8,7 @@ public class ButtonController : MonoBehaviour
     [SerializeField] private GameObject optionUI;
     [SerializeField] private GameObject statusUI;
     [SerializeField] private GameObject status_optionUI;
+    [SerializeField] private GameObject storyUI;
 
     private StorySceneManager story;
 
@@ -35,7 +36,7 @@ public class ButtonController : MonoBehaviour
         //설정UI가 active true 상태이면, 버튼을 눌러도 실행되지 않도록 설정
         if (!optionUI.activeSelf)
         {
-            story.storyUI_1.SetActive(true);//UI setactive보다는 생성이 더 좋을것같음
+            Instantiate(storyUI);
         }
     }
 

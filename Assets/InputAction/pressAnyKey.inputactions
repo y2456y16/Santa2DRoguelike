@@ -1,0 +1,34 @@
+{
+    "name": "pressAnyKey",
+    "maps": [
+        {
+            "name": "Scene",
+            "id": "4c85b1b0-c433-4ff0-b01c-d56225d31865",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Value",
+                    "id": "ab3b5fd4-fa08-4ed0-855b-82ad43362705",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a8c0e9d4-4fa4-4ff8-8696-2e3e12c8cf9e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
