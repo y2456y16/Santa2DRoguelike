@@ -16,17 +16,17 @@ public class CharacterStatsHandler : MonoBehaviour
 
     private void UpdateCharacterStats()
     {
-    //    AttackSO attackSO = null;
-    //    if (baseStats.attackSO != null)
-    //    {
-    //        attackSO = Instantiate(baseStats.attackSO);
-    //    }
+        AttackSO attackSO = null;
+        if (baseStats.attackSO != null)
+        {
+            attackSO = Instantiate(baseStats.attackSO);
+        }
 
-    //    CurrentStates = new CharacterStats { attackSO = attackSO };
+        CurrentStats = new CharacterStats { attackSO = attackSO };
 
-        //CurrentStats.statsChangeType = baseStats.statsChangeType;
-        //CurrentStats.maxHealth = baseStats.maxHealth;
-        //CurrentStats.speed = baseStats.speed;
+        CurrentStats.statsChangeType = baseStats.statsChangeType;
+        CurrentStats.maxHealth = baseStats.maxHealth;
+        CurrentStats.speed = baseStats.speed;
 
     }
 }

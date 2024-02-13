@@ -479,6 +479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2067901125}
+  - component: {fileID: 2067901133}
   - component: {fileID: 2067901127}
   - component: {fileID: 2067901126}
   - component: {fileID: 2067901129}
@@ -486,7 +487,6 @@ GameObject:
   - component: {fileID: 2067901130}
   - component: {fileID: 2067901131}
   - component: {fileID: 2067901132}
-  - component: {fileID: 2067901133}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -503,7 +503,7 @@ Transform:
   m_GameObject: {fileID: 2067901124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1245942880}
@@ -667,7 +667,7 @@ MonoBehaviour:
     statsChangeType: 2
     maxHealth: 10
     speed: 5
-    attackSO: {fileID: 0}
+    attackSO: {fileID: 11400000, guid: 4a7b197f5b8cd274a8b79892a699508f, type: 2}
   statsModifiers: []
 --- !u!114 &2067901133
 MonoBehaviour:
