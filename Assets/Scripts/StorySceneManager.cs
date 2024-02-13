@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class StorySceneManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class StorySceneManager : MonoBehaviour
     [SerializeField] private GameObject storyUI_1;
     [SerializeField] private GameObject storyUI_2;
     [SerializeField] private GameObject storyUI_3;
+    [SerializeField] private TMP_Text santaText;
 
     [SerializeField] private Animator character1_ani;
     [SerializeField] private Animator character2_ani;
@@ -45,6 +47,8 @@ public class StorySceneManager : MonoBehaviour
             storyUI_2.SetActive(true);
             yield return new WaitForSeconds(1f);
             storyUI_3.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            santaText.IsActive();
         }
     }
 }
