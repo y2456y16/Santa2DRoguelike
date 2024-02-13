@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 14356df9d4f80094d8b0adf4f1c413d8
+guid: 0ddff159843a6424ca1a4ecab688e8d0
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 10
+    spritePixelsToUnits: 100
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638434293893170307
+  platformSettingsDirtyTick: 638434357974085636
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: "\uC120\uBB3C\uC0C1\uC790"
+  - name: "\uCC9C\uC0AC"
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.52095807, y: -0.06748466}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 9
-      height: 9
-    spriteID: 57c4fcd5f8e3e1342862aaef4ffbc762
+      width: 167
+      height: 163
+    spriteID: 071de5eadef20484ca136d8e8e05dab4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,20 +142,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -280771235
-    name: "\uC120\uBB3C\uC0C1\uC790"
+    guid: -740680946
+    name: "\uCC9C\uC0AC"
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: "\uC120\uBB3C\uC0C1\uC790"
+    - name: "\uCC9C\uC0AC"
       frameIndex: 0
       cellRect:
-        x: 1
-        y: 0
-        width: 9
-        height: 9
-      spriteId: 57c4fcd5f8e3e1342862aaef4ffbc762
+        x: 12
+        y: 11
+        width: 167
+        height: 163
+      spriteId: 071de5eadef20484ca136d8e8e05dab4
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -197,4 +197,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 11, y: 11}
+  canvasSize: {x: 198, y: 199}
