@@ -19,6 +19,7 @@ public class StorySceneManager : MonoBehaviour
 
     private void Start()
     {
+        
     }
 
 
