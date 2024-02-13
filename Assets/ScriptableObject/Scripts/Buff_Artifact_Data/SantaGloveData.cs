@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ItemSO/SantaGloveData")]
 public class SantaGloveData : ItemSO
 {
+    public float Power = 10f;
     SantaGloveData()
     {
         Name = "SantaGlove";
@@ -13,7 +14,11 @@ public class SantaGloveData : ItemSO
     public override void ApplyEffect(GameObject target)
     {
         // TODO 플레이어 공격력 증가
-        GWTestScript go = target.GetComponent<GWTestScript>();
-        go.Attack += 10;
+        CharacterStatsHandler playerStat = target.GetComponent<CharacterStatsHandler>();
+        if (playerStat != null)
+        {
+            playerStat.CurrentStats.attackSO.power += Power;
+        }
+       
     }
 }
