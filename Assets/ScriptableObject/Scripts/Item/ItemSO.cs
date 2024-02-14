@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-public abstract class ItemSO : ScriptableObject
+public class ItemSO : ScriptableObject
 {
     [Header("ItemInfo")]
     public ItemID ID;
@@ -11,8 +11,9 @@ public abstract class ItemSO : ScriptableObject
     public ItemType Type;
     public int Count;
     public float Damage;
-    
-    public abstract void ApplyEffect(GameObject target);
+
+    public virtual void ApplyEffect(GameObject target){}
+    public virtual void Use(GameObject target) { }
 }
 public enum ItemType
 {
@@ -35,7 +36,7 @@ public enum ItemID
     BigAttack,
 
     // Item
-    Gift,
+    GiftBox,
     GodModePotion,
 
 }

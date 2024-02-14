@@ -11,4 +11,11 @@ public class Item : MonoBehaviour
         Debug.Log($"Equired Item : {gameObject.name}");
         data.ApplyEffect(target);
     }
+    public void Use(GameObject target)
+    {
+        if(data.Type == ItemType.Useable)
+        {
+            data.Use(target);
+        }
+    }
 }

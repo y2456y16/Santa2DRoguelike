@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5466510901809971303}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackPivot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,9 +50,10 @@ GameObject:
   - component: {fileID: 2519847949838301753}
   - component: {fileID: 8144603615002550598}
   - component: {fileID: 1320204265542928985}
-  m_Layer: 0
+  - component: {fileID: 4085433982463513648}
+  m_Layer: 7
   m_Name: TempPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +72,7 @@ Transform:
   m_Children:
   - {fileID: 3568625705833168401}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3584639207235164994
 MonoBehaviour:
@@ -128,6 +129,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f16d43f1a4987479d9e76e1dbd8e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
+  curMovementInput: {x: 0, y: 0}
+  lookSensitivity: 0
+  curLookInput: {x: 0, y: 0}
+  aim: {fileID: 0}
+  _animcontroller: {fileID: 0}
+  _rigidbody: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!114 &4450112081170437155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   punchRenderer: {fileID: 3340584759167463952}
-  atkPivit: {fileID: 5466510901809971303}
+  atkPivot: {fileID: 5466510901809971303}
   characterRenderer: {fileID: 92908132806954084}
 --- !u!114 &2519847949838301753
 MonoBehaviour:
@@ -273,6 +282,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 5466510901809971303}
+--- !u!114 &4085433982463513648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263814210912159739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f37d4a2dc42af7647a6a14263b3bcace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4458215789623828654
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,9 +304,9 @@ GameObject:
   m_Component:
   - component: {fileID: 445924610664631310}
   - component: {fileID: 3340584759167463952}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PunchSprite
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -369,9 +390,9 @@ GameObject:
   - component: {fileID: 3568625705833168401}
   - component: {fileID: 92908132806954084}
   - component: {fileID: 551793603960504282}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MainSprite
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -474,9 +495,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3524577340954176833}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PunchPivot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

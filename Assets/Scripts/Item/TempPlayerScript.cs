@@ -14,6 +14,17 @@ public class TempPlayerScript : MonoBehaviour
             }
         }
     }
+    public void UseItem(ItemID ID)
+    {
+        Item item = ItemManager.Instance.GetItem(ID);
+        if (item != null)
+        {
+            if(item.data.Type == ItemType.Useable && item.data.Count > 0)
+            {
+                item.Use(gameObject);
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Item"))
@@ -21,4 +32,5 @@ public class TempPlayerScript : MonoBehaviour
             ItemManager.Instance.AddItem(collision.gameObject.GetComponent<Item>());
         }
     }
+
 }
