@@ -30,4 +30,5 @@ public class CharacterStatsHandler : MonoBehaviour
         CurrentStats.atk = baseStats.atk;
         CurrentStats.def = baseStats.def;
     }
+
 }

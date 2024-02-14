@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class GiftBoxBoom : MonoBehaviour
 {
-    [SerializeField] private float _damage = 10f;
     [SerializeField] private float _bulletSpeed = 20;
     [SerializeField] private float explosionRadius = 1.5f;
     [SerializeField] private ParticleSystem _particle;

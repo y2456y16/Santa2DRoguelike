@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ItemSO/GiftBoxBoomData")]
-public class GiftBoxBoomData : ItemSO
+[CreateAssetMenu(menuName = "ItemSO/BigAttackData")]
+public class BigAttackData : ItemSO
 {
-    GiftBoxBoomData()
+    BigAttackData()
     {
-        Name = "GiftBoxBoom";
-        Damage = 20;
+        Name = "BigAttack";
+        Damage = 10;
     }
     public override void ApplyEffect(GameObject target)
     {
