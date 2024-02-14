@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 732232b4ffbc7874a85c262dc3ed0a9d, type: 3}
-  m_Name: New Santa Glove Data
+  m_Script: {fileID: 11500000, guid: 7121dcd317234f44389f9446ac5e22c3, type: 3}
+  m_Name: New Santa Shoes Data
   m_EditorClassIdentifier: 
-  Name: SantaGlove
-  Sprite: {fileID: 0}
-  Power: 10
+  Name: SantaShoes
+  Sprite: {fileID: -1081353322568533708, guid: 73ab4bbbf607ca341992c1ece4f449cf, type: 3}
+  Speed: 1

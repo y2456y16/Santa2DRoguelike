@@ -5,15 +5,10 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public ItemSO data;
-    public void Equire(GameObject target)
+    public void ApplyEffect(GameObject target)
     {
-        Debug.Log("Equired Item");
+        //TODO 아이템 종류에 따라 어디 슬록에 들어갈 지 결정
+        Debug.Log($"Equired Item : {gameObject.name}");
         data.ApplyEffect(target);
-    }
-
-    public void NewEquire(GameObject target)
-    {
-        Debug.Log("Equired Item Test"); // For Debug
-        data.NewApplyEffect?.Invoke(target);
     }
 }
