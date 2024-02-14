@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RangedAttackData", menuName = "TopDownController/Attacks/Ranged", order = 1)]
-public class RangedAttackData : AttackSO
+public class RangedAttackData: AttackSO
 {
     [Header("Ranged Attack Data")]
     public string bulletNameTag;

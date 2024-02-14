@@ -6,6 +6,27 @@ using UnityEngine;
 
 public class TopDownCharacterController : MonoBehaviour
 {
+    //KCW : 캐릭터 이동 구현
+    [Header("Movement")]
+    public float moveSpeed;
+    public Vector2 curMovementInput;
+
+    //KCW : 캐릭터 조준 구현
+    [Header("Look")]
+    public float lookSensitivity;
+    public Vector2 curLookInput;
+
+
+
+
+    //KCW : 캐릭터 조준 기능 구현
+    public TopDownLookRotation aim;
+    //KCW : 캐릭터 애니메이션 컨트롤러 호출
+    public TopDownAnimationController _animcontroller;
+    //KCW : 중력 호출
+    public Rigidbody2D _rigidbody;
+    public Camera _camera;
+
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
     public event Action<AttackSO> OnAttackEvent;
@@ -22,13 +43,20 @@ public class TopDownCharacterController : MonoBehaviour
     protected bool IsSkill { get; set; }
 
     protected CharacterStatsHandler Stats { get; private set; }
+    
 
     protected virtual void Awake()
     {
+        //KCW : 각 기능 정보 입력
+        _animcontroller = GetComponent<TopDownAnimationController>();
+        aim = GetComponent<TopDownLookRotation>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _camera = Camera.main;
+
         Stats = GetComponent<CharacterStatsHandler>();
     }
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         HandleAttackDelay();
     }
