@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: x-1
+      name: Santa - Box
       rect:
         serializedVersion: 2
-        x: 575
+        x: 585
         y: 2047
-        width: 23
-        height: 65
+        width: 12
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -866,13 +866,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Santa - Sprite Sheet_49
+      name: Santa - Throw_1
       rect:
         serializedVersion: 2
         x: 99
-        y: 1247
-        width: 25
-        height: 99
+        y: 1279
+        width: 28
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -971,7 +971,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Santa - Sprite Sheet_54
+      name: Santa - Throw_0
       rect:
         serializedVersion: 2
         x: 3
@@ -992,13 +992,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Santa - Sprite Sheet_55
+      name: Santa - Throw_2
       rect:
         serializedVersion: 2
         x: 195
-        y: 1247
-        width: 38
-        height: 63
+        y: 1279
+        width: 31
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1013,13 +1013,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Santa - Sprite Sheet_56
+      name: Santa - Throw_3
       rect:
         serializedVersion: 2
-        x: 286
-        y: 1247
-        width: 39
-        height: 62
+        x: 291
+        y: 1279
+        width: 35
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1034,13 +1034,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Santa - Sprite Sheet_57
+      name: Santa - Throw_4
       rect:
         serializedVersion: 2
         x: 387
-        y: 1247
-        width: 99
-        height: 63
+        y: 1279
+        width: 31
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3007,6 +3007,7 @@ TextureImporter:
       Santa - Attack_2: -1586127289
       Santa - Attack_3: -46379756
       Santa - Attack_4: -1643900028
+      Santa - Box: -1649628065
       Santa - Sprite Sheet_100: -1061812207
       Santa - Sprite Sheet_101: 363028745
       Santa - Sprite Sheet_102: -1845654885
@@ -3046,15 +3047,10 @@ TextureImporter:
       Santa - Sprite Sheet_136: -1891234336
       Santa - Sprite Sheet_44: 757123328
       Santa - Sprite Sheet_48: -1649458429
-      Santa - Sprite Sheet_49: -1184155434
       Santa - Sprite Sheet_50: 961456438
       Santa - Sprite Sheet_51: 1730783888
       Santa - Sprite Sheet_52: 1440702070
       Santa - Sprite Sheet_53: -1558699534
-      Santa - Sprite Sheet_54: 185778331
-      Santa - Sprite Sheet_55: -1794405465
-      Santa - Sprite Sheet_56: -138991420
-      Santa - Sprite Sheet_57: 848911878
       Santa - Sprite Sheet_69: -1087579678
       Santa - Sprite Sheet_70: 1527814826
       Santa - Sprite Sheet_71: -1022293292
@@ -3086,6 +3082,11 @@ TextureImporter:
       Santa - Sprite Sheet_97: 1557863791
       Santa - Sprite Sheet_98: 981750137
       Santa - Sprite Sheet_99: 284013941
+      Santa - Throw_0: -1558699534
+      Santa - Throw_1: -1649458429
+      Santa - Throw_2: 185778331
+      Santa - Throw_3: -1794405465
+      Santa - Throw_4: -138991420
       Santa - die_0: -387747900
       Santa - die_1: 1807631251
       Santa - die_2: -1814290325
@@ -3133,7 +3134,6 @@ TextureImporter:
       Santa - walk_5: -1462247657
       Santa - walk_6: 1796225503
       Santa - walk_7: -1649628065
-      x-1: 1330494981
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

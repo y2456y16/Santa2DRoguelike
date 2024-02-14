@@ -14,7 +14,9 @@ public enum StatsChangeType
 public class CharacterStats
 {
     public StatsChangeType statsChangeType;
-    [Range(1, 100)] public int maxHealth;
-    [Range(1f, 20f)] public float speed;
+    [Range(1, 100)] public int maxHealth;   //체력
+    public int atk;                         //공격력
+    public int def;                         //방어력
+    [Range(1f, 20f)] public float speed;    //스피드
     public AttackSO attackSO;
 }

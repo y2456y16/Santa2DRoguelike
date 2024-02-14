@@ -8,9 +8,9 @@ public class TopDownCharacterController : MonoBehaviour
 {
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
-    public event Action OnAttackEvent;
-    public event Action OnAttackEvent2;
-    public event Action OnSkillEvent;
+    public event Action<AttackSO> OnAttackEvent;
+    public event Action<AttackSO> OnAttackEvent2;
+    public event Action<AttackSO> OnSkillEvent;
 
     private float _timeSinceLastAttack = float.MaxValue;
     protected bool IsAttacking { get; set; }
@@ -45,18 +45,18 @@ public class TopDownCharacterController : MonoBehaviour
         if (IsAttacking && _timeSinceLastAttack > Stats.CurrentStats.attackSO.delay)
         {
             _timeSinceLastAttack = 0;
-            CallAttackEvent();
+            CallAttackEvent(Stats.CurrentStats.attackSO);
         }
         //임시
         if (IsAttacking2 && _timeSinceLastAttack > Stats.CurrentStats.attackSO.delay)
         {
             _timeSinceLastAttack = 0;
-            CallAttackEvent2();
+            CallAttackEvent2(Stats.CurrentStats.attackSO);
         }
         if (IsSkill && _timeSinceLastAttack > Stats.CurrentStats.attackSO.delay)
         {
             _timeSinceLastAttack = 0;
-            CallSkillEvent();
+            CallSkillEvent(Stats.CurrentStats.attackSO);
         }
     }
 
@@ -70,18 +70,18 @@ public class TopDownCharacterController : MonoBehaviour
         OnLookEvent?.Invoke(direction);
     }
 
-    public void CallAttackEvent()
+    public void CallAttackEvent(AttackSO attackSO)
     {
-        OnAttackEvent?.Invoke();
+        OnAttackEvent?.Invoke(attackSO);
     }
     //임시 액션이벤트2
-    public void CallAttackEvent2()
+    public void CallAttackEvent2(AttackSO attackSO)
     {
-        OnAttackEvent2?.Invoke();
+        OnAttackEvent2?.Invoke(attackSO);
     }
     //임시 스킬 이벤트
-    public void CallSkillEvent()
+    public void CallSkillEvent(AttackSO attackSO)
     {
-        OnSkillEvent?.Invoke();
+        OnSkillEvent?.Invoke(attackSO);
     }
 }
