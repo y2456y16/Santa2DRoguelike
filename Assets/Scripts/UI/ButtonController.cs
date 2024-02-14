@@ -47,6 +47,7 @@ public class ButtonController : MonoBehaviour
     //UI
     public void OnStatusUIButton()
     {
+        Time.timeScale = 0f;
         status_optionUI.SetActive(true);
         statusUI.SetActive(true);
         optionUI.SetActive(false);
@@ -57,5 +58,6 @@ public class ButtonController : MonoBehaviour
         status_optionUI.SetActive(false);
         statusUI.SetActive(true);
         optionUI.SetActive(false);
+        Time.timeScale = 1f;
     }
 }

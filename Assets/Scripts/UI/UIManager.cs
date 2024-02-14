@@ -10,11 +10,14 @@ public class UIManager : MonoBehaviour
     [Header("Heart")]
     private GameObject heart;
     public GameObject heartParent;
-    public int heart_count; //GameManager나 Player로 가져올 예정 
+    [HideInInspector] public int heart_count;
     private List<GameObject> Hearts = new List<GameObject>();
 
+    [Header("Stats")]
+    public TMP_Text playerAtk_Text;
+    public TMP_Text playerDef_Text;
+    public TMP_Text playerSpeed_Text;
 
-    //item
     [Header("Item")]
     public GameObject[] items = new GameObject[3]; //GameObject말고 아이템 설정해둔 script로 설정필요할 것 같음.
     public int[] item_count = new int[3];
@@ -31,10 +34,12 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         MakeHeart();
+        SetStatsText();
     }
 
     private void MakeHeart()
     {
+        heart_count = GameManager.Instance.player_health;
         for(int i = 0; i < heart_count; i++)
         {
             GameObject newHeart = Instantiate(heart);
@@ -42,6 +47,14 @@ public class UIManager : MonoBehaviour
             Hearts.Add(newHeart);
         }
     }
+
+    public void SetStatsText()
+    {
+        playerAtk_Text.text = GameManager.Instance.player_atk.ToString();
+        playerDef_Text.text = GameManager.Instance.player_def.ToString();
+        playerSpeed_Text.text = GameManager.Instance.player_speed.ToString();
+    }
+
 
 
     private void GetItem()//매개변수로 아이템 sprite랑 아이템명 가져오기. 아니면 아이템 자체를 받기
