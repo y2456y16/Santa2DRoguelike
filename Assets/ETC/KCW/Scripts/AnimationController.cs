@@ -35,7 +35,7 @@ public class AnimationController : MonoBehaviour
             timeCount = 0.0f;
             animator.SetTrigger(Attack);
         }
-        else if(IsAttacking == true && timeCount >600f)
+        else if(IsAttacking == true && timeCount >100f)
         {
             IsAttacking = false;
         }
