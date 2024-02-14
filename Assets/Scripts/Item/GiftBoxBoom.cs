@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class GiftBoxBoom : MonoBehaviour
 {
+    [SerializeField] private float _damage = 10f;
     [SerializeField] private float _bulletSpeed = 20;
-    [SerializeField] private float _bulletDistance;
+    [SerializeField] private float explosionRadius = 1.5f;
     [SerializeField] private ParticleSystem _particle;
 
     private Transform _player;
@@ -55,7 +56,30 @@ public class GiftBoxBoom : MonoBehaviour
         //TODO 파티클 시스템에 trigger적용되게 변경
         Debug.Log("Explode");
         _particle.Play();
+        ApplyExplosionDamage(transform.position);
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
         Destroy(gameObject, 0.3f);
+    }
+
+    public void ApplyExplosionDamage(Vector2 explosionPoint)
+    {
+        // 폭발 범위 내의 모든 콜라이더 찾기
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPoint, explosionRadius);
+
+        foreach (Collider2D hit in colliders)
+        {
+            // 몬스터 레이어와 충돌한 경우에만 데미지 처리
+            if (hit.gameObject.layer == LayerMask.NameToLayer("Monster"))
+            {
+                Debug.Log("몬스터 충돌");
+            }
+        }
+    }
+
+    //Debug 용도
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red; // 원의 색상 설정
+        Gizmos.DrawWireSphere(transform.position, explosionRadius); // 원 그리기
     }
 }
