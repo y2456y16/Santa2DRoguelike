@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
 
     private void MakeHeart()
     {
+        heart_count = GameManager.instance.player_health;
         for(int i = 0; i < heart_count; i++)
         {
             GameObject newHeart = Instantiate(heart);
