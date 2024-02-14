@@ -63,7 +63,7 @@ public class TopDownAnimationController : TopDownAnimations
     }
 
     //ªÁ∏¡√≥∏Æ
-    private void Dead()
+    public void Dead()
     {
         animator.SetBool(IsDead, true);
     }
