@@ -30,7 +30,7 @@ public class BigAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Monster"))
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             //TODO 몬스터 데미지 주기
             Debug.Log("몬스터 데미지");

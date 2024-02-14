@@ -68,7 +68,7 @@ public class GiftBoxBoom : MonoBehaviour
         foreach (Collider2D hit in colliders)
         {
             // 몬스터 레이어와 충돌한 경우에만 데미지 처리
-            if (hit.gameObject.layer == LayerMask.NameToLayer("Monster"))
+            if (hit.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 Debug.Log("몬스터 충돌");
             }

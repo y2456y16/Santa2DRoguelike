@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5952561867217304475}
   m_Layer: 0
   m_Name: BigAttack
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
