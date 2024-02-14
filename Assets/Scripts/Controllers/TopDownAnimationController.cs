@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class TopDownAnimationController : TopDownAnimations
+public class TopDownAnimationController:TopDownAnimations
 {
     private static readonly int IsWalking = Animator.StringToHash("IsWalking");
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int IsHit = Animator.StringToHash("IsHit");
+    private static readonly int AttackToIdle = Animator.StringToHash("AttackToIdle");
+    private static readonly int EnemyAttacking = Animator.StringToHash("EnemyAttacking");
 
     //플레이어 사망시 출력애니메이션
     private static readonly int IsDead = Animator.StringToHash("IsDead");
@@ -65,8 +67,24 @@ public class TopDownAnimationController : TopDownAnimations
 
     public void Attacking(AttackSO obj)
     {
-        animator.SetTrigger(Attack);
+        animator.SetTrigger(Attack);               
     }
+
+    public void EnemyAttack(AttackSO obj)
+    {
+        if (IsAttacking == false)
+        {
+            animator.SetTrigger(EnemyAttacking);
+            IsAttacking = true;
+            timeCount = 0;
+        }
+        else if (IsAttacking == true && timeCount > 4)
+        {
+            IsAttacking = false;
+            animator.SetTrigger(AttackToIdle);
+        }
+    }
+
 
 
 

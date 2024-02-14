@@ -237,8 +237,8 @@ GameObject:
   - component: {fileID: 542931620490050451}
   - component: {fileID: 4788082003776922557}
   - component: {fileID: 471524666589684560}
-  - component: {fileID: 6894919594130332283}
   - component: {fileID: 3004896264975192530}
+  - component: {fileID: 8558062665677188853}
   m_Layer: 9
   m_Name: Enemy3
   m_TagString: Untagged
@@ -370,25 +370,12 @@ MonoBehaviour:
   curMovementInput: {x: 0, y: 0}
   lookSensitivity: 0
   curLookInput: {x: 0, y: 0}
-  shoot: {fileID: 0}
   aim: {fileID: 0}
   _animcontroller: {fileID: 0}
   _rigidbody: {fileID: 0}
   _camera: {fileID: 0}
   followRange: 1000
   shootRange: 1.5
---- !u!114 &6894919594130332283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6743801281746149196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0c141efcba340d4f90d5f9c6cdfd396, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3004896264975192530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +391,18 @@ MonoBehaviour:
   punchRenderer: {fileID: 5141471005150206858}
   atkPivot: {fileID: 8796606693024361464}
   characterRenderer: {fileID: 2268771515184279395}
+--- !u!114 &8558062665677188853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743801281746149196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c141efcba340d4f90d5f9c6cdfd396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8116224753426646070
 GameObject:
   m_ObjectHideFlags: 0

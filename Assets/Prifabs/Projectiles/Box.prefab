@@ -122,6 +122,7 @@ MonoBehaviour:
   levelCollisionLayer:
     serializedVersion: 2
     m_Bits: 0
+  isTargetPlayer: 0
   fxOnDestory: 1
 --- !u!1 &7666278562413030471
 GameObject:

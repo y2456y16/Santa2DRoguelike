@@ -5226,6 +5226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d3d43419fe8fa4d83f2f162ff7fdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _impactParticleSystem: {fileID: 0}
 --- !u!114 &1491709618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8590,8 +8591,8 @@ MonoBehaviour:
   baseStats:
     statsChangeType: 2
     maxHealth: 10
-    atk: 0
-    def: 0
+    atk: 1
+    def: 1
     speed: 5
     attackSO: {fileID: 11400000, guid: 61084508554a07441999cad1552e7d19, type: 2}
   statsModifiers: []

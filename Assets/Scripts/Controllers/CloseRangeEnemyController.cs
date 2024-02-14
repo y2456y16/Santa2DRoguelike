@@ -80,7 +80,7 @@ public class CloseRangeEnemyController : TopDownCharacterController
 
     public void AttackDisplay()
     {
-        _animcontroller.Attacking(Stats.CurrentStats.attackSO);
+        _animcontroller.EnemyAttack(Stats.CurrentStats.attackSO);
 
     }
     public void OnCollisionEnter2D(Collision2D collision)

@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 4788082003776922557}
   - component: {fileID: 5627763696232900445}
   - component: {fileID: 471524666589684560}
-  - component: {fileID: 6783843259474842779}
+  - component: {fileID: 118776028901829457}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 6667225838755834261}
---- !u!114 &6783843259474842779
+--- !u!114 &118776028901829457
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
