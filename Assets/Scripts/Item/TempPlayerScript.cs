@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class TempPlayerScript : MonoBehaviour
 {
-    public GiftBoxBoom giftBoom;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Instantiate(giftBoom, transform);
+            if(ItemManager.Instance.curSkill != null)
+            {
+                Instantiate(ItemManager.Instance.curSkill, transform.position , Quaternion.identity);
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

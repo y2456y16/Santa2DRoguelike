@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732232b4ffbc7874a85c262dc3ed0a9d, type: 3}
   m_Name: New Santa Glove Data
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 5
   Name: SantaGlove
-  Sprite: {fileID: 0}
+  Sprite: {fileID: -5795949666996084541, guid: a7de887affb12fd4fb584f290e09fd74, type: 3}
   Type: 0
-  Count: 0
+  Count: 3
   Power: 10

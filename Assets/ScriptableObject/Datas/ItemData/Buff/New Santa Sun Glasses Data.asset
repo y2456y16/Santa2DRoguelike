@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b675868e7b646974eb55540d63afb7d4, type: 3}
   m_Name: New Santa Sun Glasses Data
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 4
   Name: SantaSunGlasses
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 6551671159213949633, guid: 5b3914029a8bcd54480ffee83539d34f, type: 3}
   Type: 0
-  Count: 0
+  Count: 3

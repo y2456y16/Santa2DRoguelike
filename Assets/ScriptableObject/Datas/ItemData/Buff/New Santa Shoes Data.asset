@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7121dcd317234f44389f9446ac5e22c3, type: 3}
   m_Name: New Santa Shoes Data
   m_EditorClassIdentifier: 
+  ID: 3
   Name: SantaShoes
-  Sprite: {fileID: -1081353322568533708, guid: 73ab4bbbf607ca341992c1ece4f449cf, type: 3}
-  Speed: 1
+  Sprite: {fileID: -730220410716018485, guid: 73ab4bbbf607ca341992c1ece4f449cf, type: 3}
+  Type: 0
+  Count: 3
+  Speed: 2
