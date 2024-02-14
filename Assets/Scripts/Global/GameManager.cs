@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Player")]
-    public GameObject player;
+    public static GameManager Instance;
+
+    public EnemyPrefabManager _EnemyPrefabManager;
+    public Transform Player { get; private set; }
+    [SerializeField] private string playerTag = "Player";
+
+
+    private CharacterStatsHandler playerStats;
     [HideInInspector] public StatsChangeType player_type;
     [HideInInspector] public int player_health;
     [HideInInspector] public int player_atk;
@@ -13,18 +19,21 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float player_speed;
 
 
-    private CharacterStatsHandler playerStats;
+    public List<Vector3> enemyLocation = new List<Vector3>();//evemy start location list
+                                                             // Start is called before the first frame update
 
-    public static GameManager instance;
     private void Awake()
     {
-        instance = this;
-        playerStats = player.GetComponent<CharacterStatsHandler>();
-    }
-
-    private void Start()
-    {
+        Instance = this;
+        Player = GameObject.FindGameObjectWithTag(playerTag).transform;//gets transform data of object(tag == player)
+        playerStats = Player.GetComponent<CharacterStatsHandler>();
+        EnemyLocationSet();
         PlayerSetting();
+    }
+    void Start()
+    {
+        Time.timeScale = 1f;
+        InvokeRepeating("EnemyCreate", 0.5f, 2f);
     }
 
     private void PlayerSetting()
@@ -34,5 +43,25 @@ public class GameManager : MonoBehaviour
         player_speed = playerStats.CurrentStats.speed;
         player_atk = playerStats.CurrentStats.atk;
         player_def = playerStats.CurrentStats.def;
+    }
+
+
+    public void EnemyCreate()
+    {
+        int randomNumb = Random.Range(0, _EnemyPrefabManager.EnemyNumber);
+        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab �����Ͽ� �� ��ü ����
+        int enemyLocationlist = Random.Range(0, 6);
+        enemyInstance.transform.position = enemyLocation[enemyLocationlist];
+
+    }
+
+    void EnemyLocationSet()//enemy start location set
+    {
+        enemyLocation.Add(new Vector3(-3f, 4f, 0));
+        enemyLocation.Add(new Vector3(3f, 4f, 0));
+        enemyLocation.Add(new Vector3(-3f, 0f, 0));
+        enemyLocation.Add(new Vector3(3f, 0f, 0));
+        enemyLocation.Add(new Vector3(-3f, -4f, 0));
+        enemyLocation.Add(new Vector3(3f, -4f, 0));
     }
 }
