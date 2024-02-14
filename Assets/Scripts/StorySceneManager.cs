@@ -13,6 +13,7 @@ public class StorySceneManager : MonoBehaviour
     [SerializeField] private GameObject storyUI_2;
     [SerializeField] private GameObject storyUI_3;
     [SerializeField] private GameObject santaText;
+    [SerializeField] private GameObject anyKeyText;
 
     [SerializeField] private Animator character1_ani;
     [SerializeField] private Animator character2_ani;
@@ -22,35 +23,45 @@ public class StorySceneManager : MonoBehaviour
 
     private void Start()
     {
-        
-    }
-
-
-    private void Update()
-    {
         StartCoroutine("CharacterAnimation");
     }
 
     IEnumerator CharacterAnimation()
     {
-        if (character2.transform.position.x < 1413)
+        SkipAnimation();
+        while (true)
         {
-            character1.transform.position += character1_move;
-            character2.transform.position += character2_move;
+            if (character2.transform.position.x < 1413)
+            {
+                character1.transform.position += character1_move;
+                character2.transform.position += character2_move;
+                yield return null;
+            }
+            else
+            {
+                character2_ani.SetBool("IsFaint", true);
+                character1.transform.position += character1_move;
+                yield return new WaitForSeconds(0.8f);
+                character1_ani.SetBool("IsOO", true);
+                break;
+            }
         }
-        else
+        yield return new WaitForSeconds(1f);
+        storyUI_2.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        storyUI_3.SetActive(true);
+        yield return null;
+        yield return new WaitForSeconds(2f);
+        santaText.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        anyKeyText.SetActive(true);
+    }
+
+    private void SkipAnimation()
+    {
+        if (Input.anyKey)
         {
-            character2_ani.SetBool("IsFaint", true);
-            yield return new WaitForSeconds(0.8f);
-            character1_ani.SetBool("IsOO", true);
-            yield return new WaitForSeconds(1f);
-            storyUI_2.SetActive(true);
-            yield return new WaitForSeconds(1f);
-            storyUI_3.SetActive(true);
-            yield return new WaitForSeconds(0.5f);
-            santaText.SetActive(true);
-            yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene("TestMainScene");//press any key를 보여주는게 더 낫지 않을까 싶음.
+            SceneManager.LoadScene("TestMainScene");
         }
     }
 }

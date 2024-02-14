@@ -33,6 +33,7 @@ public class ButtonController : MonoBehaviour
     //SceneLoad
     public void MainSceneLoad()
     {
+        storyUI = Resources.Load<GameObject>("Prifabs/Story_Canvas");
         //설정UI가 active true 상태이면, 버튼을 눌러도 실행되지 않도록 설정
         if (!optionUI.activeSelf)
         {

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -49,8 +50,9 @@ public class UIManager : MonoBehaviour
         {
             if (items[i] == null)
             {
-                items[i] = Resources.Load<GameObject>("item"); //먹은 아이템 넣어두기
+                items[i] = Resources.Load<GameObject>("item"); //먹은 아이템 넣어두기, 아이템 정보 필요함
                 item_count[i] = 1;
+                //ItemText = items[i].transform.Find("count").GameObject; 아이템갯수 표기 text 설정해줘야함.
                 ItemText(i, item_count[i]);
                 break;
             }
