@@ -13,7 +13,6 @@ public class StorySceneManager : MonoBehaviour
     [SerializeField] private GameObject storyUI_2;
     [SerializeField] private GameObject storyUI_3;
     [SerializeField] private GameObject santaText;
-    [SerializeField] private GameObject anyKeyText;
 
     [SerializeField] private Animator character1_ani;
     [SerializeField] private Animator character2_ani;
@@ -21,15 +20,18 @@ public class StorySceneManager : MonoBehaviour
     private Vector3 character1_move = new Vector3(1.5f, 0f, 0f);
     private Vector3 character2_move = new Vector3(1.3f, 0f, 0f);
 
-    private void Start()
+    private void Update()
     {
         StartCoroutine("CharacterAnimation");
     }
 
     IEnumerator CharacterAnimation()
     {
-        SkipAnimation();
-        while (true)
+        if (Input.anyKey)
+        {
+            SceneManager.LoadScene("TestMainScene");
+        }
+        else
         {
             if (character2.transform.position.x < 1413)
             {
@@ -40,28 +42,15 @@ public class StorySceneManager : MonoBehaviour
             else
             {
                 character2_ani.SetBool("IsFaint", true);
-                character1.transform.position += character1_move;
-                yield return new WaitForSeconds(0.8f);
+                yield return new WaitForSeconds(0.3f);
                 character1_ani.SetBool("IsOO", true);
-                break;
+                yield return new WaitForSeconds(1f);
+                storyUI_2.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                storyUI_3.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                santaText.SetActive(true);
             }
-        }
-        yield return new WaitForSeconds(1f);
-        storyUI_2.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        storyUI_3.SetActive(true);
-        yield return null;
-        yield return new WaitForSeconds(2f);
-        santaText.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        anyKeyText.SetActive(true);
-    }
-
-    private void SkipAnimation()
-    {
-        if (Input.anyKey)
-        {
-            SceneManager.LoadScene("TestMainScene");
         }
     }
 }
