@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0b6335de8531ad409d6d990aaff368a, type: 3}
-  m_Name: Player_AttackData
+  m_Name: EnemyAttackSO
   m_EditorClassIdentifier: 
-  size: 0
-  delay: 0.61
-  power: 2
-  speed: 0
+  size: 1
+  delay: 1
+  power: 1
+  speed: 1
   target:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   isOnKnockback: 1
-  knockbackPower: 5
-  knockbackTime: 0.1
+  knockbackPower: 0
+  knockbackTime: 0

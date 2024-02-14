@@ -5,11 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputController : TopDownCharacterController
 {
-    private Camera _camera;
     protected override void Awake()
     {
         base.Awake();
-        _camera = Camera.main;
+
     }
 
     public void OnMove(InputValue value)
