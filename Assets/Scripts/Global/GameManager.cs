@@ -10,15 +10,6 @@ public class GameManager : MonoBehaviour
     public Transform Player { get; private set; }
     [SerializeField] private string playerTag = "Player";
 
-
-    private CharacterStatsHandler playerStats;
-    [HideInInspector] public StatsChangeType player_type;
-    [HideInInspector] public int player_health;
-    [HideInInspector] public int player_atk;
-    [HideInInspector] public int player_def;
-    [HideInInspector] public float player_speed;
-
-
     public List<Vector3> enemyLocation = new List<Vector3>();//evemy start location list
                                                              // Start is called before the first frame update
 
@@ -26,9 +17,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         Player = GameObject.FindGameObjectWithTag(playerTag).transform;//gets transform data of object(tag == player)
-        playerStats = Player.GetComponent<CharacterStatsHandler>();
         EnemyLocationSet();
-        PlayerSetting();
     }
     void Start()
     {
@@ -36,20 +25,11 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("EnemyCreate", 0.5f, 2f);
     }
 
-    private void PlayerSetting()
-    {
-        player_health = playerStats.CurrentStats.maxHealth;
-        player_type = playerStats.CurrentStats.statsChangeType;
-        player_speed = playerStats.CurrentStats.speed;
-        player_atk = playerStats.CurrentStats.atk;
-        player_def = playerStats.CurrentStats.def;
-    }
-
 
     public void EnemyCreate()
     {
         int randomNumb = Random.Range(0, _EnemyPrefabManager.EnemyNumber);
-        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab �����Ͽ� �� ��ü ����
+        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab 복제하여 적 객체 생성
         int enemyLocationlist = Random.Range(0, 6);
         enemyInstance.transform.position = enemyLocation[enemyLocationlist];
 
