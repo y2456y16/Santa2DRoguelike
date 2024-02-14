@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
 
     private void MakeHeart()
     {
-        heart_count = GameManager.instance.player_health;
+        heart_count = GameManager.Instance.player_health;
         for(int i = 0; i < heart_count; i++)
         {
             GameObject newHeart = Instantiate(heart);
@@ -51,9 +51,9 @@ public class UIManager : MonoBehaviour
 
     private void SetPlayerStats()
     {
-        playerAtk_Text.text = GameManager.instance.player_atk.ToString();
-        playerDef_Text.text = GameManager.instance.player_def.ToString();
-        playerSpeed_Text.text = GameManager.instance.player_speed.ToString();
+        playerAtk_Text.text = GameManager.Instance.player_atk.ToString();
+        playerDef_Text.text = GameManager.Instance.player_def.ToString();
+        playerSpeed_Text.text = GameManager.Instance.player_speed.ToString();
     }
 
 
