@@ -12,7 +12,7 @@ public class StorySceneManager : MonoBehaviour
     [SerializeField] private GameObject storyUI_1;
     [SerializeField] private GameObject storyUI_2;
     [SerializeField] private GameObject storyUI_3;
-    [SerializeField] private TMP_Text santaText;
+    [SerializeField] private GameObject santaText;
 
     [SerializeField] private Animator character1_ani;
     [SerializeField] private Animator character2_ani;
@@ -48,7 +48,9 @@ public class StorySceneManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             storyUI_3.SetActive(true);
             yield return new WaitForSeconds(0.5f);
-            santaText.IsActive();
+            santaText.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            SceneManager.LoadScene("TestMainScene");//press any key를 보여주는게 더 낫지 않을까 싶음.
         }
     }
 }
