@@ -24,7 +24,7 @@ public class CharacterController : MonoBehaviour
     public CharacterShooting shoot;
 
     public CharacterAim aim;
-    public Animator _animcontroller;
+    public AnimationController _animcontroller;
 
     private float _timeSinceLastAtteck = float.MaxValue;//공격 딜레이 시간 체크
     protected bool IsAttacking { get; set; } //공격 가능 여부
@@ -34,7 +34,7 @@ public class CharacterController : MonoBehaviour
 
     protected virtual void Awake()
     {
-        _animcontroller = GetComponentInChildren<Animator>();
+        _animcontroller = GetComponentInChildren<AnimationController>();
         aim = GetComponent<CharacterAim>();
         _rigidbody = GetComponent<Rigidbody2D>();
         Stats = GetComponent<CharacterStatHandler>();

@@ -48,7 +48,7 @@ public class RangeEnemyController : CharacterController
         {
             if (distance <= shootRange)//공격 범위에 플레이어가 들어오면
             {
-                _animcontroller.SetBool("IsWalking", false);
+                _animcontroller.Stop(Vector2.zero);
                 int layerMaskTarget = Stats.CurrentStats.attackSO.target; //목표의 레이어 마스크를 가져온다.
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 11f, (1 << LayerMask.NameToLayer("Level")) | layerMaskTarget); // 레이케스트는 땅과 플레이어의 합인 비트마스크
 
@@ -69,8 +69,8 @@ public class RangeEnemyController : CharacterController
             }
             else
             {
-                _animcontroller.SetBool("IsWalking", true);
                 direction = BulletDirectionToTarget();
+                _animcontroller.Move(direction);
                 OnLookInput(direction);//플레이어 방향을 바라본다.
                 aim.OnAim(direction);
                 shoot.OnAim(direction);

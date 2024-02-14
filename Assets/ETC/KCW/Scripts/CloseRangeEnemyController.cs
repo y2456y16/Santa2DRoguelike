@@ -50,19 +50,18 @@ public class CloseRangeEnemyController : CharacterController
         {
             if (distance <= shootRange)
             {
-                _animcontroller.SetBool("IsWalking", false);
-                direction = BulletDirectionToTarget();
+                _animcontroller.Stop(Vector2.zero);
                 OnLookInput(direction); //플레이어를 바라본다.
                 aim.OnAim(direction);
                 curMovementInput = Vector2.zero; //제자리에 멈춰서 쏜다.
                 IsAttacking = true; //공격 가능하게 설정
-                Invoke("AttackDisplay", 0f);
+                Invoke("AttackDisplay", 1f);
 
             }
             else
             {
-                _animcontroller.SetBool("IsWalking", true);
                 direction = BulletDirectionToTarget();
+                _animcontroller.Move(direction);
                 OnLookInput(direction);//플레이어 방향을 바라본다.
                 aim.OnAim(direction);
                 OnMoveInput(direction);//플레이어 방향으로 이동
@@ -79,7 +78,7 @@ public class CloseRangeEnemyController : CharacterController
 
     public void AttackDisplay()
     {
-        _animcontroller.SetTrigger("Attack");
+        _animcontroller.Attacking(Stats.CurrentStats.attackSO);
 
     }
     public void OnCollisionEnter2D(Collision2D collision)
