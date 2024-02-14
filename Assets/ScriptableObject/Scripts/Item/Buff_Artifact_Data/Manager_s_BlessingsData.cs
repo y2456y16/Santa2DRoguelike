@@ -13,5 +13,6 @@ public class Manager_s_BlessingsData : ItemSO
     public override void ApplyEffect(GameObject target)
     {
         // TODO 플레이어 목숨 증가
+        target.GetComponent<HealthSystem>().CanResurrection = true;
     }
 }

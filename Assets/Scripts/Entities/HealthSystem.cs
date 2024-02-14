@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] private float healthChangeDelay = .5f; //¹«Àû½Ã°£
+    [SerializeField] private float healthChangeDelay = .5f; //ë¬´ì ì‹œê°„
 
     private CharacterStatsHandler _statsHandler;
     private float _timeSinceLastChange = float.MaxValue;
@@ -15,7 +15,7 @@ public class HealthSystem : MonoBehaviour
     public event Action OnHeal;
     public event Action OnDeath;
     public event Action OnInvincibilityEnd;
-
+    public bool CanResurrection = false;
     public float CurrentHealth { get; private set; }
 
     public float MaxHealth => _statsHandler.CurrentStats.maxHealth;
@@ -65,7 +65,14 @@ public class HealthSystem : MonoBehaviour
 
         if (CurrentHealth <= 0f)
         {
-            CallDeath();
+            if (CanResurrection)
+            {
+                Resurrection();
+            }
+            else
+            {
+                CallDeath();
+            }
         }
 
         return true;
@@ -74,5 +81,11 @@ public class HealthSystem : MonoBehaviour
     private void CallDeath()
     {
         OnDeath?.Invoke();
+    }
+
+    private void Resurrection()
+    {
+        CurrentHealth = MaxHealth;
+        CanResurrection = false;
     }
 }

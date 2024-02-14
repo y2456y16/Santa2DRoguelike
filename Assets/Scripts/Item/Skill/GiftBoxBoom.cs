@@ -13,7 +13,6 @@ public class GiftBoxBoom : MonoBehaviour
     private Transform _player;
     private Vector3 _curMousePosiiton;
     private Rigidbody2D _rigid;
-   
 
     void Awake()
     {
@@ -69,6 +68,8 @@ public class GiftBoxBoom : MonoBehaviour
             if (hit.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 Debug.Log("몬스터 충돌");
+                //데미지 예상
+                //ItemManager.Instance.GetItem(ItemID.GiftBoxBoom).data.Damage + _player.GetComponent<CharacterStatsHandler>().CurrentStats.atk;
             }
         }
     }

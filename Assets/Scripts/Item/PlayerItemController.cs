@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
-public class TempPlayerScript : MonoBehaviour
+public class PlayerItemController : MonoBehaviour
 {
     private TopDownCharacterController _controller;
     private void Awake()
