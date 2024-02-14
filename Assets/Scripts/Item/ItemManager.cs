@@ -17,8 +17,6 @@ public class ItemManager : MonoBehaviour
     //AddItem을 통해 얻은 모든 아이템은 여기에 저장된다.
     private Dictionary<ItemID, Item> curItems = new Dictionary<ItemID, Item>();
     public Item curSkill;
-    // test용 임시 변수
-    [SerializeField] public Transform player;
 
     private void Awake()
     {
@@ -41,8 +39,10 @@ public class ItemManager : MonoBehaviour
                     }
                 }
             }
+            //아이템 타입이 버프일 경우 슬롯이 생성되고, 버프가 적용이 되야하고, 같은 것은 중복되지 않도록.
             curItems.Add(item.data.ID, item);
-            item.ApplyEffect(player.gameObject);
+            UIManager.Instance.MakeItemSlot(item.data.Type, item.data.Sprite);
+            item.ApplyEffect(GameManager.Instance.Player.gameObject);
         }
         else
         {

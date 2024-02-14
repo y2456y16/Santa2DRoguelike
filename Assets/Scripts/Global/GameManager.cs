@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public StatsChangeType player_type;
 
 
+    [Header("Test")]
+    public Item testitem;
+
     private void Awake()
     {
         Instance = this;
@@ -35,13 +38,14 @@ public class GameManager : MonoBehaviour
         SetPlayerStats();
         Time.timeScale = 1f;
         InvokeRepeating("EnemyCreate", 0.5f, 2f);
+        ItemManager.Instance.AddItem(testitem);
     }
 
 
     public void EnemyCreate()
     {
         int randomNumb = Random.Range(0, _EnemyPrefabManager.EnemyNumber);
-        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab º¹Á¦ÇÏ¿© Àû °´Ã¼ »ı¼º
+        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab ë³µì œí•˜ì—¬ ì  ê°ì²´ ìƒì„±
         int enemyLocationlist = Random.Range(0, 6);
         enemyInstance.transform.position = enemyLocation[enemyLocationlist];
 
