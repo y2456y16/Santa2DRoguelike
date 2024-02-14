@@ -8,7 +8,6 @@ public class GiftBoxBoom : MonoBehaviour
 {
     [SerializeField] private float _bulletSpeed = 20;
     [SerializeField] private float explosionRadius = 1.5f;
-    [SerializeField] private ParticleSystem _particle;
 
     private Animator _ani;
     private Transform _player;
@@ -54,12 +53,8 @@ public class GiftBoxBoom : MonoBehaviour
             sprite.color = Color.red;
         }
         
-        //TODO 파티클 시스템에 trigger적용되게 변경
-        Debug.Log("Explode");
-        //_particle.Play();
         _ani.Play("Explode");
         ApplyExplosionDamage(transform.position);
-        //sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
         Destroy(gameObject, 0.3f);
     }
 
