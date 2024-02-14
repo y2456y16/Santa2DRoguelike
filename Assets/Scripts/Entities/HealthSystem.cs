@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class HealthSystem : MonoBehaviour
 {
-    [SerializeField] private float healthChangeDelay = .5f;
+    [SerializeField] private float healthChangeDelay = .5f; //무적시간
 
     private CharacterStatsHandler _statsHandler;
     private float _timeSinceLastChange = float.MaxValue;

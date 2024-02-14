@@ -228,6 +228,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map2
       objectReference: {fileID: 0}
+    - target: {fileID: 2449228641834663673, guid: 8562cfec49e12d74c8fa5243a85fea83,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4138119341992349181, guid: 8562cfec49e12d74c8fa5243a85fea83,
         type: 3}
       propertyPath: m_RootOrder
@@ -1367,6 +1372,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Map1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068750720069246534, guid: 1b98ac471c5d8ad45913e2fee8364f12,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

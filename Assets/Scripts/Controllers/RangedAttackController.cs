@@ -49,15 +49,21 @@ public class RangedAttackController:MonoBehaviour
         _rigidbody.velocity = _direction * _attackData.speed;
     }
 
+    //벽과 충돌했을때
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))
         {
             DestroyProjectile(collision.ClosestPoint(transform.position) - _direction * .2f, fxOnDestory);
         }
-        else if (_attackData.target.value == (_attackData.target.value | (1 << collision.gameObject.layer))) //투사체의 타겟과 부딪쳤다면
+        else if(_attackData.target.value == (_attackData.target.value | (1 << collision.gameObject.layer)))
         {
-            DestroyProjectile(collision.ClosestPoint(transform.position), fxOnDestory);//투사체 삭제
+            HealthSystem healthSystem = collision.GetComponent<HealthSystem>();
+            if(healthSystem != null)
+            {
+                healthSystem.ChangeHealth(-_attackData.power);
+            }
+            DestroyProjectile(collision.ClosestPoint(transform.position), fxOnDestory);
         }
     }
 
@@ -79,7 +85,7 @@ public class RangedAttackController:MonoBehaviour
 
     private void UpdateProjectilSprite()
     {
-        transform.localScale = Vector3.one * _attackData.size;
+        transform.localScale = Vector3.one;
     }
 
     private void DestroyProjectile(Vector3 position, bool createFx)
