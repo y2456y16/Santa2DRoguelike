@@ -10,6 +10,7 @@ public class GiftBoxBoom : MonoBehaviour
     [SerializeField] private float explosionRadius = 1.5f;
     [SerializeField] private ParticleSystem _particle;
 
+    private Animator _ani;
     private Transform _player;
     private Vector3 _curMousePosiiton;
     private Rigidbody2D _rigid;
@@ -18,6 +19,7 @@ public class GiftBoxBoom : MonoBehaviour
     void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
+        _ani = GetComponent<Animator>();
     }
     void Start()
     {
@@ -54,9 +56,10 @@ public class GiftBoxBoom : MonoBehaviour
         
         //TODO 파티클 시스템에 trigger적용되게 변경
         Debug.Log("Explode");
-        _particle.Play();
+        //_particle.Play();
+        _ani.Play("Explode");
         ApplyExplosionDamage(transform.position);
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
+        //sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
         Destroy(gameObject, 0.3f);
     }
 
