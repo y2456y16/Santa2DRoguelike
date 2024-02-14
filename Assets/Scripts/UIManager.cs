@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-    private void GetItem()//매개변수로 아이템 sprite랑 아이템명 가져오기
+    private void GetItem()//매개변수로 아이템 sprite랑 아이템명 가져오기. 아니면 아이템 자체를 받기
     {
         for(int i = 0; i < 3; i++)
         {
@@ -52,8 +52,10 @@ public class UIManager : MonoBehaviour
                 items[i] = Resources.Load<GameObject>("item"); //먹은 아이템 넣어두기
                 item_count[i] = 1;
                 ItemText(i, item_count[i]);
+                break;
             }
         }
+        //아이템 칸이 다 차서 먹지 못하게 해야함.
     }
 
     private void ItemText(int index, int itemCount)
