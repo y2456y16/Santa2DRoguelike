@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedAttackController : MonoBehaviour
+public class RangedAttackController:MonoBehaviour
 {
     [SerializeField] private LayerMask levelCollisionLayer;
+
+    //KCW : player가 타깃인지 확인
+    [SerializeField] private bool isTargetPlayer;
 
     private RangedAttackData _attackData;
     private float _currentDuration;
@@ -14,6 +17,10 @@ public class RangedAttackController : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private SpriteRenderer _spriteRenderer;
+
+    //KCW : trailRenderer 호출
+    private TrailRenderer _trailRenderer;
+
     private ProjectileManager _projectileManager;
 
     public bool fxOnDestory = true;
@@ -22,6 +29,7 @@ public class RangedAttackController : MonoBehaviour
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _trailRenderer = GetComponentInChildren<TrailRenderer>();
     }
 
     private void Update()

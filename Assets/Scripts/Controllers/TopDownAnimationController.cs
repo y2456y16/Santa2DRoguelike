@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class TopDownAnimationController : TopDownAnimations
@@ -15,6 +16,10 @@ public class TopDownAnimationController : TopDownAnimations
     //임시공격2, 스킬
     private static readonly int Attack2 = Animator.StringToHash("Attack2");
     private static readonly int Skill = Animator.StringToHash("Skill");
+
+    // KCW : 공격 여부 및 시간 체크
+    private bool IsAttacking = false;
+    private float timeCount = 0f;
 
     private HealthSystem _healthSystem;
 
@@ -41,16 +46,29 @@ public class TopDownAnimationController : TopDownAnimations
         controller.OnAttackEvent2 += Attacking2;
         controller.OnSkillEvent += SkillUse;
     }
+    private void FixedUpdate()
+    {
+        //KCW : 시간 체크
+        timeCount += Time.deltaTime;
+    }
 
-    private void Move(Vector2 obj)
+    public void Move(Vector2 obj)
     {
         animator.SetBool(IsWalking, obj.magnitude > .5f);
     }
 
-    private void Attacking(AttackSO obj)
+    //KCW : 멈춤 기능 추가
+    public void Stop(Vector2 obj)
+    {
+        animator.SetBool(IsWalking, false);
+    }
+
+    public void Attacking(AttackSO obj)
     {
         animator.SetTrigger(Attack);
     }
+
+
 
     private void Hit()
     {

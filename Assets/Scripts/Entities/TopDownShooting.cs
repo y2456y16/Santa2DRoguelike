@@ -23,12 +23,12 @@ public class TopDownShooting : MonoBehaviour
         _contoller.OnLookEvent += OnAim;
     }
 
-    private void OnAim(Vector2 newAimDirection)
+    public void OnAim(Vector2 newAimDirection)
     {
         _aimDirection = newAimDirection;
     }
 
-    private void OnShoot(AttackSO attackSO)
+    public void OnShoot(AttackSO attackSO)
     {
         RangedAttackData rangedAttackData = attackSO as RangedAttackData;
         float projectilesAngleSpace = rangedAttackData.multipleProjectilesAngel;
