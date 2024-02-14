@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "DefaultAttackData", menuName = "TopDownController/Attacks/Default", order = 0)]
-public class AttackSO:ScriptableObject
+public class AttackSO: ScriptableObject
 {
     [Header("Attack Info")]
     public float size;
