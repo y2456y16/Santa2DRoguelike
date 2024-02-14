@@ -1502,16 +1502,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 403192173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ebbf311d589f1a4b95114c848b6e082, type: 3}
+  m_Script: {fileID: 11500000, guid: 052fb4338f186a140996013200bc794e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _EnemyPrefabManager: {fileID: 0}
+  _EnemyPrefabManager: {fileID: 702994687}
   playerTag: Player
-  player_type: 0
-  player_health: 0
-  player_atk: 0
-  player_def: 0
-  player_speed: 0
   enemyLocation: []
 --- !u!1 &403595344
 GameObject:
@@ -3095,9 +3090,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartParent: {fileID: 534035209}
   heart_count: 0
-  playerAtk_Text: {fileID: 0}
-  playerDef_Text: {fileID: 0}
-  playerSpeed_Text: {fileID: 0}
   items:
   - {fileID: 0}
   - {fileID: 0}
@@ -3122,6 +3114,7 @@ MonoBehaviour:
   optionUI: {fileID: 1808715840}
   statusUI: {fileID: 303043443}
   status_optionUI: {fileID: 1150296736}
+  storyUI: {fileID: 0}
 --- !u!4 &810734910
 Transform:
   m_ObjectHideFlags: 0
@@ -5768,11 +5761,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Map2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2449228641834663673, guid: 8562cfec49e12d74c8fa5243a85fea83,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4138119341992349181, guid: 8562cfec49e12d74c8fa5243a85fea83,
         type: 3}

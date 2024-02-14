@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public void EnemyCreate()
     {
         int randomNumb = Random.Range(0, _EnemyPrefabManager.EnemyNumber);
-        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab ë³µì œí•˜ì—¬ ì  ê°ì²´ ìƒì„±
+        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab º¹Á¦ÇÏ¿© Àû °´Ã¼ »ı¼º
         int enemyLocationlist = Random.Range(0, 6);
         enemyInstance.transform.position = enemyLocation[enemyLocationlist];
 
