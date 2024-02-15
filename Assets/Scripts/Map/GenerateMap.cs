@@ -24,6 +24,8 @@ public class GenerateMap : MonoBehaviour
         Player = GameManager.Instance.Player.gameObject;
     }
 
+
+
     public void SetRoom()
     {
         mapInfos = new MapInfo[MapsCount];

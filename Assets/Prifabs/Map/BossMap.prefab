@@ -4379,12 +4379,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapInfo:
-    eRoomType: 0
+    eRoomType: 3
     IsDoorOpen: 0
     mapPos: {x: 0, y: 0}
     playerSpawnPos: {x: 0, y: 0}
     cameraPos: {fileID: 0}
     EnemyPosList: []
+    BossPos: {x: 0, y: 0, z: 0}
     EnemyCount: 0
     tilemap: {fileID: 0}
     Width: 0
