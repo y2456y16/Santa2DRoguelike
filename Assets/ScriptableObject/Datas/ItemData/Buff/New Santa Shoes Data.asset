@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: SantaShoes
   Sprite: {fileID: -730220410716018485, guid: 73ab4bbbf607ca341992c1ece4f449cf, type: 3}
   Type: 0
-  Count: 3
+  Damage: 0
   Speed: 2

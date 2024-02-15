@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 813f35178d00ff449a5ed24019d23d05
+guid: d4458673452d1f947a94e7d0fb1e7e0f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 10
+    spritePixelsToUnits: 30
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638435928688855259
+  platformSettingsDirtyTick: 638436193920824141
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,7 +119,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Gift
+  - name: DefensePotion
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -128,9 +128,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 9
-      height: 9
-    spriteID: 945c79601d1ba9545b569859bb5d4e84
+      width: 18
+      height: 23
+    spriteID: 3be322a719cf6b04daf528899fba855c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,20 +142,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -98333268
-    name: Gift
+    guid: 1018590449
+    name: DefensePotion
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Gift
+    - name: DefensePotion
       frameIndex: 0
       cellRect:
         x: 1
         y: 0
-        width: 9
-        height: 9
-      spriteId: 945c79601d1ba9545b569859bb5d4e84
+        width: 18
+        height: 23
+      spriteId: 3be322a719cf6b04daf528899fba855c
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -197,4 +197,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 11, y: 11}
+  canvasSize: {x: 20, y: 26}
