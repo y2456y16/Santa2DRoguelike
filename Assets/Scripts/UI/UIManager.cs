@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 {
     [Header("Heart")]
     private GameObject heart;
+    private GameObject blueHeart;
     public GameObject heartParent;
     [HideInInspector] public int heart_count;
     private List<GameObject> Hearts = new List<GameObject>();
@@ -39,6 +40,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         heart = Resources.Load<GameObject>("Prifabs/Heart");
+        blueHeart = Resources.Load<GameObject>("Prifabs/blueheart");
         itemSlot = Resources.Load<GameObject>("Prifabs/itemslot");
         Instance = this;
     }
@@ -60,14 +62,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void MakeBlueHeart()
+    {
+        GameObject newHeart = Instantiate(blueHeart);
+        newHeart.transform.parent = heartParent.transform;
+        Hearts.Add(newHeart);
+    }
+
     public void SetStatsText()
     {
         playerAtk_Text.text = GameManager.Instance.player_atk.ToString();
         playerDef_Text.text = GameManager.Instance.player_def.ToString();
         playerSpeed_Text.text = GameManager.Instance.player_speed.ToString();
     }
-
-
 
     public void MakeItemSlot(ItemType itemType, Sprite itemsprite)
     {
@@ -97,6 +104,7 @@ public class UIManager : MonoBehaviour
         }
         else if(itemType == ItemType.Skill)
         {
+            itemSkill.transform.Find("front").GetComponent<Image>().color = Color.white;
             itemSkill.transform.Find("front").GetComponent<Image>().sprite = itemsprite;
         }
     }
