@@ -19,6 +19,7 @@ public class SantaGloveData : ItemSO
         newStat.statsChangeType = StatsChangeType.Add;
         newStat.atk = Power;
         playerStat.AddStatModifier(newStat);
+        UIManager.Instance.SetStatsText();
     }
 
 }

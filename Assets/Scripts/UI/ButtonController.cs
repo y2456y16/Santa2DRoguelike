@@ -17,6 +17,11 @@ public class ButtonController : MonoBehaviour
         story = GetComponentInChildren<StorySceneManager>();
     }
 
+    private void Start()
+    {
+        status_optionUI.SetActive(false);
+    }
+
     //IntroScene ------------------------------------------------------------------------
     //UI
     public void OnOptionUIButton()
@@ -34,12 +39,11 @@ public class ButtonController : MonoBehaviour
     public void MainSceneLoad()
     {
         storyUI = Resources.Load<GameObject>("Prifabs/Story_Canvas");
-        //¼³Á¤UI°¡ active true »óÅÂÀÌ¸é, ¹öÆ°À» ´­·¯µµ ½ÇÇàµÇÁö ¾Êµµ·Ï ¼³Á¤
-        if (!optionUI.activeSelf)
+        //ì„¤ì •UIê°€ active true ìƒíƒœì´ë©´, ë²„íŠ¼ì„ ëˆŒëŸ¬ë„ ì‹¤í–‰ë˜ì§€ ì•Šë„ë¡ ì„¤ì •
+        if (!optionUI.activeInHierarchy)
         {
             gameObject.SetActive(false);
             Instantiate(storyUI);
-
         }
     }
 

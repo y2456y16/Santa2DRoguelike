@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public StatsChangeType player_type;
 
 
+    [Header("Test")]
+    public Item testitem;
+
     private void Awake()
     {
         Instance = this;
@@ -64,7 +67,7 @@ public class GameManager : MonoBehaviour
         BossInstance.transform.position = new Vector3(3f, 0f, 0);
     }
 
-    void SetPlayerStats()
+    public void SetPlayerStats()
     {
         player_health = characterStats.CurrentStats.maxHealth;
         player_atk = characterStats.CurrentStats.atk;

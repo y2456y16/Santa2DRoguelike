@@ -29,7 +29,7 @@ public class StorySceneManager : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            SceneManager.LoadScene("TestMainScene");
+            SceneManager.LoadScene("MainScene");
         }
         else
         {
