@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         enemyLocation.Add(new Vector3(3f, -4f, 0));
     }
 
-    void SetPlayerStats()
+    public void SetPlayerStats()
     {
         player_health = characterStats.CurrentStats.maxHealth;
         player_atk = characterStats.CurrentStats.atk;

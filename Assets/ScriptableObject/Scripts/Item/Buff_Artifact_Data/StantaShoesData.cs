@@ -18,5 +18,6 @@ public class SantaShoesData : ItemSO
         newStat.statsChangeType = StatsChangeType.Add;
         newStat.speed = Speed;
         playerStat.AddStatModifier(newStat);
+        UIManager.Instance.SetStatsText();
     }
 }

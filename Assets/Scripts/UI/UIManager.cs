@@ -71,6 +71,7 @@ public class UIManager : MonoBehaviour
 
     public void SetStatsText()
     {
+        GameManager.Instance.SetPlayerStats();
         playerAtk_Text.text = GameManager.Instance.player_atk.ToString();
         playerDef_Text.text = GameManager.Instance.player_def.ToString();
         playerSpeed_Text.text = GameManager.Instance.player_speed.ToString();
