@@ -11,7 +11,6 @@ public class BossEnemyController : TopDownCharacterController
     [SerializeField] List<GameObject> _AttackRange = new List<GameObject>();
 
     GameManager gameManager;
-    [SerializeField] private GameObject AttackRange;
     private bool IsDelay = false;
     private int checkAttack = 0;
 
@@ -39,6 +38,7 @@ public class BossEnemyController : TopDownCharacterController
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+
 
         if (_animcontroller.IsAttacking == true)
         {
@@ -118,22 +118,20 @@ public class BossEnemyController : TopDownCharacterController
     }
     private void BossAttack()
     {
-        AttackRange.SetActive(true);
         _animcontroller.BossAttacking(Stats.CurrentStats.attackSO);
         StartCoroutine(DelayNext());       
     }
 
     IEnumerator DelayAttack()
     {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.5f);
         BossAttack();
     }
 
     IEnumerator DelayNext()
     {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.5f);
         _animcontroller.BossToIdle();
-        AttackRange.SetActive(false);
         IsDelay = false;
         checkAttack = 0;
     }
@@ -170,8 +168,4 @@ public class BossEnemyController : TopDownCharacterController
         }
     }
 
-    public void OnAttack()
-    {
-
-    }
 }

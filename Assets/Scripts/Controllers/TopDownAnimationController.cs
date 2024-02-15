@@ -104,6 +104,7 @@ public class TopDownAnimationController:TopDownAnimations
 
     public void BossAttacking(AttackSO obj)
     {
+        IsAttacking = true;
         IsDelay = false;
         animator.SetTrigger(BossAttack);
     }
@@ -111,6 +112,7 @@ public class TopDownAnimationController:TopDownAnimations
     public void BossToIdle()
     {
         animator.SetTrigger(AttackToIdle);
+        IsAttacking = false;
     }
 
     public void BossDead()

@@ -819,7 +819,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 0}
   _camera: {fileID: 0}
   followRange: 1000
-  shootRange: 3
+  shootRange: 4
   _AttackRange:
   - {fileID: 8975961393298249382}
   - {fileID: 2265001007139855247}
