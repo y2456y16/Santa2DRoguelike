@@ -31,15 +31,18 @@ public class EnemyCollideControl : MonoBehaviour
     {
         if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer))) // player와 부딪치면(즉 공격)
         {
+            Debug.Log(2);
             _collideHealthSystem = collision.GetComponent<HealthSystem>();
             if(_collideHealthSystem != null) //부딪친 상대의 헬스시스템이 있다면
             {
+                Debug.Log("ok");
                 _isCollidingWithTarget = true; //접촉한 것으로 한다.
             }
 
             if (_collideHealthSystem != null) // 널이 아니면
             {
-                _collideHealthSystem.ChangeHealth(_characterStats.CurrentStats.atk); //체력을 자신의 공격력 만큼 닳게 한다.
+                Debug.Log("ok2");
+                _collideHealthSystem.ChangeHealth(collision.gameObject.GetComponent<CharacterStatsHandler>().CurrentStats.atk); //체력을 자신의 공격력 만큼 닳게 한다.
 
             }
         }

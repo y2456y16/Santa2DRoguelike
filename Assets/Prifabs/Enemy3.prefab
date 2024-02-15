@@ -473,8 +473,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   followRange: 1000
   shootRange: 1.5
-  _AttackRange:
-  - {fileID: 545566057623314197}
+  _AttackRange: {fileID: 545566057623314197}
 --- !u!114 &3004896264975192530
 MonoBehaviour:
   m_ObjectHideFlags: 0
