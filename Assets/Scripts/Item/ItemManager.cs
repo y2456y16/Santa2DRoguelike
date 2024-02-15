@@ -90,21 +90,21 @@ public class ItemManager : MonoBehaviour
             return null;
     }
 
-    public GameObject MakeItem()
+    public Item MakeItem()
     {
-        GameObject newItem;
+        Item newItem;
         int index = Random.Range(0, items.Count + skills.Count + useItems.Count);
         if(index < items.Count)
         {
-            newItem = Instantiate(items[index].gameObject);
+            newItem = items[index];
         }
         else if(index < items.Count + skills.Count)
         {
-            newItem = Instantiate(skills[index - items.Count].gameObject);
+            newItem = skills[index - items.Count];
         }
         else
         {
-            newItem = Instantiate(skills[index - items.Count - skills.Count].gameObject);
+            newItem = useItems[index - items.Count - skills.Count];
         }
 
         return newItem;

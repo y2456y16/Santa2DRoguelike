@@ -7,6 +7,8 @@ public class DropItemInMap : MonoBehaviour
     int x;
     int y;
 
+    public GameObject[] items = new GameObject[4];
+
     private void Start()
     {
         DropItem();
@@ -15,20 +17,12 @@ public class DropItemInMap : MonoBehaviour
 
     private void DropItem()
     {
-        x = 5;
-        y = 2 + (int)gameObject.transform.position.y;
         for (int i = 0; i < 4; i++)
         {
-            GameObject item = Instantiate(ItemManager.Instance.MakeItem());
-            if(i%2 == 0)
-            {
-                x *= -1;
-            }
-            if(i == 2 || i == 3)
-            {
-                y += -4;
-            }
-            item.transform.position = new Vector3(x, y, 0);
+            Item item = ItemManager.Instance.MakeItem();
+            items[i].AddComponent<Item>();
+            items[i].GetComponent<Item>().data = item.data;
+            items[i].GetComponent<SpriteRenderer>().sprite = item.data.Sprite;
         }
     }
 }
