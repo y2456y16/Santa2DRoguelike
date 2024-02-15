@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public StatsChangeType player_type;
 
 
+    [Header("Test")]
+    public Item testitem;
+
     private void Awake()
     {
         Instance = this;
@@ -41,7 +44,7 @@ public class GameManager : MonoBehaviour
     public void EnemyCreate()
     {
         int randomNumb = Random.Range(0, _EnemyPrefabManager.EnemyNumber);
-        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab º¹Á¦ÇÏ¿© Àû °´Ã¼ »ı¼º
+        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab ë³µì œí•˜ì—¬ ì  ê°ì²´ ìƒì„±
         int enemyLocationlist = Random.Range(0, 6);
         enemyInstance.transform.position = enemyLocation[enemyLocationlist];
 
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviour
         enemyLocation.Add(new Vector3(3f, -4f, 0));
     }
 
-    void SetPlayerStats()
+    public void SetPlayerStats()
     {
         player_health = characterStats.CurrentStats.maxHealth;
         player_atk = characterStats.CurrentStats.atk;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -16,8 +17,7 @@ public class ItemManager : MonoBehaviour
     //AddItem을 통해 얻은 모든 아이템은 여기에 저장된다.
     private Dictionary<ItemID, Item> curItems = new Dictionary<ItemID, Item>();
     public Item curSkill;
-    // test용 임시 변수
-    [SerializeField] public Transform player;
+    private GameObject itemObject;
 
     private void Awake()
     {
@@ -28,6 +28,8 @@ public class ItemManager : MonoBehaviour
     {
         if (!curItems.ContainsKey(item.data.ID))
         {
+            UIManager.Instance.MakeItemSlot(item.data.Type, item.data.Sprite);
+
             curItems.Add(item.data.ID, item);
             if (item.data.Type == ItemType.Skill && curSkill != null && curSkill.data.ID != item.data.ID)
             {
@@ -41,7 +43,17 @@ public class ItemManager : MonoBehaviour
                     }
                 }
             }
-            item.ApplyEffect(player.gameObject);
+
+            //아이템 타입이 버프일 경우 슬롯이 생성되고[완], 버프가 적용이 되야하고, 같은 것은 중복되지 않도록.
+            else if (item.data.Type == ItemType.Buff)
+            {
+            }
+
+            else if (item.data.Type == ItemType.Useable)
+            {
+                //UIManager.Instance.MakeItemSlot(item.data.Type, item.data.Sprite);
+            }
+            item.ApplyEffect(GameManager.Instance.Player.gameObject);
         }
         else
         {
@@ -50,6 +62,7 @@ public class ItemManager : MonoBehaviour
                 curItems[item.data.ID].data.Count++;
             }
         }
+        Destroy(item.gameObject);
     }
     public void RemoveItem(ItemID ID)
     {
@@ -64,7 +77,6 @@ public class ItemManager : MonoBehaviour
         else
             return null;
     }
-
 }
 
 
