@@ -40,7 +40,6 @@ public class UIManager : MonoBehaviour
     {
         heart = Resources.Load<GameObject>("Prifabs/Heart");
         itemSlot = Resources.Load<GameObject>("Prifabs/itemslot");
-        itemSkill = Resources.Load<GameObject>("Prifabs/itemskill");
         Instance = this;
     }
 
@@ -98,10 +97,7 @@ public class UIManager : MonoBehaviour
         }
         else if(itemType == ItemType.Skill)
         {
-            GameObject newItemSkill = Instantiate(itemSkill);
-            newItemSkill.transform.Find("front").GetComponent<Image>().sprite = itemsprite;
-            newItemSkill.transform.position = new Vector3(0, 0, 0);
-            newItemSkill.transform.parent = itemSkillParent.transform;
+            itemSkill.transform.Find("front").GetComponent<Image>().sprite = itemsprite;
         }
     }
 
