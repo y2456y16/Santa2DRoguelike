@@ -23,7 +23,7 @@ public class EnemyCollideControl : MonoBehaviour
     {
         if (_isCollidingWithTarget) //충돌 종료 후 실행
         {
-            ApplyHealthChange();
+            //ApplyHealthChange();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,7 +38,8 @@ public class EnemyCollideControl : MonoBehaviour
 
             if (_collideHealthSystem != null) // 널이 아니면
             {
-                _collideHealthSystem.ChangeHealth(_gameObject.GetComponent<CharacterStatsHandler>().CurrentStats.atk); //체력을 자신의 공격력 만큼 닳게 한다.
+                _collideHealthSystem.ChangeHealth(-_gameObject.GetComponent<CharacterStatsHandler>().CurrentStats.atk); //체력을 자신의 공격력 만큼 닳게 한다.
+                UIManager.Instance.BrokenHeart(); //근거리 공격
             }
         }
     }
