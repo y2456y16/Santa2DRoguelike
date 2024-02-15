@@ -6,7 +6,7 @@ using UnityEngine;
 public class TopDownLookRotation : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer punchRenderer;
-    [SerializeField] private Transform atkPivit;
+    [SerializeField] public Transform atkPivot;
 
     [SerializeField] private SpriteRenderer characterRenderer;
 
@@ -23,24 +23,28 @@ public class TopDownLookRotation : MonoBehaviour
         _controller.OnLookEvent += OnAim;
     }
 
-    private void OnAim(Vector2 newAimDirection)
+    public void OnAim(Vector2 newAimDirection)
     {
         RotateLook(newAimDirection);
     }
 
     private void RotateLook(Vector2 direction)
     {
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float rotZ = 0f;
+
+        rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;// x + 값
 
         punchRenderer.flipY = Mathf.Abs(rotZ) > 90f;
         characterRenderer.flipX = punchRenderer.flipY;
 
-        atkPivit.rotation = Quaternion.Euler(0, 0, rotZ);
+        atkPivot.rotation = Quaternion.Euler(0, 0, rotZ);
     }
 
-    // Update is called once per frame
+    //KCW : 불필요해서 삭제
+    /*
     void Update()
     {
         
     }
+    */
 }

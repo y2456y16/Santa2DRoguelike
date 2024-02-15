@@ -1,20 +1,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
-public class TopDownAnimationController : TopDownAnimations
+public class TopDownAnimationController:TopDownAnimations
 {
     private static readonly int IsWalking = Animator.StringToHash("IsWalking");
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int IsHit = Animator.StringToHash("IsHit");
+    private static readonly int AttackToIdle = Animator.StringToHash("AttackToIdle");
+    private static readonly int EnemyAttacking = Animator.StringToHash("EnemyAttacking");
 
-    //�÷��̾� ����� ��¾ִϸ��̼�
+    //보스 전용
+    private static readonly int IsDelayAttack = Animator.StringToHash("IsDelayAttack");
+    private static readonly int BossDeath = Animator.StringToHash("BossDeath");
+    private static readonly int BossAttack = Animator.StringToHash("BossAttack");
+
+
+    //플레이어 사망시 출력애니메이션
     private static readonly int IsDead = Animator.StringToHash("IsDead");
 
-    //�ӽð���2, ��ų
+    //임시공격2, 스킬
     private static readonly int Attack2 = Animator.StringToHash("Attack2");
     private static readonly int Skill = Animator.StringToHash("Skill");
+
+    // KCW : 공격 여부 및 시간 체크
+    public bool IsAttacking = false;
+
+    //KCW : 보스 공격 딜레이
+    private bool IsDelay = false;
 
     private HealthSystem _healthSystem;
 
@@ -37,20 +52,75 @@ public class TopDownAnimationController : TopDownAnimations
             _healthSystem.OnDeath += Dead;
         }
 
-        //�ӽ�
+        //임시
         controller.OnAttackEvent2 += Attacking2;
-        controller.OnSkillEvent += SkillUse;
+        //controller.OnSkillEvent += SkillUse;
+    }
+    private void FixedUpdate()
+    {
+
     }
 
-    private void Move(Vector2 obj)
+    public void Move(Vector2 obj)
     {
         animator.SetBool(IsWalking, obj.magnitude > .5f);
     }
 
-    private void Attacking(AttackSO obj)
+    //KCW : 멈춤 기능 추가
+    public void Stop(Vector2 obj)
     {
-        animator.SetTrigger(Attack);
+        animator.SetBool(IsWalking, false);
     }
+
+    public void Attacking(AttackSO obj)
+    {
+        animator.SetTrigger(Attack);               
+    }
+
+    public void EnemyAttack(AttackSO obj)
+    {
+        if (IsAttacking == false)
+        {
+            animator.SetTrigger(EnemyAttacking);
+            IsAttacking = true;
+            StartCoroutine(EnemyDelay());
+        }
+    }
+
+    IEnumerator EnemyDelay()
+    {
+        yield return new WaitForSeconds(2.0f);
+        IsAttacking = false;
+        animator.SetTrigger(AttackToIdle);
+    }
+
+    public void BossDelayMotion(AttackSO obj)
+    {
+        if(IsDelay == false)
+        {
+            animator.SetTrigger(IsDelayAttack);
+            IsDelay = true;
+        }
+
+    }
+
+    public void BossAttacking(AttackSO obj)
+    {
+        IsDelay = false;
+        animator.SetTrigger(BossAttack);
+    }
+
+    public void BossToIdle()
+    {
+        animator.SetTrigger(AttackToIdle);
+    }
+
+    public void BossDead()
+    {
+        animator.SetTrigger(BossDeath);
+    }
+
+
 
     private void Hit()
     {
@@ -62,13 +132,13 @@ public class TopDownAnimationController : TopDownAnimations
         animator.SetBool(IsHit, false);
     }
 
-    //���ó��
-    private void Dead()
+    //사망처리
+    public void Dead()
     {
         animator.SetBool(IsDead, true);
     }
 
-    //�ӽ�
+    //임시
     private void Attacking2(AttackSO obj)
     {
         animator.SetTrigger(Attack2);
