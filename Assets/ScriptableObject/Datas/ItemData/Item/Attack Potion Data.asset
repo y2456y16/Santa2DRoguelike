@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c233805213474864993362f44c312401, type: 3}
+  m_Name: Attack Potion Data
+  m_EditorClassIdentifier: 
+  ID: 10
+  Name: Potion
+  Sprite: {fileID: 547793956593852877, guid: 6d343d6228b1bde4f8c038b707c6012b, type: 3}
+  Type: 2
+  Damage: 0
+  potionType: 1
