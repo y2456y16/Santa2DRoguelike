@@ -13,8 +13,7 @@ public class GiftBoxItem : Item
         base.Use(target);
         if (data.Type == ItemType.Useable)
         {
-            //방 안에 보스를 제외한 모든 몬스터 사망
-            //방 안에 모든 몬스터 일시정지          
+            //화면 안에 보스를 제외한 모든 몬스터 사망          
         }
     }
 }

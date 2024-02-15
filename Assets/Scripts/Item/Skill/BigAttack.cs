@@ -33,7 +33,8 @@ public class BigAttack : MonoBehaviour
         if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             //TODO 몬스터 데미지 주기
-            Debug.Log("몬스터 데미지");
+            float damage = ItemManager.Instance.GetItem(ItemID.BigAttack).data.Damage + _player.GetComponent<CharacterStatsHandler>().CurrentStats.atk;
+            collision.gameObject.GetComponent<HealthSystem>().ChangeHealth(-damage);
         }
         if (collision.gameObject.CompareTag("Wall"))
         {
