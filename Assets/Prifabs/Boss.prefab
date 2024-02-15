@@ -820,7 +820,11 @@ MonoBehaviour:
   _camera: {fileID: 0}
   followRange: 1000
   shootRange: 3
-  _AttackRange: []
+  _AttackRange:
+  - {fileID: 8975961393298249382}
+  - {fileID: 2265001007139855247}
+  - {fileID: 2068319491897010823}
+  - {fileID: 402992069343638635}
   AttackRange: {fileID: 9111881404072922179}
 --- !u!114 &4395630243104026065
 MonoBehaviour:
@@ -835,7 +839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthChangeDelay: 0.5
-  Boss: 0
+  Boss: 1
   CanResurrection: 0
 --- !u!114 &8235458320440847974
 MonoBehaviour:

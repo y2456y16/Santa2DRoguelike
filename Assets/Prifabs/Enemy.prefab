@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats:
     statsChangeType: 2
-    maxHealth: 8
+    maxHealth: 7
     atk: 1
     def: 1
     speed: 0
@@ -536,6 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c141efcba340d4f90d5f9c6cdfd396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsAttacking: 0
 --- !u!114 &7977471396999658449
 MonoBehaviour:
   m_ObjectHideFlags: 0

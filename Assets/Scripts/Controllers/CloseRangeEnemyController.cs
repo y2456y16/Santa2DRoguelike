@@ -13,6 +13,7 @@ public class CloseRangeEnemyController : TopDownCharacterController
     GameManager gameManager;
     private bool IsRange = false;
 
+
     protected Transform ClosestTarget { get; private set; } //플레이어의 위치 참조
 
     protected virtual void Start()
@@ -46,6 +47,7 @@ public class CloseRangeEnemyController : TopDownCharacterController
         float distance = DistanceToTarget(); //플레이어와의 거리
         Vector2 direction = DirectionToTarget();//플레이어를 향한 방향
 
+
         if (_animcontroller.IsAttacking == true)
         {
             foreach (var range in _AttackRange)
@@ -53,7 +55,7 @@ public class CloseRangeEnemyController : TopDownCharacterController
                 range.SetActive(true);
             }
         }
-        else
+        else if(_animcontroller.IsAttacking == false)
         {
             foreach (var range in _AttackRange)
             {

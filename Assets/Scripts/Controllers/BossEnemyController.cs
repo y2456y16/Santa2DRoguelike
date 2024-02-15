@@ -39,7 +39,7 @@ public class BossEnemyController : TopDownCharacterController
     {
         base.FixedUpdate();
 
-        if (_animcontroller.IsAttacking == true)
+                if (_animcontroller.IsAttacking == true)
         {
             foreach (var range in _AttackRange)
             {
@@ -54,7 +54,7 @@ public class BossEnemyController : TopDownCharacterController
             }
         }
 
-        if (IsDelay==false)
+        if(IsDelay==false)
         {
             Move();
 
