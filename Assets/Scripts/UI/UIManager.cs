@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text playerSpeed_Text;
 
     [Header("Item")]
-    public GameObject[] items = new GameObject[3]; //GameObject¸»°í ¾ÆÀÌÅÛ ¼³Á¤ÇØµĞ script·Î ¼³Á¤ÇÊ¿äÇÒ °Í °°À½.
+    public GameObject[] items = new GameObject[3]; //GameObjectë§ê³  ì•„ì´í…œ ì„¤ì •í•´ë‘” scriptë¡œ ì„¤ì •í•„ìš”í•  ê²ƒ ê°™ìŒ.
     public int[] item_count = new int[3];
     public TMP_Text[] itemsText = new TMP_Text[3];
     
@@ -50,27 +50,27 @@ public class UIManager : MonoBehaviour
 
     public void SetStatsText()
     {
-        playerAtk_Text.text = GameManager.Instance.player_atk.ToString();
-        playerDef_Text.text = GameManager.Instance.player_def.ToString();
-        playerSpeed_Text.text = GameManager.Instance.player_speed.ToString();
+        //playerAtk_Text.text = GameManager.Instance.player_atk.ToString();
+        //playerDef_Text.text = GameManager.Instance.player_def.ToString();
+        //playerSpeed_Text.text = GameManager.Instance.player_speed.ToString();
     }
 
 
 
-    private void GetItem()//¸Å°³º¯¼ö·Î ¾ÆÀÌÅÛ sprite¶û ¾ÆÀÌÅÛ¸í °¡Á®¿À±â. ¾Æ´Ï¸é ¾ÆÀÌÅÛ ÀÚÃ¼¸¦ ¹Ş±â
+    private void GetItem()//ë§¤ê°œë³€ìˆ˜ë¡œ ì•„ì´í…œ spriteë‘ ì•„ì´í…œëª… ê°€ì ¸ì˜¤ê¸°. ì•„ë‹ˆë©´ ì•„ì´í…œ ìì²´ë¥¼ ë°›ê¸°
     {
         for(int i = 0; i < 3; i++)
         {
             if (items[i] == null)
             {
-                items[i] = Resources.Load<GameObject>("item"); //¸ÔÀº ¾ÆÀÌÅÛ ³Ö¾îµÎ±â, ¾ÆÀÌÅÛ Á¤º¸ ÇÊ¿äÇÔ
+                items[i] = Resources.Load<GameObject>("item"); //ë¨¹ì€ ì•„ì´í…œ ë„£ì–´ë‘ê¸°, ì•„ì´í…œ ì •ë³´ í•„ìš”í•¨
                 item_count[i] = 1;
-                //ItemText = items[i].transform.Find("count").GameObject; ¾ÆÀÌÅÛ°¹¼ö Ç¥±â text ¼³Á¤ÇØÁà¾ßÇÔ.
+                //ItemText = items[i].transform.Find("count").GameObject; ì•„ì´í…œê°¯ìˆ˜ í‘œê¸° text ì„¤ì •í•´ì¤˜ì•¼í•¨.
                 ItemText(i, item_count[i]);
                 break;
             }
         }
-        //¾ÆÀÌÅÛ Ä­ÀÌ ´Ù Â÷¼­ ¸ÔÁö ¸øÇÏ°Ô ÇØ¾ßÇÔ.
+        //ì•„ì´í…œ ì¹¸ì´ ë‹¤ ì°¨ì„œ ë¨¹ì§€ ëª»í•˜ê²Œ í•´ì•¼í•¨.
     }
 
     private void ItemText(int index, int itemCount)

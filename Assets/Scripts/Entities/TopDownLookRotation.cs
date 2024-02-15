@@ -31,7 +31,8 @@ public class TopDownLookRotation : MonoBehaviour
     private void RotateLook(Vector2 direction)
     {
         float rotZ = 0f;
-        rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;// x + °ª
+
+        rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;// x + ê°’
 
         punchRenderer.flipY = Mathf.Abs(rotZ) > 90f;
         characterRenderer.flipX = punchRenderer.flipY;
@@ -39,7 +40,7 @@ public class TopDownLookRotation : MonoBehaviour
         atkPivot.rotation = Quaternion.Euler(0, 0, rotZ);
     }
 
-    //KCW : ºÒÇÊ¿äÇØ¼­ »èÁ¦
+    //KCW : ë¶ˆí•„ìš”í•´ì„œ ì‚­ì œ
     /*
     void Update()
     {

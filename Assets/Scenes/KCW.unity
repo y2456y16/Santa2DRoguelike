@@ -1508,6 +1508,11 @@ MonoBehaviour:
   _EnemyPrefabManager: {fileID: 702994687}
   playerTag: Player
   enemyLocation: []
+  player_health: 0
+  player_speed: 0
+  player_atk: 0
+  player_def: 0
+  player_type: 0
 --- !u!1 &403595344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2891,6 +2896,8 @@ MonoBehaviour:
   EnemyList:
   - {fileID: 6743801281746149196, guid: 4127304e1eabeed43b30d5a1b25cbd8f, type: 3}
   - {fileID: 6743801281746149196, guid: 26bac674c1a79674394d66cacb3320d9, type: 3}
+  BossList:
+  - {fileID: 6743801281746149196, guid: 8434c9972139a43488007d2dcf491770, type: 3}
 --- !u!4 &702994688
 Transform:
   m_ObjectHideFlags: 0
@@ -3090,6 +3097,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartParent: {fileID: 534035209}
   heart_count: 0
+  playerAtk_Text: {fileID: 0}
+  playerDef_Text: {fileID: 0}
+  playerSpeed_Text: {fileID: 0}
   items:
   - {fileID: 0}
   - {fileID: 0}
@@ -3114,7 +3124,6 @@ MonoBehaviour:
   optionUI: {fileID: 1808715840}
   statusUI: {fileID: 303043443}
   status_optionUI: {fileID: 1150296736}
-  storyUI: {fileID: 0}
 --- !u!4 &810734910
 Transform:
   m_ObjectHideFlags: 0

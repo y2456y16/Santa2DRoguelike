@@ -4,13 +4,14 @@ using Unity.Burst.Intrinsics;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class CloseRangeEnemyController : TopDownCharacterController
+public class BossEnemyController : TopDownCharacterController
 {
     [SerializeField] private float followRange = 1000f; //플레이어 인지 범위
     [SerializeField] private float shootRange = 2f; //사정거리
 
     GameManager gameManager;
-    private bool IsRange = false;
+    [SerializeField] private GameObject AttackRange;
+    private bool IsDelay = false;
 
     protected Transform ClosestTarget { get; private set; } //플레이어의 위치 참조
 
@@ -32,37 +33,43 @@ public class CloseRangeEnemyController : TopDownCharacterController
         return (ClosestTarget.position - transform.position).normalized;
     }
 
-    protected Vector2 BulletDirectionToTarget()
-    {
-        return (ClosestTarget.position - aim.atkPivot.position).normalized;
-    }
 
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        Move();
 
-        float distance = DistanceToTarget(); //플레이어와의 거리
-        Vector2 direction = DirectionToTarget();//플레이어를 향한 방향
-
-
-        IsAttacking = false; //공격 불가능
-        if (distance <= followRange) //몬스터가 인지할 수 있는 범위안에 플레이어가 들어오면
+        if(IsDelay==false)
         {
-            if (distance <= shootRange)
-            {
-                _animcontroller.Stop(Vector2.zero);
-                OnLookInput(direction); //플레이어를 바라본다.
-                aim.OnAim(direction);
-                curMovementInput = Vector2.zero; //제자리에 멈춰서 쏜다.
-                IsAttacking = true; //공격 가능하게 설정
-                Invoke("AttackDisplay", 1f);
+            Move();
 
+            float distance = DistanceToTarget(); //플레이어와의 거리
+            Vector2 direction = DirectionToTarget();//플레이어를 향한 방향
+
+
+            IsAttacking = false; //공격 불가능
+            if (distance <= followRange) //몬스터가 인지할 수 있는 범위안에 플레이어가 들어오면
+            {
+                if (distance <= shootRange)
+                {
+
+                    _animcontroller.Stop(Vector2.zero);
+                    OnLookInput(direction); //플레이어를 바라본다.
+                    aim.OnAim(direction);
+                    curMovementInput = Vector2.zero; //제자리에 멈춰서 쏜다.
+                    IsAttacking = true; //공격 가능하게 설정  
+                    DelayAttackDisplay();
+
+                }
+                else
+                {
+                    _animcontroller.Move(direction);
+                    OnLookInput(direction);//플레이어 방향을 바라본다.
+                    aim.OnAim(direction);
+                    OnMoveInput(direction);//플레이어 방향으로 이동
+                }
             }
             else
             {
-                direction = BulletDirectionToTarget();
-                _animcontroller.Move(direction);
                 OnLookInput(direction);//플레이어 방향을 바라본다.
                 aim.OnAim(direction);
                 OnMoveInput(direction);//플레이어 방향으로 이동
@@ -70,34 +77,41 @@ public class CloseRangeEnemyController : TopDownCharacterController
         }
         else
         {
-            direction = BulletDirectionToTarget();
-            OnLookInput(direction);//플레이어 방향을 바라본다.
-            aim.OnAim(direction);
-            OnMoveInput(direction);//플레이어 방향으로 이동
-        }
-    }
-    
-
-    public void AttackDisplay()
-    {
-        if(IsRange == false)
-        {
-            _animcontroller.EnemyAttack(Stats.CurrentStats.attackSO);
-            StartCoroutine(DelayAttackTime());
-            IsRange = true;
-        }
-        else
-        {
 
         }
         
-
     }
 
-    IEnumerator DelayAttackTime()
-    {
-        yield return new WaitForSeconds(2.0f);
 
+    public void DelayAttackDisplay()
+    {
+        if(IsDelay == false)
+        {
+            IsDelay = true;
+            _animcontroller.BossDelayMotion(Stats.CurrentStats.attackSO);
+            StartCoroutine(DelayAttack());
+        }       
+
+    }
+    private void BossAttack()
+    {
+        AttackRange.SetActive(true);
+        _animcontroller.BossAttacking(Stats.CurrentStats.attackSO);
+        StartCoroutine(DelayNext());       
+    }
+
+    IEnumerator DelayAttack()
+    {
+        yield return new WaitForSeconds(3.0f);
+        BossAttack();
+    }
+
+    IEnumerator DelayNext()
+    {
+        yield return new WaitForSeconds(3.0f);
+        _animcontroller.BossToIdle();
+        AttackRange.SetActive(false);
+        IsDelay = false;
     }
 
     public void Move()

@@ -34,14 +34,15 @@ public class GameManager : MonoBehaviour
     {
         SetPlayerStats();
         Time.timeScale = 1f;
-        InvokeRepeating("EnemyCreate", 0.5f, 2f);
+        //InvokeRepeating("EnemyCreate", 0.5f, 2f);
+        BossCreate();
     }
 
 
     public void EnemyCreate()
     {
         int randomNumb = Random.Range(0, _EnemyPrefabManager.EnemyNumber);
-        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab º¹Á¦ÇÏ¿© Àû °´Ã¼ »ı¼º
+        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab ë³µì œí•˜ì—¬ ì  ê°ì²´ ìƒì„±
         int enemyLocationlist = Random.Range(0, 6);
         enemyInstance.transform.position = enemyLocation[enemyLocationlist];
 
@@ -55,6 +56,12 @@ public class GameManager : MonoBehaviour
         enemyLocation.Add(new Vector3(3f, 0f, 0));
         enemyLocation.Add(new Vector3(-3f, -4f, 0));
         enemyLocation.Add(new Vector3(3f, -4f, 0));
+    }
+
+    public void BossCreate()
+    {
+        GameObject BossInstance = Instantiate(_EnemyPrefabManager.BossList[0]);
+        BossInstance.transform.position = new Vector3(3f, 0f, 0);
     }
 
     void SetPlayerStats()
