@@ -31,12 +31,13 @@ public class ItemManager : MonoBehaviour
         {
             UIManager.Instance.MakeItemSlot(item.data.Type, item.data.Sprite);
 
-            if (item.data.Type == ItemType.Skill)
+            curItems.Add(item.data.ID, item);
+            if (item.data.Type == ItemType.Skill && curSkill != null && curSkill.data.ID != item.data.ID)
             {
-                RemoveItem(item.data.ID);
-                foreach(Item skill in skills)
+                RemoveItem(curSkill.data.ID);
+                foreach (Item skill in skills)
                 {
-                    if(skill.data.ID == item.data.ID)
+                    if (skill.data.ID == item.data.ID)
                     {
                         curSkill = skill;
                         break;
@@ -53,8 +54,6 @@ public class ItemManager : MonoBehaviour
             {
                 //UIManager.Instance.MakeItemSlot(item.data.Type, item.data.Sprite);
             }
-
-            curItems.Add(item.data.ID, item);
             item.ApplyEffect(GameManager.Instance.Player.gameObject);
         }
         else

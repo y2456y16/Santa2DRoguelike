@@ -10,14 +10,14 @@ public class TopDownAnimationController : TopDownAnimations
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int IsHit = Animator.StringToHash("IsHit");
 
-    //«√∑π¿ÃæÓ ªÁ∏¡Ω√ √‚∑¬æ÷¥œ∏ﬁ¿Ãº«
+    //ÌîåÎ†àÏù¥Ïñ¥ ÏÇ¨ÎßùÏãú Ï∂úÎ†•Ïï†ÎãàÎ©îÏù¥ÏÖò
     private static readonly int IsDead = Animator.StringToHash("IsDead");
 
-    //¿”Ω√∞¯∞›2, Ω∫≈≥
+    //ÏûÑÏãúÍ≥µÍ≤©2, Ïä§ÌÇ¨
     private static readonly int Attack2 = Animator.StringToHash("Attack2");
     private static readonly int Skill = Animator.StringToHash("Skill");
 
-    // KCW : ∞¯∞› ø©∫Œ π◊ Ω√∞£ √º≈©
+    // KCW : Í≥µÍ≤© Ïó¨Î∂Ä Î∞è ÏãúÍ∞Ñ Ï≤¥ÌÅ¨
     private bool IsAttacking = false;
     private float timeCount = 0f;
 
@@ -42,13 +42,13 @@ public class TopDownAnimationController : TopDownAnimations
             _healthSystem.OnDeath += Dead;
         }
 
-        //¿”Ω√
+        //ÏûÑÏãú
         controller.OnAttackEvent2 += Attacking2;
-        controller.OnSkillEvent += SkillUse;
+        //controller.OnSkillEvent += SkillUse;
     }
     private void FixedUpdate()
     {
-        //KCW : Ω√∞£ √º≈©
+        //KCW : ÏãúÍ∞Ñ Ï≤¥ÌÅ¨
         timeCount += Time.deltaTime;
     }
 
@@ -57,7 +57,7 @@ public class TopDownAnimationController : TopDownAnimations
         animator.SetBool(IsWalking, obj.magnitude > .5f);
     }
 
-    //KCW : ∏ÿ√„ ±‚¥… √ﬂ∞°
+    //KCW : Î©àÏ∂§ Í∏∞Îä• Ï∂îÍ∞Ä
     public void Stop(Vector2 obj)
     {
         animator.SetBool(IsWalking, false);
@@ -80,13 +80,13 @@ public class TopDownAnimationController : TopDownAnimations
         animator.SetBool(IsHit, false);
     }
 
-    //ªÁ∏¡√≥∏Æ
+    //ÏÇ¨ÎßùÏ≤òÎ¶¨
     public void Dead()
     {
         animator.SetBool(IsDead, true);
     }
 
-    //¿”Ω√
+    //ÏûÑÏãú
     private void Attacking2(AttackSO obj)
     {
         animator.SetTrigger(Attack2);
