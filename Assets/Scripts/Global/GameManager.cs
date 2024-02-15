@@ -118,15 +118,16 @@ public class GameManager : MonoBehaviour
     }
     public void RetryGame()
     {
-        Time.timeScale = 1f;
         healthSystem.ChangeHealth(characterStats.CurrentStats.maxHealth);
         Player.transform.position = Vector3.zero;
         SceneManager.LoadScene("MainScene");
         gameOverUI.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void ExitGame()
     {
         SceneManager.LoadScene("IntroScene");
+        Time.timeScale = 1f;
     }
 }
