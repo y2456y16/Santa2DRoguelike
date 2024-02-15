@@ -29,6 +29,8 @@ public class ItemManager : MonoBehaviour
     {
         if (!curItems.ContainsKey(item.data.ID))
         {
+            UIManager.Instance.MakeItemSlot(item.data.Type, item.data.Sprite);
+
             if (item.data.Type == ItemType.Skill)
             {
                 RemoveItem(item.data.ID);
@@ -45,7 +47,6 @@ public class ItemManager : MonoBehaviour
             //아이템 타입이 버프일 경우 슬롯이 생성되고[완], 버프가 적용이 되야하고, 같은 것은 중복되지 않도록.
             else if (item.data.Type == ItemType.Buff)
             {
-                UIManager.Instance.MakeItemSlot(item.data.Type, item.data.Sprite);
             }
 
             else if (item.data.Type == ItemType.Useable)
@@ -55,7 +56,6 @@ public class ItemManager : MonoBehaviour
 
             curItems.Add(item.data.ID, item);
             item.ApplyEffect(GameManager.Instance.Player.gameObject);
-            Destroy(item.gameObject);
         }
         else
         {
@@ -64,6 +64,7 @@ public class ItemManager : MonoBehaviour
                 curItems[item.data.ID].data.Count++;
             }
         }
+        Destroy(item.gameObject);
     }
     public void RemoveItem(ItemID ID)
     {

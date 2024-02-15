@@ -20,11 +20,17 @@ public class UIManager : MonoBehaviour
     public TMP_Text playerSpeed_Text;
 
     [Header("Item")]
+    public GameObject itemSlotParent;
     private GameObject itemSlot;
+    public GameObject itemUsableParent;
+    private GameObject itemUsable;
+    public GameObject itemSkillParent;
+    public GameObject itemSkill;
+
+
     public GameObject[] usableItems = new GameObject[3]; //GameObject말고 아이템 설정해둔 script로 설정필요할 것 같음.
     public int[] item_count = new int[3];
     public TMP_Text[] itemsText = new TMP_Text[3];
-    public GameObject itemSlotParent;
     List<GameObject> buffItems = new List<GameObject>();
 
 
@@ -34,6 +40,7 @@ public class UIManager : MonoBehaviour
     {
         heart = Resources.Load<GameObject>("Prifabs/Heart");
         itemSlot = Resources.Load<GameObject>("Prifabs/itemslot");
+        itemSkill = Resources.Load<GameObject>("Prifabs/itemskill");
         Instance = this;
     }
 
@@ -72,9 +79,12 @@ public class UIManager : MonoBehaviour
                 if (usableItems[i] == null)
                 {
                     usableItems[i] = Resources.Load<GameObject>("item"); //먹은 아이템 넣어두기, 아이템 정보 필요함
-                    item_count[i] = 1;
+                    item_count[i] = 1; //itemManager Count가 1로 설정되어있으면 그거 가져오기
+                    GameObject newItemUsable = Instantiate(itemUsable);
+                    newItemUsable.transform.Find("Image").GetComponent<Image>().sprite = itemsprite;
+                    newItemUsable.transform.parent = itemUsableParent.transform;
                     //ItemText = items[i].transform.Find("count").GameObject; 아이템갯수 표기 text 설정해줘야함.
-                    ItemText(i, item_count[i]);
+                    //ItemText(i, item_count[i]);
                     break;
                 }
             }
@@ -85,6 +95,13 @@ public class UIManager : MonoBehaviour
             GameObject newItemSlot = Instantiate(itemSlot);
             newItemSlot.transform.Find("front").GetComponent<Image>().sprite = itemsprite;
             newItemSlot.transform.parent = itemSlotParent.transform;
+        }
+        else if(itemType == ItemType.Skill)
+        {
+            GameObject newItemSkill = Instantiate(itemSkill);
+            newItemSkill.transform.Find("front").GetComponent<Image>().sprite = itemsprite;
+            newItemSkill.transform.position = new Vector3(0, 0, 0);
+            newItemSkill.transform.parent = itemSkillParent.transform;
         }
     }
 
