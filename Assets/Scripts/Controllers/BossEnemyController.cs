@@ -13,6 +13,7 @@ public class BossEnemyController : TopDownCharacterController
     GameManager gameManager;
     [SerializeField] private GameObject AttackRange;
     private bool IsDelay = false;
+    private int checkAttack = 0;
 
     protected Transform ClosestTarget { get; private set; } //플레이어의 위치 참조
 
@@ -39,18 +40,20 @@ public class BossEnemyController : TopDownCharacterController
     {
         base.FixedUpdate();
 
-                if (_animcontroller.IsAttacking == true)
+        if (_animcontroller.IsAttacking == true)
         {
             foreach (var range in _AttackRange)
             {
-                range.SetActive(true);
+                range.GetComponent<SpriteRenderer>().enabled = true;
+                range.GetComponent<CircleCollider2D>().enabled =true;
             }
         }
         else
         {
             foreach (var range in _AttackRange)
             {
-                range.SetActive(false);
+                range.GetComponent<SpriteRenderer>().enabled = false;
+                range.GetComponent<CircleCollider2D>().enabled = false;
             }
         }
 
@@ -72,8 +75,12 @@ public class BossEnemyController : TopDownCharacterController
                     OnLookInput(direction); //플레이어를 바라본다.
                     aim.OnAim(direction);
                     curMovementInput = Vector2.zero; //제자리에 멈춰서 쏜다.
-                    IsAttacking = true; //공격 가능하게 설정  
-                    DelayAttackDisplay();
+                    IsAttacking = true; //공격 가능하게 설정
+                    if (checkAttack == 0)
+                    {
+                        DelayAttackDisplay();
+                        checkAttack = 1;
+                    }                   
 
                 }
                 else
@@ -128,6 +135,7 @@ public class BossEnemyController : TopDownCharacterController
         _animcontroller.BossToIdle();
         AttackRange.SetActive(false);
         IsDelay = false;
+        checkAttack = 0;
     }
 
     public void Move()
