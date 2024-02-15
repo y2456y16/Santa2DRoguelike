@@ -17,14 +17,10 @@ public class MapInfo
 {
     public ROOM_TYPE eRoomType = ROOM_TYPE.None;
     
-    public bool IsDoorOpen = false;
-    
     public Vector2 mapPos;
-    public Vector2 playerSpawnPos;
     public Transform cameraPos;
     public List<Vector3> EnemyPosList;
     public Vector3 BossPos;
-    public int EnemyCount;
 
     public Tilemap tilemap;
     public int Width;

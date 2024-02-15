@@ -228,12 +228,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapInfo:
     eRoomType: 0
-    IsDoorOpen: 0
     mapPos: {x: 0, y: 0}
-    playerSpawnPos: {x: 0, y: 0}
     cameraPos: {fileID: 0}
     EnemyPosList: []
-    EnemyCount: 5
+    BossPos: {x: 0, y: 0, z: 0}
     tilemap: {fileID: 0}
     Width: 0
     Height: 0
@@ -3150,7 +3148,7 @@ GameObject:
   - component: {fileID: 6519530165948406694}
   - component: {fileID: 8907295485898345627}
   - component: {fileID: 2476587470597222052}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

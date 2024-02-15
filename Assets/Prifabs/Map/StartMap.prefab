@@ -1278,6 +1278,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4670ecba82cfd4db0f1fee6c2c7add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapInfo:
+    eRoomType: 0
+    mapPos: {x: 0, y: 0}
+    cameraPos: {fileID: 0}
+    EnemyPosList: []
+    BossPos: {x: 0, y: 0, z: 0}
+    tilemap: {fileID: 0}
+    Width: 0
+    Height: 0
+    currentDoor: {fileID: 0}
+  EnemyCount: 0
 --- !u!1 &7682703004984640035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,7 +1301,7 @@ GameObject:
   - component: {fileID: 3713156433729729801}
   - component: {fileID: 3955279675312899044}
   - component: {fileID: 2082041643357128863}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

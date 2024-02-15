@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public List<Vector3> enemyLocation = new List<Vector3>();//enemy start location list
                                                              // Start is called before the first frame update
-
+    public Map currentMap;
 
     public CharacterStatsHandler characterStats;
     [HideInInspector] public int player_health;
@@ -85,7 +85,12 @@ public class GameManager : MonoBehaviour
         GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab 복제하여 적 객체 생성
         int enemyLocationlist = Random.Range(0, enemyLocation.Count);
         enemyInstance.transform.position = enemyLocation[enemyLocationlist];
+        enemyInstance.GetComponent<HealthSystem>().OnDeath += EnemyDeathCount;
+    }
 
+    public void EnemyDeathCount()
+    {
+        currentMap.EnemyDeathCount();
     }
 
     void EnemyLocationSet()//enemy start location set
