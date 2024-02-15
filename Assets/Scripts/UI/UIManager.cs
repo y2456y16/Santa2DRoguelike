@@ -59,7 +59,13 @@ public class UIManager : MonoBehaviour
             newHeart.transform.parent = heartParent.transform;
             if (resurrection)
             {
-                Hearts[i] = newHeart;
+                try
+                {
+                    Hearts[i] = newHeart;
+                }
+                catch (System.ArgumentOutOfRangeException)
+                { Hearts.Add(newHeart); }
+
             }
             else
             {
@@ -86,7 +92,6 @@ public class UIManager : MonoBehaviour
                     break;
                 }
             }
-            Hearts.Add(null);
         }
     }
 

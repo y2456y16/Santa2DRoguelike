@@ -49,7 +49,7 @@ public class HealthSystem : MonoBehaviour
 
     public bool ChangeHealth(float change)
     {
-        Debug.Log(1);
+        Debug.Log("플레이어 hp:"+CurrentHealth);
         if (change == 0 || _timeSinceLastChange < healthChangeDelay)
         {
             return false;
