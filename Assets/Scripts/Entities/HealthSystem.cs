@@ -49,7 +49,7 @@ public class HealthSystem : MonoBehaviour
 
     public bool ChangeHealth(float change)
     {
-        Debug.Log("체력이 변함");
+        Debug.Log("플레이어 hp:"+CurrentHealth);
         if (change == 0 || _timeSinceLastChange < healthChangeDelay)
         {
             return false;
@@ -57,7 +57,7 @@ public class HealthSystem : MonoBehaviour
 
         _timeSinceLastChange = 0f;
         CurrentHealth += change;
-        CurrentHealth = CurrentHealth > MaxHealth ? MaxHealth : CurrentHealth;
+        //CurrentHealth = CurrentHealth > MaxHealth ? MaxHealth : CurrentHealth; -> player hp가 full인 상태에서 블루 하트 먹을 시 정상적으로 반영이 되지 않아서 생략.
         CurrentHealth = CurrentHealth < 0 ? 0 : CurrentHealth;
 
         if (change > 0)
@@ -66,7 +66,6 @@ public class HealthSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log(CurrentHealth);
             UIManager.Instance.BrokenHeart();
             OnDamage?.Invoke();
         }

@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     private GameObject blueHeart;
     public GameObject heartParent;
     [HideInInspector] public int heart_count;
-    public List<GameObject> Hearts = new List<GameObject>();
+    [SerializeField] private List<GameObject> Hearts = new List<GameObject>();
 
     [Header("Stats")]
     public TMP_Text playerAtk_Text;
@@ -54,14 +54,19 @@ public class UIManager : MonoBehaviour
     public void MakeHeart(bool resurrection)
     {
         heart_count = GameManager.Instance.characterStats.CurrentStats.maxHealth;
-        Debug.Log(GameManager.Instance.characterStats.CurrentStats.maxHealth);
         for(int i = 0; i < heart_count; i++)
         {
             GameObject newHeart = Instantiate(heart);
             newHeart.transform.parent = heartParent.transform;
             if (resurrection)
             {
-                Hearts[i] = newHeart;
+                try
+                {
+                    Hearts[i] = newHeart;
+                }
+                catch (System.ArgumentOutOfRangeException)
+                { Hearts.Add(newHeart); }
+
             }
             else
             {
@@ -74,13 +79,13 @@ public class UIManager : MonoBehaviour
     {
         GameObject newHeart = Instantiate(blueHeart);
         newHeart.transform.parent = heartParent.transform;
-        if(Hearts[Hearts.Count - 1] != null)
+        if (Hearts[Hearts.Count - 1] != null)
         {
             Hearts.Add(newHeart);
         }
         else
         {
-            for(int i = 0;i < Hearts.Count; i++)
+            for (int i = 0; i < Hearts.Count; i++)
             {
                 if (Hearts[i] == null)
                 {
@@ -103,7 +108,12 @@ public class UIManager : MonoBehaviour
             {
                 if (Hearts[i] == null)
                 {
-                    Destroy(Hearts[i - 1]);
+                    try
+                    {
+                        Destroy(Hearts[i - 1]);
+                    }
+                    catch
+                    {  }
                     break;
                 }
             }

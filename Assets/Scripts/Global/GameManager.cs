@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
 
     public CharacterStatsHandler characterStats;
-    public int player_health;
+    [HideInInspector] public int player_health;
     [HideInInspector] public float player_speed;
     [HideInInspector] public int player_atk;
     [HideInInspector] public int player_def;
