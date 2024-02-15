@@ -330,7 +330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB3C4\uC640\uC918\uC694\n\uCF54\uB529\uC0B0\uD0C0!"
+  m_text: "\uB3C4\uC640\uC918\uC694\n\uD6A8\uC2B9\uC0B0\uD0C0!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 00c93d4e569049c40823919e1daf46dc, type: 2}
   m_sharedMaterial: {fileID: 5503089433747027437, guid: 00c93d4e569049c40823919e1daf46dc,
@@ -822,7 +822,7 @@ RectTransform:
   - {fileID: 1254689756907876527}
   - {fileID: 420522105313201352}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
