@@ -18,7 +18,7 @@ public class Door : MonoBehaviour
 
     public void OnCollisionCheck(Collider2D collision)
     {
-        if(collision.tag.Equals("Player"))
+        if(collision.CompareTag("Player"))
         {
             if (NextDoor)
             {

@@ -6,7 +6,9 @@ using UnityEngine.Tilemaps;
 public class Map : MonoBehaviour
 {
     [SerializeField] private MapInfo mapInfo;
+    public int EnemyCount;
     bool isInPlayer = false;
+    IEnumerator SpawnCourt = null;
     public void InfoSetting(MapInfo _mapInfo)
     {
         mapInfo = _mapInfo;
@@ -18,6 +20,17 @@ public class Map : MonoBehaviour
         transform.position = new Vector2(0, (mapInfo.Height + mapDistance) * cnt);
         mapInfo.playerSpawnPos = transform.position;
         mapInfo.cameraPos = transform.Find("CameraPos").transform;
+        Transform posList = transform.Find("MonsterPosList");
+        if (posList)
+        {
+            for (int i = 0; i < posList.childCount; i++)
+            {
+                if (posList.GetChild(i).name == "BossPos")
+                    mapInfo.BossPos = posList.GetChild(i).position;
+                else
+                    mapInfo.EnemyPosList.Add(posList.GetChild(i).position);
+            }
+        }
     }
 
     public void setSizeValue()
@@ -49,9 +62,45 @@ public class Map : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if(collision.CompareTag("Player") && isInPlayer == false)
         {
             isInPlayer = true;
+            Debug.Log("InPlayer");
+            GameManager.Instance.enemyLocation.Clear();
+            foreach (Vector3 pos in mapInfo.EnemyPosList)
+            {
+                GameManager.Instance.enemyLocation.Add(pos);
+            }
+            if (SpawnCourt == null)
+            {
+                if (mapInfo.eRoomType == ROOM_TYPE.BossRoom)
+                {
+                    SpawnCourt = BossSpawn();
+                }
+                else
+                {
+                    SpawnCourt = EnemySpawn();
+                }
+                StartCoroutine(SpawnCourt);
+            }
         }
+    }
+
+    IEnumerator EnemySpawn()
+    {
+        int cnt = 0;
+        while(cnt < EnemyCount)
+        {
+            GameManager.Instance.EnemyCreate();
+            yield return null;
+            cnt++;
+        }
+        SpawnCourt = null;
+    }
+    IEnumerator BossSpawn()
+    {
+        GameManager.Instance.BossCreate(mapInfo.BossPos);
+        yield return null;
+        SpawnCourt = null;
     }
 }
