@@ -15,17 +15,18 @@ public class BigAttack : MonoBehaviour
     void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
+        _player = GameManager.Instance.Player;
+        Debug.Log("Awake");
     }
     void Start()
     {
-        _player = GameManager.Instance.Player;
         _curMousePosiiton = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 dir = ((Vector2)_curMousePosiiton - (Vector2)_player.transform.position).normalized;
         _rigid.AddForce(dir * _bulletSpeed, ForceMode2D.Impulse);
 
         float degree = Mathf.Atan2(_rigid.velocity.y, _rigid.velocity.x) * Mathf.Rad2Deg;
         transform.Rotate(new Vector3(0f,0f,degree));
-
+        Debug.Log("Start");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +34,9 @@ public class BigAttack : MonoBehaviour
         if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             //TODO 몬스터 데미지 주기
-            float damage = ItemManager.Instance.GetItem(ItemID.BigAttack).data.Damage + _player.GetComponent<CharacterStatsHandler>().CurrentStats.atk;
+            Debug.Log("Trigger");
+            float damage = ItemManager.Instance.GetItem(ItemID.BigAttack).data.Damage;
+            damage += _player.GetComponent<CharacterStatsHandler>().CurrentStats.atk;
             collision.gameObject.GetComponent<HealthSystem>().ChangeHealth(-damage);
         }
         if (collision.gameObject.CompareTag("Wall"))
