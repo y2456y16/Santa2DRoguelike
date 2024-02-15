@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Transform Player { get; private set; }
     public HealthSystem healthSystem;
     public UIManager uiManager;
+
+    public GameObject gameOverUI;   // 게임오버UI
 
     [SerializeField] private string playerTag = "Player";
 
@@ -33,8 +37,23 @@ public class GameManager : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag(playerTag).transform;//gets transform data of object(tag == player)
         characterStats = Player.GetComponent<CharacterStatsHandler>();
         //EnemyLocationSet();
-        
+
+        healthSystem = Player.GetComponent<HealthSystem>();
+        healthSystem.OnDeath += gameOver;
     }
+
+    void gameOver()
+    {
+        StartCoroutine(GameOver());
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Time.timeScale = 0;
+        gameOverUI.SetActive(true);
+    }
+
     void Start()
     {
         SetPlayerStats();
@@ -76,9 +95,16 @@ public class GameManager : MonoBehaviour
         player_def = characterStats.CurrentStats.def;
         player_speed = characterStats.CurrentStats.speed;
     }
-
-    void UpdateHealthUI()
+    public void RetryGame()
     {
-        player_health = (int)healthSystem.CurrentHealth;
+        Time.timeScale = 1f;
+        healthSystem.ChangeHealth(characterStats.CurrentStats.maxHealth);
+        Player.transform.position = Vector3.zero;
+        SceneManager.LoadScene("MainScene");
+        gameOverUI.SetActive(false);
+    }
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("IntroScene");
     }
 }
