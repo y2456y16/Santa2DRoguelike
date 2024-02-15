@@ -838,7 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0453effdd4fe51041bdb57ae37d32f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthChangeDelay: 0.5
+  healthChangeDelay: 0.1
   Boss: 1
   CanResurrection: 0
 --- !u!114 &8235458320440847974

@@ -101,7 +101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4873111063780403573
 Transform:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07236004, y: -0.078686476}
+  m_Offset: {x: 0.7488785, y: -0.078686714}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -160,7 +160,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.532667, y: 10.17944}
+  m_Size: {x: 9.885704, y: 10.17944}
   m_EdgeRadius: 0
 --- !u!114 &1788045627253591606
 MonoBehaviour:
@@ -473,8 +473,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   followRange: 1000
   shootRange: 1.5
-  _AttackRange:
-  - {fileID: 545566057623314197}
+  _AttackRange: {fileID: 545566057623314197}
 --- !u!114 &3004896264975192530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,7 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0453effdd4fe51041bdb57ae37d32f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthChangeDelay: 0.5
+  healthChangeDelay: 0.1
   Boss: 0
   CanResurrection: 0
 --- !u!114 &3283566328415222697

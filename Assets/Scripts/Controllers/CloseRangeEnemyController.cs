@@ -8,10 +8,11 @@ public class CloseRangeEnemyController : TopDownCharacterController
 {
     [SerializeField] private float followRange = 1000f; //플레이어 인지 범위
     [SerializeField] private float shootRange = 2f; //사정거리
-    [SerializeField] List<GameObject> _AttackRange = new List<GameObject>();
+    [SerializeField] private GameObject _AttackRange;
+
 
     GameManager gameManager;
-    private bool IsRange = false;
+    private int checkAttack = 0;
 
 
     protected Transform ClosestTarget { get; private set; } //플레이어의 위치 참조
@@ -50,17 +51,13 @@ public class CloseRangeEnemyController : TopDownCharacterController
 
         if (_animcontroller.IsAttacking == true)
         {
-            foreach (var range in _AttackRange)
-            {
-                range.SetActive(true);
-            }
+            _AttackRange.GetComponent<BoxCollider2D>().enabled = true;
+            
         }
         else if(_animcontroller.IsAttacking == false)
         {
-            foreach (var range in _AttackRange)
-            {
-                range.SetActive(false);
-            }
+            _AttackRange.GetComponent<BoxCollider2D>().enabled = false;
+            
         }
 
 
@@ -74,7 +71,11 @@ public class CloseRangeEnemyController : TopDownCharacterController
                 aim.OnAim(direction);
                 curMovementInput = Vector2.zero; //제자리에 멈춰서 쏜다.
                 IsAttacking = true; //공격 가능하게 설정
-                Invoke("AttackDisplay", 1f);
+                if(checkAttack == 0)
+                {
+                    AttackDisplay();
+                    checkAttack = 1;
+                }
 
             }
             else
@@ -98,24 +99,16 @@ public class CloseRangeEnemyController : TopDownCharacterController
 
     public void AttackDisplay()
     {
-        if(IsRange == false)
-        {
-            _animcontroller.EnemyAttack(Stats.CurrentStats.attackSO);
-            StartCoroutine(DelayAttackTime());
-            IsRange = true;
-        }
-        else
-        {
-
-        }
-        
-
+        _animcontroller.EnemyAttack(Stats.CurrentStats.attackSO);
+        StartCoroutine(DelayAttackTime());   
     }
 
     IEnumerator DelayAttackTime()
     {
-        yield return new WaitForSeconds(2.0f);
-
+        yield return new WaitForSeconds(1.0f);
+        _animcontroller.EnemyToIdle();
+        yield return new WaitForSeconds(1.0f);
+        checkAttack = 0;
     }
 
     public void Move()
