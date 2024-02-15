@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -17,6 +18,7 @@ public class ItemManager : MonoBehaviour
     //AddItem을 통해 얻은 모든 아이템은 여기에 저장된다.
     private Dictionary<ItemID, Item> curItems = new Dictionary<ItemID, Item>();
     public Item curSkill;
+    private GameObject itemObject;
 
     private void Awake()
     {
@@ -39,10 +41,21 @@ public class ItemManager : MonoBehaviour
                     }
                 }
             }
-            //아이템 타입이 버프일 경우 슬롯이 생성되고, 버프가 적용이 되야하고, 같은 것은 중복되지 않도록.
+
+            //아이템 타입이 버프일 경우 슬롯이 생성되고[완], 버프가 적용이 되야하고, 같은 것은 중복되지 않도록.
+            else if (item.data.Type == ItemType.Buff)
+            {
+                UIManager.Instance.MakeItemSlot(item.data.Type, item.data.Sprite);
+            }
+
+            else if (item.data.Type == ItemType.Useable)
+            {
+                //UIManager.Instance.MakeItemSlot(item.data.Type, item.data.Sprite);
+            }
+
             curItems.Add(item.data.ID, item);
-            UIManager.Instance.MakeItemSlot(item.data.Type, item.data.Sprite);
             item.ApplyEffect(GameManager.Instance.Player.gameObject);
+            Destroy(item.gameObject);
         }
         else
         {
@@ -65,7 +78,6 @@ public class ItemManager : MonoBehaviour
         else
             return null;
     }
-
 }
 
 
