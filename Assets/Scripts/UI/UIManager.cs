@@ -86,6 +86,7 @@ public class UIManager : MonoBehaviour
                     break;
                 }
             }
+            Hearts.Add(null);
         }
     }
 
@@ -106,7 +107,7 @@ public class UIManager : MonoBehaviour
                         Destroy(Hearts[i - 1]);
                     }
                     catch
-                    { Destroy(heartParent.transform.GetChild(0)); }
+                    {  }
                     break;
                 }
             }
