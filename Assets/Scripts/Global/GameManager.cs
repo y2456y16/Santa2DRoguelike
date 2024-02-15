@@ -58,6 +58,18 @@ public class GameManager : MonoBehaviour
         gameOverUI.SetActive(true);
     }
 
+    public void gameClear()
+    {
+        StartCoroutine(GameClear());
+    }
+
+    IEnumerator GameClear()
+    {
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 0;
+        gameClearUI.SetActive(true);
+    }
+
     void Start()
     {
         SetPlayerStats();
@@ -107,6 +119,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainScene");
         gameOverUI.SetActive(false);
     }
+
     public void ExitGame()
     {
         SceneManager.LoadScene("IntroScene");

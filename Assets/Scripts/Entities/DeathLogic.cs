@@ -41,6 +41,7 @@ public class DeathLogic : MonoBehaviour
         else if(Boss == true)
         {
             Destroy(gameObject);
+            GameManager.Instance.gameClear();
         }
         
     }
