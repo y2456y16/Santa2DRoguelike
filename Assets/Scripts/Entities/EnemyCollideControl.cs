@@ -27,29 +27,31 @@ public class EnemyCollideControl : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)//Collider 충돌을 하면
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer))) // player와 부딪치면(즉 공격)
         {
-            _collideHealthSystem = collision.GetComponent<HealthSystem>();
-            if(_collideHealthSystem != null) //부딪친 상대의 헬스시스템이 있다면
+            _collideHealthSystem = collision.gameObject.GetComponent<HealthSystem>();
+            if (_collideHealthSystem != null) //부딪친 상대의 헬스시스템이 있다면
             {
                 _isCollidingWithTarget = true; //접촉한 것으로 한다.
             }
 
             if (_collideHealthSystem != null) // 널이 아니면
             {
-                Debug.Log(_gameObject.GetComponent<CharacterStatsHandler>().CurrentStats.atk);
+                Debug.Log("attack");
                 _collideHealthSystem.ChangeHealth(_gameObject.GetComponent<CharacterStatsHandler>().CurrentStats.atk); //체력을 자신의 공격력 만큼 닳게 한다.
 
             }
         }
     }
-    private void OnTriggerExit2D(Collider2D collision) //충돌 후 떨어질 때
+    private void OnTriggerExit2D(Collider2D collision)
     {
         GameObject receiver = collision.gameObject;
         _isCollidingWithTarget = false; // 접촉하지 않은 것으로 한다.
     }
+
+
     private void ApplyHealthChange()
     {
         AttackSO attackSO = _characterStats.CurrentStats.attackSO; //현재의 공격 정보

@@ -26,7 +26,6 @@ public class HealthSystem : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log(0);
         _statsHandler = GetComponent<CharacterStatsHandler>();
         _animcontroller = GetComponent<TopDownAnimationController>();
     }

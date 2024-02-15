@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     public void EnemyCreate()
     {
         int randomNumb = Random.Range(0, _EnemyPrefabManager.EnemyNumber);
-        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab 복제하여 적 객체 생성
+        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[1]);//prefab 복제하여 적 객체 생성
         int enemyLocationlist = Random.Range(0, 6);
         enemyInstance.transform.position = enemyLocation[enemyLocationlist];
 
