@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -140,6 +141,7 @@ public class UIManager : MonoBehaviour
                 {
                     usableItems[i] = Instantiate(ItemManager.Instance.FindUseItemByID(ID), new Vector3(-10000f,-10000f,0f), Quaternion.identity); //먹은 아이템 넣어두기, 아이템 정보 필요함
                     item_count[i] = usableItems[i].count;
+                    UpdateItemCount(i);
                     itemSlots[i].transform.Find("Image").GetComponent<Image>().sprite = itemsprite;
                     ItemText(i, item_count[i]);
                     break;
@@ -170,6 +172,10 @@ public class UIManager : MonoBehaviour
     {
         item_count[index] = usableItems[index].count;
         ItemText(index, item_count[index]);
-       
+        if (item_count[index] == 0)
+        {
+            itemSlots[index].transform.Find("Image").GetComponent<Image>().sprite = null;
+            ItemManager.Instance.RemoveItem(usableItems[index].data.ID);
+        }
     }
 }
