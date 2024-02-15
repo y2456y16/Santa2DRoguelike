@@ -20,5 +20,6 @@ public class SantaGiftBundle : ItemSO
         newStat.statsChangeType = StatsChangeType.Add;
         newStat.def = Defense;
         playerStat.AddStatModifier(newStat);
+        UIManager.Instance.SetStatsText();
     }
 }

@@ -18,7 +18,7 @@ public class BigAttack : MonoBehaviour
     }
     void Start()
     {
-        _player = ItemManager.Instance.player;
+        _player = GameManager.Instance.Player;
         _curMousePosiiton = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 dir = ((Vector2)_curMousePosiiton - (Vector2)_player.transform.position).normalized;
         _rigid.AddForce(dir * _bulletSpeed, ForceMode2D.Impulse);

@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     [Header("Heart")]
     private GameObject heart;
+    private GameObject blueHeart;
     public GameObject heartParent;
     [HideInInspector] public int heart_count;
     private List<GameObject> Hearts = new List<GameObject>();
@@ -19,16 +21,27 @@ public class UIManager : MonoBehaviour
     public TMP_Text playerSpeed_Text;
 
     [Header("Item")]
-    public GameObject[] items = new GameObject[3]; //GameObject¸»°í ¾ÆÀÌÅÛ ¼³Á¤ÇØµĞ script·Î ¼³Á¤ÇÊ¿äÇÒ °Í °°À½.
+    public GameObject itemSlotParent;
+    private GameObject itemSlot;
+    public GameObject itemUsableParent;
+    private GameObject itemUsable;
+    public GameObject itemSkill;
+
+
+    public GameObject[] usableItems = new GameObject[3]; //GameObjectë§ê³  ì•„ì´í…œ ì„¤ì •í•´ë‘” scriptë¡œ ì„¤ì •í•„ìš”í•  ê²ƒ ê°™ìŒ.
     public int[] item_count = new int[3];
     public TMP_Text[] itemsText = new TMP_Text[3];
-    
+    List<GameObject> buffItems = new List<GameObject>();
 
 
+    public static UIManager Instance;
 
     private void Awake()
     {
         heart = Resources.Load<GameObject>("Prifabs/Heart");
+        blueHeart = Resources.Load<GameObject>("Prifabs/blueheart");
+        itemSlot = Resources.Load<GameObject>("Prifabs/itemslot");
+        Instance = this;
     }
 
     private void Start()
@@ -48,29 +61,52 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void MakeBlueHeart()
+    {
+        GameObject newHeart = Instantiate(blueHeart);
+        newHeart.transform.parent = heartParent.transform;
+        Hearts.Add(newHeart);
+    }
+
     public void SetStatsText()
     {
+        GameManager.Instance.SetPlayerStats();
         playerAtk_Text.text = GameManager.Instance.player_atk.ToString();
         playerDef_Text.text = GameManager.Instance.player_def.ToString();
         playerSpeed_Text.text = GameManager.Instance.player_speed.ToString();
     }
 
-
-
-    private void GetItem()//¸Å°³º¯¼ö·Î ¾ÆÀÌÅÛ sprite¶û ¾ÆÀÌÅÛ¸í °¡Á®¿À±â. ¾Æ´Ï¸é ¾ÆÀÌÅÛ ÀÚÃ¼¸¦ ¹Ş±â
+    public void MakeItemSlot(ItemType itemType, Sprite itemsprite)
     {
-        for(int i = 0; i < 3; i++)
+        if(itemType == ItemType.Useable)
         {
-            if (items[i] == null)
+            for (int i = 0; i < 3; i++)
             {
-                items[i] = Resources.Load<GameObject>("item"); //¸ÔÀº ¾ÆÀÌÅÛ ³Ö¾îµÎ±â, ¾ÆÀÌÅÛ Á¤º¸ ÇÊ¿äÇÔ
-                item_count[i] = 1;
-                //ItemText = items[i].transform.Find("count").GameObject; ¾ÆÀÌÅÛ°¹¼ö Ç¥±â text ¼³Á¤ÇØÁà¾ßÇÔ.
-                ItemText(i, item_count[i]);
-                break;
+                if (usableItems[i] == null)
+                {
+                    usableItems[i] = Resources.Load<GameObject>("item"); //ë¨¹ì€ ì•„ì´í…œ ë„£ì–´ë‘ê¸°, ì•„ì´í…œ ì •ë³´ í•„ìš”í•¨
+                    item_count[i] = 1; //itemManager Countê°€ 1ë¡œ ì„¤ì •ë˜ì–´ìˆìœ¼ë©´ ê·¸ê±° ê°€ì ¸ì˜¤ê¸°
+                    GameObject newItemUsable = Instantiate(itemUsable);
+                    newItemUsable.transform.Find("Image").GetComponent<Image>().sprite = itemsprite;
+                    newItemUsable.transform.parent = itemUsableParent.transform;
+                    //ItemText = items[i].transform.Find("count").GameObject; ì•„ì´í…œê°¯ìˆ˜ í‘œê¸° text ì„¤ì •í•´ì¤˜ì•¼í•¨.
+                    //ItemText(i, item_count[i]);
+                    break;
+                }
             }
+            //ì•„ì´í…œ ì¹¸ì´ ë‹¤ ì°¨ì„œ ë¨¹ì§€ ëª»í•˜ê²Œ í•´ì•¼í•¨.
         }
-        //¾ÆÀÌÅÛ Ä­ÀÌ ´Ù Â÷¼­ ¸ÔÁö ¸øÇÏ°Ô ÇØ¾ßÇÔ.
+        else if(itemType == ItemType.Buff)
+        {
+            GameObject newItemSlot = Instantiate(itemSlot);
+            newItemSlot.transform.Find("front").GetComponent<Image>().sprite = itemsprite;
+            newItemSlot.transform.parent = itemSlotParent.transform;
+        }
+        else if(itemType == ItemType.Skill)
+        {
+            itemSkill.transform.Find("front").GetComponent<Image>().color = Color.white;
+            itemSkill.transform.Find("front").GetComponent<Image>().sprite = itemsprite;
+        }
     }
 
     private void ItemText(int index, int itemCount)
