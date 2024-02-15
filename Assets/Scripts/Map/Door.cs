@@ -6,26 +6,23 @@ public class Door : MonoBehaviour
 {
     //GameObject NextMap;
     [SerializeField] private Transform NextCameraPos;
-    [SerializeField] private Door NextDoor;
-    public Vector3 PlayerSpawnPos = new Vector3(0, 1, 0);
+    public Door NextDoor;
+    public Vector3 nextDoorSpawnPos = new Vector3(0, 1, 0);
 
-    private void Start()
+    public void setDoor(Door _nextdoor, Transform _nextCameraPos)
     {
-        setDoor();
+        NextDoor = _nextdoor;
+        NextCameraPos = _nextCameraPos;
+        nextDoorSpawnPos = NextDoor.transform.position + nextDoorSpawnPos;
     }
 
-    public void setDoor()
-    {
-        if(NextDoor) PlayerSpawnPos = NextDoor.transform.position + PlayerSpawnPos;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnCollisionCheck(Collider2D collision)
     {
         if(collision.tag.Equals("Player"))
         {
             if (NextDoor)
             {
-                collision.gameObject.transform.position = PlayerSpawnPos;
+                collision.gameObject.transform.position = nextDoorSpawnPos;
                 Camera.main.transform.position = NextCameraPos.position;
             }
             else

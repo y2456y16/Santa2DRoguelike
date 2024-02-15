@@ -4,38 +4,86 @@ using UnityEngine;
 
 public class GenerateMap : MonoBehaviour
 {
-    [SerializeField] private MapInfo[] Maps;
+    [SerializeField] private MapInfo[] mapInfos;
+    private Map[] Maps;
     [SerializeField] private int MapsCount;
-    [SerializeField] private GameObject[] MapPrefabs;
+    [SerializeField] private GameObject[] NormalMapPrefabs;
+    [SerializeField] private GameObject StartMapPrefab;
+    [SerializeField] private GameObject BossMapPrefab;
+    [SerializeField] private GameObject ItemMapPrefab;
+
+    [SerializeField] private float mapDistance;
+    [SerializeField] private GameObject Player;
 
     private void Start()
     {
-        //SetRoom();
+        SetRoom();
+        GenerateRoom();
+        DoorSetting();
+        if(Player) Maps[0].setPlayerPos(Instantiate(Player));
     }
 
     public void SetRoom()
     {
-        Maps = new MapInfo[MapsCount];
+        mapInfos = new MapInfo[MapsCount];
+        Maps = new Map[MapsCount];
 
-        Maps[0] = new MapInfo(ROOM_TYPE.StartRoom);
-        Maps[MapsCount - 1] = new MapInfo(ROOM_TYPE.BossRoom);
-        Maps[Random.Range(1, MapsCount - 1)] = new MapInfo(ROOM_TYPE.ItemRoom);
+        MapInfo temp = new MapInfo(ROOM_TYPE.StartRoom);
+
+        mapInfos[0] = temp;
+        mapInfos[MapsCount - 1] = new MapInfo(ROOM_TYPE.BossRoom);
+        mapInfos[Random.Range(1, MapsCount - 2)] = new MapInfo(ROOM_TYPE.ItemRoom);
         for (int i = 0; i < MapsCount; i++)
         {
-            if (Maps[i] == null)
-                Maps[i] = new MapInfo(ROOM_TYPE.NormalRoom);
+            if (mapInfos[i] == null)
+                mapInfos[i] = new MapInfo(ROOM_TYPE.NormalRoom);
         }
     }
 
     public void GenerateRoom()
     {
-        //int cnt = 0;
+        int cnt = 0;
         
-        //foreach(MapInfo map in Maps)
-        //{
-            
+        foreach (MapInfo mapinfo in mapInfos)
+        {
+            GameObject obj;
+            Door currentdoor;
+            switch (mapinfo.eRoomType)
+            {
+                case ROOM_TYPE.StartRoom:
+                    obj = Instantiate(StartMapPrefab);
+                    break;
+                case ROOM_TYPE.ItemRoom:
+                    obj = Instantiate(ItemMapPrefab);
+                    break;
+                case ROOM_TYPE.BossRoom:
+                    obj = Instantiate(BossMapPrefab);
+                    break;
+                case ROOM_TYPE.NormalRoom:
+                    obj = Instantiate(NormalMapPrefabs[Random.Range(0, NormalMapPrefabs.Length)]);
+                    break;
+                default:
+                    Debug.Log("GenerateMap : GenerateRoom().switch Error!");
+                    obj = null;
+                    break;
+            }
+            if (obj != null)
+            {
+                Maps[cnt] = obj.GetComponent<Map>();
+                Maps[cnt].InfoSetting(mapinfo);
+                Maps[cnt].setMapPos(cnt, mapDistance);
+            }
+            cnt++;
+        }
+    }
 
-            
-        //}
+    public void DoorSetting()
+    {
+        for(int i = 0; i < Maps.Length; i++)
+        {
+            Door currentDoor = Maps[i].transform.Find("GatePos/UpGate").GetComponent<Door>();
+            Door nextDoor = i != Maps.Length - 1 ? Maps[i + 1].transform.Find("GatePos/DownGate").GetComponent<Door>() : null;
+            Maps[i].setCurrentDoor(currentDoor, nextDoor);
+        }
     }
 }

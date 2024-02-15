@@ -33,7 +33,7 @@ Transform:
   - {fileID: 6841843947689448881}
   - {fileID: 3677426810759277558}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6018290288961848332
 MonoBehaviour:
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 223255428dad3cb47a01fd22caa1d5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NextCameraPos: {fileID: 0}
   NextDoor: {fileID: 0}
   PlayerSpawnPos: {x: 0, y: 0, z: 0}
 --- !u!1 &5117095486270941067
@@ -205,6 +206,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5722343861805317316, guid: 8e9c401d7a70ec94d956296ea011f594,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5722343861805317316, guid: 8e9c401d7a70ec94d956296ea011f594,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5722343861805317316, guid: 8e9c401d7a70ec94d956296ea011f594,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6540603014514654107, guid: 8e9c401d7a70ec94d956296ea011f594,
         type: 3}

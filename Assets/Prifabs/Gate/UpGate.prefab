@@ -331,6 +331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3310067927779865245}
+  - component: {fileID: 1570239536822682349}
   m_Layer: 0
   m_Name: UpGate
   m_TagString: Untagged
@@ -361,6 +362,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1570239536822682349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3310067927779865244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223255428dad3cb47a01fd22caa1d5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NextCameraPos: {fileID: 0}
+  NextDoor: {fileID: 0}
+  nextDoorSpawnPos: {x: 0, y: 1, z: 0}
 --- !u!1 &3310067928405982434
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,13 +553,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2055102311959635369, guid: 8e9c401d7a70ec94d956296ea011f594,
         type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055102311959635369, guid: 8e9c401d7a70ec94d956296ea011f594,
-        type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2055102311959635375, guid: 8e9c401d7a70ec94d956296ea011f594,
         type: 3}
@@ -600,18 +611,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2055102312182832482, guid: 8e9c401d7a70ec94d956296ea011f594,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7714984038401059190, guid: 8e9c401d7a70ec94d956296ea011f594,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7714984038401059190, guid: 8e9c401d7a70ec94d956296ea011f594, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -638,6 +638,11 @@ PrefabInstance:
     - target: {fileID: 2055102311959635369, guid: 6a057178eb028e94fb93bf39262ea3e8,
         type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055102311959635369, guid: 6a057178eb028e94fb93bf39262ea3e8,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2055102311959635369, guid: 6a057178eb028e94fb93bf39262ea3e8,

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,31 +12,25 @@ public enum ROOM_TYPE
     BossRoom,
     NormalRoom
 }
-
-public class MapInfo : MonoBehaviour
+[Serializable]
+public class MapInfo
 {
-    public ROOM_TYPE eRoomType;
-    public Tilemap tilemap;
-
-    public bool IsTopDoor = false;
-    public bool IsBottomDoor = false;
-    public bool IsRightDoor = false;
-    public bool IsLeftDoor = false;
-
+    public ROOM_TYPE eRoomType = ROOM_TYPE.None;
+    
+    public bool IsDoorOpen = false;
+    
     public Vector2 mapPos;
     public Vector2 playerSpawnPos;
-    public Vector2 cameraPos;
-
+    public Transform cameraPos;
+    
+    public Tilemap tilemap;
     public int Width;
     public int Height;
+
+    public Door currentDoor;
 
     public MapInfo(ROOM_TYPE _eRoomType)
     {
         eRoomType = _eRoomType;
-    }
-    private void Start()
-    {
-        Width = tilemap.cellBounds.size.x;
-        Height = tilemap.cellBounds.size.y;
     }
 }
