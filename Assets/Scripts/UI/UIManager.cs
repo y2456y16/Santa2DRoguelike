@@ -25,7 +25,6 @@ public class UIManager : MonoBehaviour
     private GameObject itemSlot;
     public GameObject itemUsableParent;
     private GameObject itemUsable;
-    public GameObject itemSkillParent;
     public GameObject itemSkill;
 
 
