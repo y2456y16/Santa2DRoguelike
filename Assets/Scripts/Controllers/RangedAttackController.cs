@@ -7,7 +7,7 @@ public class RangedAttackController:MonoBehaviour
 {
     [SerializeField] private LayerMask levelCollisionLayer;
 
-    //KCW : player°¡ Å¸±êÀÎÁö È®ÀÎ
+    //KCW : playerê°€ íƒ€ê¹ƒì¸ì§€ í™•ì¸
     [SerializeField] private bool isTargetPlayer;
 
     private RangedAttackData _attackData;
@@ -18,7 +18,7 @@ public class RangedAttackController:MonoBehaviour
     private Rigidbody2D _rigidbody;
     private SpriteRenderer _spriteRenderer;
 
-    //KCW : trailRenderer È£Ãâ
+    //KCW : trailRenderer í˜¸ì¶œ
     private TrailRenderer _trailRenderer;
 
     private ProjectileManager _projectileManager;
@@ -49,7 +49,7 @@ public class RangedAttackController:MonoBehaviour
         _rigidbody.velocity = _direction * _attackData.speed;
     }
 
-    //º®°ú Ãæµ¹ÇßÀ»¶§
+    //ë²½ê³¼ ì¶©ëŒí–ˆì„ë•Œ
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))

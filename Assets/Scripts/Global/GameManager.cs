@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 
     public EnemyPrefabManager _EnemyPrefabManager;
     public Transform Player { get; private set; }
+    public HealthSystem healthSystem;
+    public UIManager uiManager;
+
     [SerializeField] private string playerTag = "Player";
 
     public List<Vector3> enemyLocation = new List<Vector3>();//enemy start location list
@@ -21,15 +24,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int player_def;
     [HideInInspector] public StatsChangeType player_type;
 
-
-    private void Awake()
-    {
-        Instance = this;
-        Player = GameObject.FindGameObjectWithTag(playerTag).transform;//gets transform data of object(tag == player)
-        characterStats = Player.GetComponent<CharacterStatsHandler>();
-        EnemyLocationSet();
-        
-    }
     void Start()
     {
         SetPlayerStats();
@@ -37,11 +31,23 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("EnemyCreate", 0.5f, 2f);
     }
 
+    private void Awake()
+    {
+        Instance = this;
+        Player = GameObject.FindGameObjectWithTag(playerTag).transform;//gets transform data of object(tag == player)
+        characterStats = Player.GetComponent<CharacterStatsHandler>();
+
+        healthSystem = Player.GetComponent<HealthSystem>();
+        healthSystem.OnDamage += UpdateHealthUI;
+        //healthSystem.OnDeath
+
+        EnemyLocationSet();
+    }
 
     public void EnemyCreate()
     {
         int randomNumb = Random.Range(0, _EnemyPrefabManager.EnemyNumber);
-        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab º¹Á¦ÇÏ¿© Àû °´Ã¼ »ı¼º
+        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab ë³µì œí•˜ì—¬ ì  ê°ì²´ ìƒì„±
         int enemyLocationlist = Random.Range(0, 6);
         enemyInstance.transform.position = enemyLocation[enemyLocationlist];
 
@@ -63,5 +69,10 @@ public class GameManager : MonoBehaviour
         player_atk = characterStats.CurrentStats.atk;
         player_def = characterStats.CurrentStats.def;
         player_speed = characterStats.CurrentStats.speed;
+    }
+
+    void UpdateHealthUI()
+    {
+        player_health = (int)healthSystem.CurrentHealth;
     }
 }
