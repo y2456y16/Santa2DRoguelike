@@ -2222,6 +2222,8 @@ MonoBehaviour:
   EnemyList:
   - {fileID: 6743801281746149196, guid: 4127304e1eabeed43b30d5a1b25cbd8f, type: 3}
   - {fileID: 6743801281746149196, guid: 26bac674c1a79674394d66cacb3320d9, type: 3}
+  BossList:
+  - {fileID: 6743801281746149196, guid: 8434c9972139a43488007d2dcf491770, type: 3}
 --- !u!4 &702994688
 Transform:
   m_ObjectHideFlags: 0
@@ -6429,8 +6431,8 @@ MonoBehaviour:
   baseStats:
     statsChangeType: 2
     maxHealth: 10
-    atk: 0
-    def: 0
+    atk: 1
+    def: 1
     speed: 5
     attackSO: {fileID: 11400000, guid: 61084508554a07441999cad1552e7d19, type: 2}
   statsModifiers: []
@@ -6446,6 +6448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c141efcba340d4f90d5f9c6cdfd396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsAttacking: 0
 --- !u!114 &2067901134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6459,6 +6462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthChangeDelay: 0.5
+  Boss: 0
   CanResurrection: 0
 --- !u!114 &2067901135
 MonoBehaviour:

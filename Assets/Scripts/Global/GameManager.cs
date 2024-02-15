@@ -37,7 +37,9 @@ public class GameManager : MonoBehaviour
     {
         SetPlayerStats();
         Time.timeScale = 1f;
-        InvokeRepeating("EnemyCreate", 0.5f, 2f);
+        Invoke("EnemyCreate", 0.5f);
+        Invoke("EnemyCreate", 0.5f);
+        //BossCreate();
     }
 
 
@@ -58,6 +60,12 @@ public class GameManager : MonoBehaviour
         enemyLocation.Add(new Vector3(3f, 0f, 0));
         enemyLocation.Add(new Vector3(-3f, -4f, 0));
         enemyLocation.Add(new Vector3(3f, -4f, 0));
+    }
+
+    public void BossCreate()
+    {
+        GameObject BossInstance = Instantiate(_EnemyPrefabManager.BossList[0]);
+        BossInstance.transform.position = new Vector3(3f, 0f, 0);
     }
 
     public void SetPlayerStats()
