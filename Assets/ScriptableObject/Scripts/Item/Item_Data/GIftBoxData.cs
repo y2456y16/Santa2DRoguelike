@@ -1,16 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ItemSO/GIftBoxData")]
-public class GIftBoxData : ItemSO
+[CreateAssetMenu(menuName = "ItemSO/GiftBoxData")]
+public class GiftBoxData : ItemSO
 {
-    GIftBoxData()
+    GiftBoxData()
     {
         Name = "GIftBox";
     }
     public override void ApplyEffect(GameObject target)
     {
-        // TODO 
+        // TODO 미정
     }
+    
+
+
 }

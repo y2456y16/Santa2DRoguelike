@@ -13,7 +13,6 @@ public class ItemSO : ScriptableObject
     public float Damage;
 
     public virtual void ApplyEffect(GameObject target){}
-    public virtual void Use(GameObject target) { }
 }
 public enum ItemType
 {

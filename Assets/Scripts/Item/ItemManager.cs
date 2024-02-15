@@ -13,7 +13,6 @@ public class ItemManager : MonoBehaviour
 
     [SerializeField] private List<Item> items;
     [SerializeField] private List<Item> skills;
-
     //AddItem을 통해 얻은 모든 아이템은 여기에 저장된다.
     private Dictionary<ItemID, Item> curItems = new Dictionary<ItemID, Item>();
     public Item curSkill;

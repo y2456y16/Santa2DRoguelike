@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a96c08cc142a90498dbfc58fd811120, type: 3}
-  m_Name: New Big Attack Data
+  m_Script: {fileID: 11500000, guid: 96e8fe99db971024d93a1ca90d83b2d0, type: 3}
+  m_Name: New Gift Box Data
   m_EditorClassIdentifier: 
-  ID: 7
-  Name: BigAttack
-  Sprite: {fileID: 21300000, guid: 6b1a59a6bbc7b6c4db12267e1846c9a7, type: 3}
-  Type: 1
+  ID: 8
+  Name: GIftBox
+  Sprite: {fileID: -326915922079841887, guid: 813f35178d00ff449a5ed24019d23d05, type: 3}
+  Type: 2
   Count: 1
-  Damage: 10
+  Damage: 0
