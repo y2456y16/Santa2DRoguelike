@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     private GameObject blueHeart;
     public GameObject heartParent;
     [HideInInspector] public int heart_count;
-    private List<GameObject> Hearts = new List<GameObject>();
+    [SerializeField] private List<GameObject> Hearts = new List<GameObject>();
 
     [Header("Stats")]
     public TMP_Text playerAtk_Text;
@@ -46,18 +46,25 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        MakeHeart();
+        MakeHeart(false);
         SetStatsText();
     }
 
-    private void MakeHeart()
+    public void MakeHeart(bool resurrection)
     {
-        heart_count = GameManager.Instance.player_health;
-        for(int i = 0; i < heart_count; i++)
+        heart_count = GameManager.Instance.characterStats.CurrentStats.maxHealth;
+        for (int i = 0; i < heart_count; i++)
         {
             GameObject newHeart = Instantiate(heart);
             newHeart.transform.parent = heartParent.transform;
-            Hearts.Add(newHeart);
+            if (resurrection)
+            {
+                Hearts[i] = newHeart;
+            }
+            else
+            {
+                Hearts.Add(newHeart);
+            }
         }
     }
 
@@ -65,7 +72,45 @@ public class UIManager : MonoBehaviour
     {
         GameObject newHeart = Instantiate(blueHeart);
         newHeart.transform.parent = heartParent.transform;
-        Hearts.Add(newHeart);
+        if (Hearts[Hearts.Count - 1] != null)
+        {
+            Hearts.Add(newHeart);
+        }
+        else
+        {
+            for (int i = 0; i < Hearts.Count; i++)
+            {
+                if (Hearts[i] == null)
+                {
+                    Hearts[i] = newHeart;
+                    break;
+                }
+            }
+        }
+    }
+
+    public void BrokenHeart()
+    {
+        if (Hearts[Hearts.Count - 1] != null)
+        {
+            Destroy(Hearts[Hearts.Count - 1]);
+        }
+        else
+        {
+            for (int i = 0; i < Hearts.Count; i++)
+            {
+                if (Hearts[i] == null)
+                {
+                    try
+                    {
+                        Destroy(Hearts[i - 1]);
+                    }
+                    catch
+                    { Destroy(Hearts[0]); }
+                    break;
+                }
+            }
+        }
     }
 
     public void SetStatsText()

@@ -60,6 +60,7 @@ public class HealthSystem : MonoBehaviour
         }
         else
         {
+            UIManager.Instance.BrokenHeart();
             OnDamage?.Invoke();
         }
 
@@ -86,6 +87,7 @@ public class HealthSystem : MonoBehaviour
     private void Resurrection()
     {
         CurrentHealth = MaxHealth;
+        UIManager.Instance.MakeHeart(CanResurrection);
         CanResurrection = false;
     }
 }
