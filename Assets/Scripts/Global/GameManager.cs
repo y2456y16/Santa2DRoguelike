@@ -32,23 +32,23 @@ public class GameManager : MonoBehaviour
         Instance = this;
         Player = GameObject.FindGameObjectWithTag(playerTag).transform;//gets transform data of object(tag == player)
         characterStats = Player.GetComponent<CharacterStatsHandler>();
-        EnemyLocationSet();
+        //EnemyLocationSet();
         
     }
     void Start()
     {
         SetPlayerStats();
         Time.timeScale = 1f;
-        Invoke("EnemyCreate", 0.5f);
-        Invoke("EnemyCreate", 0.5f);
+        //Invoke("EnemyCreate", 0.5f);
+        //Invoke("EnemyCreate", 0.5f);
         //BossCreate();
     }
 
     public void EnemyCreate()
     {
         int randomNumb = Random.Range(0, _EnemyPrefabManager.EnemyNumber);
-        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[1]);//prefab 복제하여 적 객체 생성
-        int enemyLocationlist = Random.Range(0, 6);
+        GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab 복제하여 적 객체 생성
+        int enemyLocationlist = Random.Range(0, enemyLocation.Count);
         enemyInstance.transform.position = enemyLocation[enemyLocationlist];
 
     }
@@ -63,10 +63,10 @@ public class GameManager : MonoBehaviour
         enemyLocation.Add(new Vector3(3f, -4f, 0));
     }
 
-    public void BossCreate()
+    public void BossCreate(Vector3 bossPos)
     {
         GameObject BossInstance = Instantiate(_EnemyPrefabManager.BossList[0]);
-        BossInstance.transform.position = new Vector3(3f, 0f, 0);
+        BossInstance.transform.position = bossPos;
     }
 
     public void SetPlayerStats()

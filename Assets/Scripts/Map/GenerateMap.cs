@@ -20,7 +20,8 @@ public class GenerateMap : MonoBehaviour
         SetRoom();
         GenerateRoom();
         DoorSetting();
-        if(Player) Maps[0].setPlayerPos(Instantiate(Player));
+        //if(Player) Maps[0].setPlayerPos(Instantiate(Player));
+        Player = GameManager.Instance.Player.gameObject;
     }
 
     public void SetRoom()

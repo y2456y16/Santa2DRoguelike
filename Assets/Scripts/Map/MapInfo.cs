@@ -22,7 +22,10 @@ public class MapInfo
     public Vector2 mapPos;
     public Vector2 playerSpawnPos;
     public Transform cameraPos;
-    
+    public List<Vector3> EnemyPosList;
+    public Vector3 BossPos;
+    public int EnemyCount;
+
     public Tilemap tilemap;
     public int Width;
     public int Height;
@@ -32,5 +35,6 @@ public class MapInfo
     public MapInfo(ROOM_TYPE _eRoomType)
     {
         eRoomType = _eRoomType;
+        EnemyPosList = new List<Vector3>();
     }
 }
