@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionUI: {fileID: 491255628}
   statusUI: {fileID: 409114633}
-  status_optionUI: {fileID: 0}
+  status_optionUI: {fileID: 409114633}
 --- !u!1 &235766044
 GameObject:
   m_ObjectHideFlags: 0

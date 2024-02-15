@@ -161,7 +161,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Time: 1
   m_PreviewTimeScale: 1
   m_Parameters:
@@ -309,6 +309,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCollisionLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
   isTargetPlayer: 1
   fxOnDestory: 1

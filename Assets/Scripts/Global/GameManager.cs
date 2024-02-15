@@ -24,24 +24,24 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int player_def;
     [HideInInspector] public StatsChangeType player_type;
 
-    void Start()
-    {
-        SetPlayerStats();
-        Time.timeScale = 1f;
-        InvokeRepeating("EnemyCreate", 0.5f, 2f);
-    }
+    [Header("Test")]
+    public Item testitem;
 
     private void Awake()
     {
         Instance = this;
         Player = GameObject.FindGameObjectWithTag(playerTag).transform;//gets transform data of object(tag == player)
         characterStats = Player.GetComponent<CharacterStatsHandler>();
-
-        healthSystem = Player.GetComponent<HealthSystem>();
-        healthSystem.OnDamage += UpdateHealthUI;
-        //healthSystem.OnDeath
-
         EnemyLocationSet();
+        
+    }
+    void Start()
+    {
+        SetPlayerStats();
+        Time.timeScale = 1f;
+        Invoke("EnemyCreate", 0.5f);
+        Invoke("EnemyCreate", 0.5f);
+        //BossCreate();
     }
 
     public void EnemyCreate()
@@ -63,7 +63,13 @@ public class GameManager : MonoBehaviour
         enemyLocation.Add(new Vector3(3f, -4f, 0));
     }
 
-    void SetPlayerStats()
+    public void BossCreate()
+    {
+        GameObject BossInstance = Instantiate(_EnemyPrefabManager.BossList[0]);
+        BossInstance.transform.position = new Vector3(3f, 0f, 0);
+    }
+
+    public void SetPlayerStats()
     {
         player_health = characterStats.CurrentStats.maxHealth;
         player_atk = characterStats.CurrentStats.atk;

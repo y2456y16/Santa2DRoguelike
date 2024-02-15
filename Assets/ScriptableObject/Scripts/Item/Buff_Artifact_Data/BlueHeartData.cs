@@ -16,6 +16,7 @@ public class BlueHeartData : ItemSO
         CharacterStats newStat = new CharacterStats();
         newStat.statsChangeType = StatsChangeType.Add;
         newStat.maxHealth += 1;
+        UIManager.Instance.MakeBlueHeart();
 
         //플레이어의 체력도 업데이트 해야한다
         target.GetComponent<HealthSystem>().ChangeHealth(1);
