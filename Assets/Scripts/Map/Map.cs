@@ -19,7 +19,6 @@ public class Map : MonoBehaviour
     {
         setSizeValue();
         transform.position = new Vector2(0, (mapInfo.Height + mapDistance) * cnt);
-        mapInfo.playerSpawnPos = transform.position;
         mapInfo.cameraPos = transform.Find("CameraPos").transform;
         Transform posList = transform.Find("MonsterPosList");
         if (posList)
@@ -54,11 +53,16 @@ public class Map : MonoBehaviour
             Transform nextCam = _nextDoor.transform.parent.parent.GetComponent<Map>().mapInfo.cameraPos;
             mapInfo.currentDoor.setDoor(_nextDoor, nextCam);
         }
-    }
-
-    public void setPlayerPos(GameObject _player)
-    {
-        _player.transform.position = mapInfo.playerSpawnPos;
+        if (EnemyCount > 0)
+        {
+            mapInfo.currentDoor.OpenDoor.SetActive(false);
+            mapInfo.currentDoor.CloseDoor.SetActive(true);
+        }
+        else
+        {
+            mapInfo.currentDoor.OpenDoor.SetActive(true);
+            mapInfo.currentDoor.CloseDoor.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,7 +70,7 @@ public class Map : MonoBehaviour
         if(collision.CompareTag("Player") && isInPlayer == false)
         {
             isInPlayer = true;
-            Debug.Log("InPlayer");
+            GameManager.Instance.currentMap = this;
             GameManager.Instance.enemyLocation.Clear();
             foreach (Vector3 pos in mapInfo.EnemyPosList)
             {
@@ -86,7 +90,13 @@ public class Map : MonoBehaviour
             }
         }
     }
-
+    public void EnemyDeathCount()
+    {
+        if(--EnemyCount <= 0)
+        {
+            mapInfo.currentDoor.setDoorOpen = true;
+        }
+    }
     IEnumerator EnemySpawn()
     {
         int cnt = 0;

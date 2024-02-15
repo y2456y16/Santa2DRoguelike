@@ -934,7 +934,7 @@ GameObject:
   - component: {fileID: 479271699459901585}
   - component: {fileID: 5361639287359781701}
   - component: {fileID: 6611074778948440043}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4774,7 +4774,6 @@ MonoBehaviour:
     eRoomType: 2
     IsDoorOpen: 0
     mapPos: {x: 0, y: 0}
-    playerSpawnPos: {x: 0, y: 0}
     cameraPos: {fileID: 0}
     EnemyPosList: []
     BossPos: {x: 0, y: 0, z: 0}

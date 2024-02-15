@@ -30,7 +30,6 @@ public class TopDownCharacterController : MonoBehaviour
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;
     public event Action<AttackSO> OnAttackEvent;
-    public event Action<AttackSO> OnAttackEvent2;
     public event Action OnSkillEvent;
 
     private float _timeSinceLastAttack = float.MaxValue;
@@ -78,12 +77,6 @@ public class TopDownCharacterController : MonoBehaviour
             _timeSinceLastAttack = 0;
             CallAttackEvent(Stats.CurrentStats.attackSO);
         }
-        //임시
-        if (IsAttacking2 && _timeSinceLastAttack > Stats.CurrentStats.attackSO.delay)
-        {
-            _timeSinceLastAttack = 0;
-            CallAttackEvent2(Stats.CurrentStats.attackSO);
-        }
     }
     private void HandleSkillDelay()
     {
@@ -112,11 +105,6 @@ public class TopDownCharacterController : MonoBehaviour
     public void CallAttackEvent(AttackSO attackSO)
     {
         OnAttackEvent?.Invoke(attackSO);
-    }
-    //임시 액션이벤트2
-    public void CallAttackEvent2(AttackSO attackSO)
-    {
-        OnAttackEvent2?.Invoke(attackSO);
     }
     //임시 스킬 이벤트
     public void CallSkillEvent()

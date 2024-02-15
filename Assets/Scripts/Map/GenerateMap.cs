@@ -13,15 +13,12 @@ public class GenerateMap : MonoBehaviour
     [SerializeField] private GameObject ItemMapPrefab;
 
     [SerializeField] private float mapDistance;
-    [SerializeField] private GameObject Player;
 
     private void Start()
     {
         SetRoom();
         GenerateRoom();
         DoorSetting();
-        //if(Player) Maps[0].setPlayerPos(Instantiate(Player));
-        Player = GameManager.Instance.Player.gameObject;
     }
 
 
@@ -82,7 +79,7 @@ public class GenerateMap : MonoBehaviour
 
     public void DoorSetting()
     {
-        for(int i = 0; i < Maps.Length; i++)
+        for(int i = 0; i < Maps.Length - 1; i++)
         {
             Door currentDoor = Maps[i].transform.Find("GatePos/UpGate").GetComponent<Door>();
             Door nextDoor = i != Maps.Length - 1 ? Maps[i + 1].transform.Find("GatePos/DownGate").GetComponent<Door>() : null;
