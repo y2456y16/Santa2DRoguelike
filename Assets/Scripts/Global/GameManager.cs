@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 
     public EnemyPrefabManager _EnemyPrefabManager;
     public Transform Player { get; private set; }
+    public HealthSystem healthSystem;
+    public UIManager uiManager;
+
     [SerializeField] private string playerTag = "Player";
 
     public List<Vector3> enemyLocation = new List<Vector3>();//enemy start location list
@@ -20,7 +23,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int player_atk;
     [HideInInspector] public int player_def;
     [HideInInspector] public StatsChangeType player_type;
-
 
     [Header("Test")]
     public Item testitem;
@@ -41,7 +43,6 @@ public class GameManager : MonoBehaviour
         Invoke("EnemyCreate", 0.5f);
         //BossCreate();
     }
-
 
     public void EnemyCreate()
     {
@@ -74,5 +75,10 @@ public class GameManager : MonoBehaviour
         player_atk = characterStats.CurrentStats.atk;
         player_def = characterStats.CurrentStats.def;
         player_speed = characterStats.CurrentStats.speed;
+    }
+
+    void UpdateHealthUI()
+    {
+        player_health = (int)healthSystem.CurrentHealth;
     }
 }
