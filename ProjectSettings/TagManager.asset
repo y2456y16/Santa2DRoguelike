@@ -7,6 +7,7 @@ TagManager:
   - Bullet
   - Item
   - Wall
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -18,13 +19,13 @@ TagManager:
   - Player
   - Level
   - Enemy
+  - BossRange
+  - PlayerAttack
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - ProjectileCollisionLayer
   - 
   - 
   - 

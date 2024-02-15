@@ -354,7 +354,9 @@ GameObject:
   - component: {fileID: 4788082003776922557}
   - component: {fileID: 5627763696232900445}
   - component: {fileID: 471524666589684560}
-  - component: {fileID: 6783843259474842779}
+  - component: {fileID: 118776028901829457}
+  - component: {fileID: 7977471396999658449}
+  - component: {fileID: 9158083793934454845}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -408,7 +410,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -465,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats:
     statsChangeType: 2
-    maxHealth: 8
+    maxHealth: 7
     atk: 1
     def: 1
     speed: 0
@@ -522,7 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpawnPosition: {fileID: 6667225838755834261}
---- !u!114 &6783843259474842779
+--- !u!114 &118776028901829457
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -534,3 +536,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c141efcba340d4f90d5f9c6cdfd396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsAttacking: 0
+--- !u!114 &7977471396999658449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743801281746149196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0453effdd4fe51041bdb57ae37d32f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthChangeDelay: 0.5
+  Boss: 0
+  CanResurrection: 0
+--- !u!114 &9158083793934454845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743801281746149196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309653f193d49694f95345b70e44ad37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 0
+  Boss: 0
