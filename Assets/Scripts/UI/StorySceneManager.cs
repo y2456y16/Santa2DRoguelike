@@ -9,6 +9,7 @@ public class StorySceneManager : MonoBehaviour
 {
     [SerializeField] private GameObject character1;
     [SerializeField] private GameObject character2;
+    [SerializeField] private GameObject Enemy;
     [SerializeField] private GameObject storyUI_1;
     [SerializeField] private GameObject storyUI_2;
     [SerializeField] private GameObject storyUI_3;
@@ -33,8 +34,10 @@ public class StorySceneManager : MonoBehaviour
         }
         else
         {
+            Enemy.transform.position += character1_move;
             if (character2.transform.position.x < 1413)
             {
+                
                 character1.transform.position += character1_move;
                 character2.transform.position += character2_move;
                 yield return null;
