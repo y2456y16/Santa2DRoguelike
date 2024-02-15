@@ -309,6 +309,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCollisionLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
   isTargetPlayer: 1
   fxOnDestory: 1

@@ -549,6 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthChangeDelay: 0.5
+  Boss: 0
   CanResurrection: 0
 --- !u!114 &9158083793934454845
 MonoBehaviour:
@@ -563,3 +564,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 0
+  Boss: 0

@@ -8,6 +8,7 @@ public class BossEnemyController : TopDownCharacterController
 {
     [SerializeField] private float followRange = 1000f; //플레이어 인지 범위
     [SerializeField] private float shootRange = 2f; //사정거리
+    [SerializeField] List<GameObject> _AttackRange = new List<GameObject>();
 
     GameManager gameManager;
     [SerializeField] private GameObject AttackRange;
@@ -38,7 +39,22 @@ public class BossEnemyController : TopDownCharacterController
     {
         base.FixedUpdate();
 
-        if(IsDelay==false)
+        if (_animcontroller.IsAttacking == true)
+        {
+            foreach (var range in _AttackRange)
+            {
+                range.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (var range in _AttackRange)
+            {
+                range.SetActive(false);
+            }
+        }
+
+        if (IsDelay==false)
         {
             Move();
 

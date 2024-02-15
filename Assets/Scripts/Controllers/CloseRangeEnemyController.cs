@@ -8,6 +8,7 @@ public class CloseRangeEnemyController : TopDownCharacterController
 {
     [SerializeField] private float followRange = 1000f; //플레이어 인지 범위
     [SerializeField] private float shootRange = 2f; //사정거리
+    [SerializeField] List<GameObject> _AttackRange = new List<GameObject>();
 
     GameManager gameManager;
     private bool IsRange = false;
@@ -44,6 +45,21 @@ public class CloseRangeEnemyController : TopDownCharacterController
 
         float distance = DistanceToTarget(); //플레이어와의 거리
         Vector2 direction = DirectionToTarget();//플레이어를 향한 방향
+
+        if (_animcontroller.IsAttacking == true)
+        {
+            foreach (var range in _AttackRange)
+            {
+                range.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (var range in _AttackRange)
+            {
+                range.SetActive(false);
+            }
+        }
 
 
         IsAttacking = false; //공격 불가능

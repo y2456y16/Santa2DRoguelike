@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
     {
         SetPlayerStats();
         Time.timeScale = 1f;
-        //InvokeRepeating("EnemyCreate", 0.5f, 2f);
-        BossCreate();
+        InvokeRepeating("EnemyCreate", 0.5f, 2f);
+        //BossCreate();
     }
 
 

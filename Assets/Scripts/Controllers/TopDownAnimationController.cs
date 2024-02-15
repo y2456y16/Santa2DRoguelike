@@ -14,8 +14,9 @@ public class TopDownAnimationController:TopDownAnimations
 
     //보스 전용
     private static readonly int IsDelayAttack = Animator.StringToHash("IsDelayAttack");
-    private static readonly int Death = Animator.StringToHash("Death");
+    private static readonly int BossDeath = Animator.StringToHash("BossDeath");
     private static readonly int BossAttack = Animator.StringToHash("BossAttack");
+
 
     //플레이어 사망시 출력애니메이션
     private static readonly int IsDead = Animator.StringToHash("IsDead");
@@ -25,8 +26,7 @@ public class TopDownAnimationController:TopDownAnimations
     private static readonly int Skill = Animator.StringToHash("Skill");
 
     // KCW : 공격 여부 및 시간 체크
-    private bool IsAttacking = false;
-    private float timeCount = 0f;
+    public bool IsAttacking = false;
 
     //KCW : 보스 공격 딜레이
     private bool IsDelay = false;
@@ -58,8 +58,7 @@ public class TopDownAnimationController:TopDownAnimations
     }
     private void FixedUpdate()
     {
-        //KCW : 시간 체크
-        timeCount += Time.deltaTime;
+
     }
 
     public void Move(Vector2 obj)
@@ -84,13 +83,15 @@ public class TopDownAnimationController:TopDownAnimations
         {
             animator.SetTrigger(EnemyAttacking);
             IsAttacking = true;
-            timeCount = 0;
+            StartCoroutine(EnemyDelay());
         }
-        else if (IsAttacking == true && timeCount > 4)
-        {
-            IsAttacking = false;
-            animator.SetTrigger(AttackToIdle);
-        }
+    }
+
+    IEnumerator EnemyDelay()
+    {
+        yield return new WaitForSeconds(2.0f);
+        IsAttacking = false;
+        animator.SetTrigger(AttackToIdle);
     }
 
     public void BossDelayMotion(AttackSO obj)
@@ -112,6 +113,11 @@ public class TopDownAnimationController:TopDownAnimations
     public void BossToIdle()
     {
         animator.SetTrigger(AttackToIdle);
+    }
+
+    public void BossDead()
+    {
+        animator.SetTrigger(BossDeath);
     }
 
 
