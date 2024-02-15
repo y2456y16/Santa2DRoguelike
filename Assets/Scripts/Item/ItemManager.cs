@@ -17,7 +17,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private List<Item> useItems;
     //AddItem을 통해 얻은 모든 아이템은 여기에 저장된다.
     private Dictionary<ItemID, Item> curItems = new Dictionary<ItemID, Item>();
-    public Item curSkill;
+    public Item curSkill { get; private set; }
     private GameObject itemObject;
     private int usingItemIndex;
     private void Awake()
@@ -31,9 +31,10 @@ public class ItemManager : MonoBehaviour
         {
             curItems.Add(item.data.ID, FindByID(item.data.ID));
             UIManager.Instance.MakeItemSlot(item.data.Type, item.data.Sprite,item.data.ID);
-            if (item.data.Type == ItemType.Skill && curSkill != null && curSkill.data.ID != item.data.ID)
+            if (item.data.Type == ItemType.Skill)
             {
-                RemoveItem(curSkill.data.ID);
+                if(curSkill != null && curSkill.data.ID != item.data.ID)
+                    RemoveItem(curSkill.data.ID);
                 foreach (Item skill in skills)
                 {
                     if (skill.data.ID == item.data.ID)
