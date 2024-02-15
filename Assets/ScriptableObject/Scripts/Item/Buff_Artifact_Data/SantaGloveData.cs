@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ItemSO/SantaGloveData")]
 public class SantaGloveData : ItemSO
 {
-    public float Power = 10f;
+    public int Power = 10;
     SantaGloveData()
     {
         Name = "SantaGlove";
@@ -15,10 +15,10 @@ public class SantaGloveData : ItemSO
     {
         // TODO 플레이어 공격력 증가
         CharacterStatsHandler playerStat = target.GetComponent<CharacterStatsHandler>();
-        if (playerStat != null)
-        {
-            playerStat.CurrentStats.attackSO.power += Power;
-        }
-       
+        CharacterStats newStat = new CharacterStats();
+        newStat.statsChangeType = StatsChangeType.Add;
+        newStat.atk = Power;
+        playerStat.AddStatModifier(newStat);
     }
+
 }

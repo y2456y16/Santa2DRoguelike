@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class TopDownCharacterController : MonoBehaviour
 {
-    //KCW : Ä³¸¯ÅÍ ÀÌµ¿ ±¸Çö
+    //KCW : ìºë¦­í„° ì´ë™ êµ¬í˜„
     [Header("Movement")]
     public float moveSpeed;
     public Vector2 curMovementInput;
 
-    //KCW : Ä³¸¯ÅÍ Á¶ÁØ ±¸Çö
+    //KCW : ìºë¦­í„° ì¡°ì¤€ êµ¬í˜„
     [Header("Look")]
     public float lookSensitivity;
     public Vector2 curLookInput;
@@ -19,11 +19,11 @@ public class TopDownCharacterController : MonoBehaviour
 
 
 
-    //KCW : Ä³¸¯ÅÍ Á¶ÁØ ±â´É ±¸Çö
+    //KCW : ìºë¦­í„° ì¡°ì¤€ ê¸°ëŠ¥ êµ¬í˜„
     public TopDownLookRotation aim;
-    //KCW : Ä³¸¯ÅÍ ¾Ö´Ï¸ŞÀÌ¼Ç ÄÁÆ®·Ñ·¯ È£Ãâ
+    //KCW : ìºë¦­í„° ì• ë‹ˆë©”ì´ì…˜ ì»¨íŠ¸ë¡¤ëŸ¬ í˜¸ì¶œ
     public TopDownAnimationController _animcontroller;
-    //KCW : Áß·Â È£Ãâ
+    //KCW : ì¤‘ë ¥ í˜¸ì¶œ
     public Rigidbody2D _rigidbody;
     public Camera _camera;
 
@@ -31,15 +31,17 @@ public class TopDownCharacterController : MonoBehaviour
     public event Action<Vector2> OnLookEvent;
     public event Action<AttackSO> OnAttackEvent;
     public event Action<AttackSO> OnAttackEvent2;
-    public event Action<AttackSO> OnSkillEvent;
+    public event Action OnSkillEvent;
 
     private float _timeSinceLastAttack = float.MaxValue;
+    private float _timeSinceLastSkill = float.MaxValue;
+    private float _skillDelayTime = 2.0f;
     protected bool IsAttacking { get; set; }
 
-    //»êÅ¸ÀÇ ¿À¸¥ÁÖ¸Ô°ø°İ¸ğ¼Ç bool°ª ÀÔ´Ï´Ù.(ÀÓ½Ã)
+    //ì‚°íƒ€ì˜ ì˜¤ë¥¸ì£¼ë¨¹ê³µê²©ëª¨ì…˜ boolê°’ ì…ë‹ˆë‹¤.(ì„ì‹œ)
     protected bool IsAttacking2 { get; set; }
 
-    //»êÅ¸ÀÇ ½ºÅ³°ø°İ bool°ª ÀÔ´Ï´Ù(ÀÓ½Ã)
+    //ì‚°íƒ€ì˜ ìŠ¤í‚¬ê³µê²© boolê°’ ì…ë‹ˆë‹¤(ì„ì‹œ)
     protected bool IsSkill { get; set; }
 
     protected CharacterStatsHandler Stats { get; private set; }
@@ -47,7 +49,7 @@ public class TopDownCharacterController : MonoBehaviour
 
     protected virtual void Awake()
     {
-        //KCW : °¢ ±â´É Á¤º¸ ÀÔ·Â
+        //KCW : ê° ê¸°ëŠ¥ ì •ë³´ ì…ë ¥
         _animcontroller = GetComponent<TopDownAnimationController>();
         aim = GetComponent<TopDownLookRotation>();
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -59,6 +61,7 @@ public class TopDownCharacterController : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         HandleAttackDelay();
+        HandleSkillDelay();
     }
 
     private void HandleAttackDelay()
@@ -75,16 +78,24 @@ public class TopDownCharacterController : MonoBehaviour
             _timeSinceLastAttack = 0;
             CallAttackEvent(Stats.CurrentStats.attackSO);
         }
-        //ÀÓ½Ã
+        //ì„ì‹œ
         if (IsAttacking2 && _timeSinceLastAttack > Stats.CurrentStats.attackSO.delay)
         {
             _timeSinceLastAttack = 0;
             CallAttackEvent2(Stats.CurrentStats.attackSO);
         }
-        if (IsSkill && _timeSinceLastAttack > Stats.CurrentStats.attackSO.delay)
+    }
+    private void HandleSkillDelay()
+    {
+        //ìŠ¤í‚¬ ë‹¤ë£¨ê¸°
+        if (_timeSinceLastSkill <= _skillDelayTime)
         {
-            _timeSinceLastAttack = 0;
-            CallSkillEvent(Stats.CurrentStats.attackSO);
+            _timeSinceLastSkill += Time.deltaTime;
+        }
+        if (IsSkill && _timeSinceLastSkill > _skillDelayTime)
+        {
+            _timeSinceLastSkill = 0;
+            CallSkillEvent();
         }
     }
 
@@ -102,14 +113,14 @@ public class TopDownCharacterController : MonoBehaviour
     {
         OnAttackEvent?.Invoke(attackSO);
     }
-    //ÀÓ½Ã ¾×¼ÇÀÌº¥Æ®2
+    //ì„ì‹œ ì•¡ì…˜ì´ë²¤íŠ¸2
     public void CallAttackEvent2(AttackSO attackSO)
     {
         OnAttackEvent2?.Invoke(attackSO);
     }
-    //ÀÓ½Ã ½ºÅ³ ÀÌº¥Æ®
-    public void CallSkillEvent(AttackSO attackSO)
+    //ì„ì‹œ ìŠ¤í‚¬ ì´ë²¤íŠ¸
+    public void CallSkillEvent()
     {
-        OnSkillEvent?.Invoke(attackSO);
+        OnSkillEvent?.Invoke();
     }
 }

@@ -54,7 +54,7 @@ public class TopDownAnimationController:TopDownAnimations
 
         //임시
         controller.OnAttackEvent2 += Attacking2;
-        controller.OnSkillEvent += SkillUse;
+        //controller.OnSkillEvent += SkillUse;
     }
     private void FixedUpdate()
     {
