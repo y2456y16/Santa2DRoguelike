@@ -51,11 +51,13 @@ public class CloseRangeEnemyController : TopDownCharacterController
 
         if (_animcontroller.IsAttacking == true)
         {
-             _AttackRange.SetActive(true);
+            _AttackRange.GetComponent<BoxCollider2D>().enabled = true;
+            
         }
         else if(_animcontroller.IsAttacking == false)
         {
-            _AttackRange.SetActive(false);
+            _AttackRange.GetComponent<BoxCollider2D>().enabled = false;
+            
         }
 
 

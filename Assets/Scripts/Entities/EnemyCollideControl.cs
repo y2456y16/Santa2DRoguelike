@@ -26,7 +26,6 @@ public class EnemyCollideControl : MonoBehaviour
             ApplyHealthChange();
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer))) // player와 부딪치면(즉 공격)
@@ -39,9 +38,7 @@ public class EnemyCollideControl : MonoBehaviour
 
             if (_collideHealthSystem != null) // 널이 아니면
             {
-                Debug.Log("attack");
                 _collideHealthSystem.ChangeHealth(_gameObject.GetComponent<CharacterStatsHandler>().CurrentStats.atk); //체력을 자신의 공격력 만큼 닳게 한다.
-
             }
         }
     }

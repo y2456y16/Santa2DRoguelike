@@ -65,7 +65,6 @@ public class HealthSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log(CurrentHealth);
             OnDamage?.Invoke();
         }
 
