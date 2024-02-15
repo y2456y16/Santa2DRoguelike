@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public EnemyPrefabManager _EnemyPrefabManager;
-    public GameObject _Enemy;
     public Transform Player { get; private set; }
     public HealthSystem healthSystem;
     public UIManager uiManager;
@@ -84,7 +83,6 @@ public class GameManager : MonoBehaviour
     {
         int randomNumb = Random.Range(0, _EnemyPrefabManager.EnemyNumber);
         GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab 복제하여 적 객체 생성
-        enemyInstance.transform.SetParent(_Enemy.transform);
         int enemyLocationlist = Random.Range(0, enemyLocation.Count);
         enemyInstance.transform.position = enemyLocation[enemyLocationlist];
         enemyInstance.GetComponent<HealthSystem>().OnDeath += EnemyDeathCount;

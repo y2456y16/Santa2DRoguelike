@@ -93,19 +93,8 @@ public class ItemManager : MonoBehaviour
     public Item MakeItem()
     {
         Item newItem;
-        int index = Random.Range(0, items.Count + skills.Count + useItems.Count);
-        if(index < items.Count)
-        {
-            newItem = items[index];
-        }
-        else if(index < items.Count + skills.Count)
-        {
-            newItem = skills[index - items.Count];
-        }
-        else
-        {
-            newItem = useItems[index - items.Count - skills.Count];
-        }
+        int index = Random.Range(0, items.Count);
+        newItem = items[index];
 
         return newItem;
     }

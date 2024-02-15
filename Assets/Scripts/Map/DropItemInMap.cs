@@ -19,10 +19,9 @@ public class DropItemInMap : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            Item item = ItemManager.Instance.MakeItem();
-            items[i].AddComponent<Item>();
-            items[i].GetComponent<Item>().data = item.data;
-            items[i].GetComponent<SpriteRenderer>().sprite = item.data.Sprite;
+            Item item = Instantiate(ItemManager.Instance.MakeItem());
+            item.transform.position = items[i].transform.position;
+            item.transform.parent = items[i].transform;
         }
     }
 }
