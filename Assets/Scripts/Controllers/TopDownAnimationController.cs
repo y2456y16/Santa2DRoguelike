@@ -10,7 +10,6 @@ public class TopDownAnimationController:TopDownAnimations
     private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int IsHit = Animator.StringToHash("IsHit");
     private static readonly int AttackToIdle = Animator.StringToHash("AttackToIdle");
-    private static readonly int EnemyAttacking = Animator.StringToHash("EnemyAttacking");
 
     //보스 전용
     private static readonly int IsDelayAttack = Animator.StringToHash("IsDelayAttack");
@@ -81,18 +80,17 @@ public class TopDownAnimationController:TopDownAnimations
     {
         if (IsAttacking == false)
         {
-            animator.SetTrigger(EnemyAttacking);
+            animator.SetTrigger("EnemyAttacking");
             IsAttacking = true;
-            StartCoroutine(EnemyDelay());
         }
     }
 
-    IEnumerator EnemyDelay()
+    public void EnemyToIdle()
     {
-        yield return new WaitForSeconds(2.0f);
+        animator.SetTrigger("AttackToIdle");
         IsAttacking = false;
-        animator.SetTrigger(AttackToIdle);
     }
+
 
     public void BossDelayMotion(AttackSO obj)
     {

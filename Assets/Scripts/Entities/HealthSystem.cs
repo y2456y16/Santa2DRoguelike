@@ -49,7 +49,6 @@ public class HealthSystem : MonoBehaviour
 
     public bool ChangeHealth(float change)
     {
-        Debug.Log(1);
         if (change == 0 || _timeSinceLastChange < healthChangeDelay)
         {
             return false;
@@ -66,7 +65,6 @@ public class HealthSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log(CurrentHealth);
             OnDamage?.Invoke();
         }
 
