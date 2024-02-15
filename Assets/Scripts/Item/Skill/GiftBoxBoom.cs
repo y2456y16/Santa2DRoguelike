@@ -67,9 +67,8 @@ public class GiftBoxBoom : MonoBehaviour
             // 몬스터 레이어와 충돌한 경우에만 데미지 처리
             if (hit.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
-                Debug.Log("몬스터 충돌");
-                //데미지 예상
-                //ItemManager.Instance.GetItem(ItemID.GiftBoxBoom).data.Damage + _player.GetComponent<CharacterStatsHandler>().CurrentStats.atk;
+                float damage = ItemManager.Instance.GetItem(ItemID.GiftBoxBoom).data.Damage + _player.GetComponent<CharacterStatsHandler>().CurrentStats.atk;
+                hit.gameObject.GetComponent<HealthSystem>().ChangeHealth(-damage);
             }
         }
     }
