@@ -7,7 +7,7 @@ public class RangedAttackController:MonoBehaviour
 {
     [SerializeField] private LayerMask levelCollisionLayer;
 
-    //KCW : player�� Ÿ������ Ȯ��
+    //KCW : player가 타깃인지 확인
     [SerializeField] private bool isTargetPlayer;
 
     private RangedAttackData _attackData;
@@ -18,7 +18,7 @@ public class RangedAttackController:MonoBehaviour
     private Rigidbody2D _rigidbody;
     private SpriteRenderer _spriteRenderer;
 
-    //KCW : trailRenderer ȣ��
+    //KCW : trailRenderer 호출
     private TrailRenderer _trailRenderer;
 
     private ProjectileManager _projectileManager;
@@ -49,19 +49,23 @@ public class RangedAttackController:MonoBehaviour
         _rigidbody.velocity = _direction * _attackData.speed;
     }
 
-    //���� �浹������
+    //벽과 충돌했을때
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (levelCollisionLayer.value == (levelCollisionLayer.value | (1 << collision.gameObject.layer)))
         {
             DestroyProjectile(collision.ClosestPoint(transform.position) - _direction * .2f, fxOnDestory);
         }
-        else if(_attackData.target.value == (_attackData.target.value | (1 << collision.gameObject.layer)))
+        else if (_attackData.target.value == (_attackData.target.value | (1 << collision.gameObject.layer)))
         {
             HealthSystem healthSystem = collision.GetComponent<HealthSystem>();
-            if(healthSystem != null)
+            if (healthSystem != null)
             {
                 healthSystem.ChangeHealth(-_attackData.power);
+                if (collision.tag == "Player")//타겟이 플레이어일 때 , 제가 layer를 아직 잘 활용하지 못해서 tag로 했습니다. layer로 수정해주셔도 괜찮습니다.
+                {
+                    UIManager.Instance.BrokenHeart();
+                }
             }
             DestroyProjectile(collision.ClosestPoint(transform.position), fxOnDestory);
         }
@@ -92,7 +96,7 @@ public class RangedAttackController:MonoBehaviour
     {
         if (createFx)
         {
-
+            
         }
         gameObject.SetActive(false);
     }

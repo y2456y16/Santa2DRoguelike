@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     private GameObject blueHeart;
     public GameObject heartParent;
     [HideInInspector] public int heart_count;
-    private List<GameObject> Hearts = new List<GameObject>();
+    [SerializeField] private List<GameObject> Hearts = new List<GameObject>();
 
     [Header("Stats")]
     public TMP_Text playerAtk_Text;
@@ -47,18 +47,32 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        MakeHeart();
+        MakeHeart(false);
         SetStatsText();
     }
 
-    private void MakeHeart()
+    //플레이어 체력 ----------------------------------------------------
+    public void MakeHeart(bool resurrection)
     {
-        heart_count = GameManager.Instance.player_health;
+        heart_count = GameManager.Instance.characterStats.CurrentStats.maxHealth;
         for(int i = 0; i < heart_count; i++)
         {
             GameObject newHeart = Instantiate(heart);
             newHeart.transform.parent = heartParent.transform;
-            Hearts.Add(newHeart);
+            if (resurrection)
+            {
+                try
+                {
+                    Hearts[i] = newHeart;
+                }
+                catch (System.ArgumentOutOfRangeException)
+                { Hearts.Add(newHeart); }
+
+            }
+            else
+            {
+                Hearts.Add(newHeart);
+            }
         }
     }
 
@@ -66,9 +80,48 @@ public class UIManager : MonoBehaviour
     {
         GameObject newHeart = Instantiate(blueHeart);
         newHeart.transform.parent = heartParent.transform;
-        Hearts.Add(newHeart);
+        if (Hearts[Hearts.Count - 1] != null)
+        {
+            Hearts.Add(newHeart);
+        }
+        else
+        {
+            for (int i = 0; i < Hearts.Count; i++)
+            {
+                if (Hearts[i] == null)
+                {
+                    Hearts[i] = newHeart;
+                    break;
+                }
+            }
+        }
     }
 
+    public void BrokenHeart()
+    {
+        if (Hearts[Hearts.Count - 1] != null)
+        {
+            Destroy(Hearts[Hearts.Count - 1]);
+        }
+        else
+        {
+            for (int i = 0; i < Hearts.Count; i++)
+            {
+                if (Hearts[i] == null)
+                {
+                    try
+                    {
+                        Destroy(Hearts[i - 1]);
+                    }
+                    catch
+                    {  }
+                    break;
+                }
+            }
+        }
+    }
+
+    //플레이어 스탯 ----------------------------------------------------
     public void SetStatsText()
     {
         GameManager.Instance.SetPlayerStats();
@@ -104,6 +157,7 @@ public class UIManager : MonoBehaviour
         {
             itemSkill.transform.Find("front").GetComponent<Image>().color = Color.white;
             itemSkill.transform.Find("front").GetComponent<Image>().sprite = itemsprite;
+            itemSkill.transform.Find("Text").gameObject.SetActive(false);
         }
     }
 

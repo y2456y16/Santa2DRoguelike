@@ -189,14 +189,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '--------------------------
+  m_text: '--------------------
 
     Press Any Key
 
-    --------------------------'
+    --------------------'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 72549c151d49a5c4ea33513395f8d427, type: 2}
+  m_sharedMaterial: {fileID: 262899840617782753, guid: 72549c151d49a5c4ea33513395f8d427,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -330,8 +331,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uB3C4\uC640\uC918\uC694\n\uCF54\uB529\uC0B0\uD0C0!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a4a61be8aaecc2d43b7de072221e50b5, type: 2}
-  m_sharedMaterial: {fileID: -3594037840893469375, guid: a4a61be8aaecc2d43b7de072221e50b5,
+  m_fontAsset: {fileID: 11400000, guid: 00c93d4e569049c40823919e1daf46dc, type: 2}
+  m_sharedMaterial: {fileID: 5503089433747027437, guid: 00c93d4e569049c40823919e1daf46dc,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -908,7 +909,6 @@ MonoBehaviour:
   storyUI_2: {fileID: 4918808368241749888}
   storyUI_3: {fileID: 8270017635180048618}
   santaText: {fileID: 6266245788223799236}
-  anyKeyText: {fileID: 0}
   character1_ani: {fileID: 337221505394053104}
   character2_ani: {fileID: 2873154944529547782}
 --- !u!1 &4918808368241749888
@@ -1317,7 +1317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3704052418188627628
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1368,8 +1368,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uB450\uB465 \uB4F1\uC7A5"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a4a61be8aaecc2d43b7de072221e50b5, type: 2}
-  m_sharedMaterial: {fileID: -3594037840893469375, guid: a4a61be8aaecc2d43b7de072221e50b5,
+  m_fontAsset: {fileID: 11400000, guid: 00c93d4e569049c40823919e1daf46dc, type: 2}
+  m_sharedMaterial: {fileID: 5503089433747027437, guid: 00c93d4e569049c40823919e1daf46dc,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

@@ -6,13 +6,16 @@ using UnityEngine;
 
 public class CloseRangeEnemyController : TopDownCharacterController
 {
-    [SerializeField] private float followRange = 1000f; //ÇÃ·¹ÀÌ¾î ÀÎÁö ¹üÀ§
-    [SerializeField] private float shootRange = 2f; //»çÁ¤°Å¸®
+    [SerializeField] private float followRange = 1000f; //í”Œë ˆì´ì–´ ì¸ì§€ ë²”ìœ„
+    [SerializeField] private float shootRange = 2f; //ì‚¬ì •ê±°ë¦¬
+    [SerializeField] private GameObject _AttackRange;
+
 
     GameManager gameManager;
-    private bool IsRange = false;
+    private int checkAttack = 0;
 
-    protected Transform ClosestTarget { get; private set; } //ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡ ÂüÁ¶
+
+    protected Transform ClosestTarget { get; private set; } //í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ ì°¸ì¡°
 
     protected virtual void Start()
     {
@@ -23,11 +26,11 @@ public class CloseRangeEnemyController : TopDownCharacterController
     {
         base.Awake();
     }
-    protected float DistanceToTarget() //ÇÃ·¹ÀÌ¾î¿ÍÀÇ °Å¸®
+    protected float DistanceToTarget() //í”Œë ˆì´ì–´ì™€ì˜ ê±°ë¦¬
     {
         return Vector3.Distance(transform.position, ClosestTarget.position);
     }
-    protected Vector2 DirectionToTarget()//ÇÃ·¹ÀÌ¾î¸¦ ÇâÇÑ ¹æÇâ
+    protected Vector2 DirectionToTarget()//í”Œë ˆì´ì–´ë¥¼ í–¥í•œ ë°©í–¥
     {
         return (ClosestTarget.position - transform.position).normalized;
     }
@@ -42,50 +45,70 @@ public class CloseRangeEnemyController : TopDownCharacterController
         base.FixedUpdate();
         Move();
 
-        float distance = DistanceToTarget(); //ÇÃ·¹ÀÌ¾î¿ÍÀÇ °Å¸®
-        Vector2 direction = DirectionToTarget();//ÇÃ·¹ÀÌ¾î¸¦ ÇâÇÑ ¹æÇâ
+        float distance = DistanceToTarget(); //í”Œë ˆì´ì–´ì™€ì˜ ê±°ë¦¬
+        Vector2 direction = DirectionToTarget();//í”Œë ˆì´ì–´ë¥¼ í–¥í•œ ë°©í–¥
 
 
-        IsAttacking = false; //°ø°İ ºÒ°¡´É
-        if (distance <= followRange) //¸ó½ºÅÍ°¡ ÀÎÁöÇÒ ¼ö ÀÖ´Â ¹üÀ§¾È¿¡ ÇÃ·¹ÀÌ¾î°¡ µé¾î¿À¸é
+        if (_animcontroller.IsAttacking == true)
+        {
+            _AttackRange.GetComponent<BoxCollider2D>().enabled = true;
+            
+        }
+        else if(_animcontroller.IsAttacking == false)
+        {
+            _AttackRange.GetComponent<BoxCollider2D>().enabled = false;
+            
+        }
+
+
+        IsAttacking = false; //ê³µê²© ë¶ˆê°€ëŠ¥
+        if (distance <= followRange) //ëª¬ìŠ¤í„°ê°€ ì¸ì§€í•  ìˆ˜ ìˆëŠ” ë²”ìœ„ì•ˆì— í”Œë ˆì´ì–´ê°€ ë“¤ì–´ì˜¤ë©´
         {
             if (distance <= shootRange)
             {
                 _animcontroller.Stop(Vector2.zero);
-                OnLookInput(direction); //ÇÃ·¹ÀÌ¾î¸¦ ¹Ù¶óº»´Ù.
+                OnLookInput(direction); //í”Œë ˆì´ì–´ë¥¼ ë°”ë¼ë³¸ë‹¤.
                 aim.OnAim(direction);
-                curMovementInput = Vector2.zero; //Á¦ÀÚ¸®¿¡ ¸ØÃç¼­ ½ğ´Ù.
-                IsAttacking = true; //°ø°İ °¡´ÉÇÏ°Ô ¼³Á¤
-                Invoke("AttackDisplay", 1f);
+                curMovementInput = Vector2.zero; //ì œìë¦¬ì— ë©ˆì¶°ì„œ ìœë‹¤.
+                IsAttacking = true; //ê³µê²© ê°€ëŠ¥í•˜ê²Œ ì„¤ì •
+                if(checkAttack == 0)
+                {
+                    AttackDisplay();
+                    checkAttack = 1;
+                }
 
             }
             else
             {
                 direction = BulletDirectionToTarget();
                 _animcontroller.Move(direction);
-                OnLookInput(direction);//ÇÃ·¹ÀÌ¾î ¹æÇâÀ» ¹Ù¶óº»´Ù.
+                OnLookInput(direction);//í”Œë ˆì´ì–´ ë°©í–¥ì„ ë°”ë¼ë³¸ë‹¤.
                 aim.OnAim(direction);
-                OnMoveInput(direction);//ÇÃ·¹ÀÌ¾î ¹æÇâÀ¸·Î ÀÌµ¿
+                OnMoveInput(direction);//í”Œë ˆì´ì–´ ë°©í–¥ìœ¼ë¡œ ì´ë™
             }
         }
         else
         {
             direction = BulletDirectionToTarget();
-            OnLookInput(direction);//ÇÃ·¹ÀÌ¾î ¹æÇâÀ» ¹Ù¶óº»´Ù.
+            OnLookInput(direction);//í”Œë ˆì´ì–´ ë°©í–¥ì„ ë°”ë¼ë³¸ë‹¤.
             aim.OnAim(direction);
-            OnMoveInput(direction);//ÇÃ·¹ÀÌ¾î ¹æÇâÀ¸·Î ÀÌµ¿
+            OnMoveInput(direction);//í”Œë ˆì´ì–´ ë°©í–¥ìœ¼ë¡œ ì´ë™
         }
     }
     
 
     public void AttackDisplay()
     {
-        _animcontroller.Attacking(Stats.CurrentStats.attackSO);
-
+        _animcontroller.EnemyAttack(Stats.CurrentStats.attackSO);
+        StartCoroutine(DelayAttackTime());   
     }
-    public void OnCollisionEnter2D(Collision2D collision)
+
+    IEnumerator DelayAttackTime()
     {
-        IsRange = true;
+        yield return new WaitForSeconds(1.0f);
+        _animcontroller.EnemyToIdle();
+        yield return new WaitForSeconds(1.0f);
+        checkAttack = 0;
     }
 
     public void Move()
@@ -97,7 +120,7 @@ public class CloseRangeEnemyController : TopDownCharacterController
         _rigidbody.velocity = moveInput;
     }
 
-    //KCW : ÀÌÈÄ ¾Æ·¡´Â Àû Ä³¸¯ÅÍ ¿¬°áµÈ ±â´Éµé
+    //KCW : ì´í›„ ì•„ë˜ëŠ” ì  ìºë¦­í„° ì—°ê²°ëœ ê¸°ëŠ¥ë“¤
     public void OnMoveInput(Vector2 direction)
     {
         curMovementInput = direction;
@@ -108,20 +131,17 @@ public class CloseRangeEnemyController : TopDownCharacterController
         aim.OnAim(direction);
     }
 
-    public void OnLookInput(Vector2 direction)//¸¶¿ì½º¸¦ È­¸é»ó¿¡¼­ ¿òÁ÷¿´À» ¶§
+    public void OnLookInput(Vector2 direction)//ë§ˆìš°ìŠ¤ë¥¼ í™”ë©´ìƒì—ì„œ ì›€ì§ì˜€ì„ ë•Œ
     {
-        curLookInput = direction;//½ºÅ©¸°»ó ÁÂÇ¥¸¦ °¡Á®¿À°í
-        Vector2 worldPos = _camera.ScreenToWorldPoint(curLookInput);//°ÔÀÓÁÂÇ¥·Î º¯È¯ÇÑ´Ù.
-        curLookInput = (worldPos - (Vector2)transform.position).normalized;//ÀÚ½ÅÀÇ À§Ä¡¿¡¼­ ¿¡ÀÓÀÇ À§Ä¡·Î °¡´Â ´ÜÀ§º¤ÅÍ¸¦ ¹İÈ¯
+        curLookInput = direction;//ìŠ¤í¬ë¦°ìƒ ì¢Œí‘œë¥¼ ê°€ì ¸ì˜¤ê³ 
+        Vector2 worldPos = _camera.ScreenToWorldPoint(curLookInput);//ê²Œì„ì¢Œí‘œë¡œ ë³€í™˜í•œë‹¤.
+        curLookInput = (worldPos - (Vector2)transform.position).normalized;//ìì‹ ì˜ ìœ„ì¹˜ì—ì„œ ì—ì„ì˜ ìœ„ì¹˜ë¡œ ê°€ëŠ” ë‹¨ìœ„ë²¡í„°ë¥¼ ë°˜í™˜
 
-        if (curLookInput.magnitude >= .9f)//Å©±â°¡ .9º¸´Ù Å¬ ¶§
+        if (curLookInput.magnitude >= .9f)//í¬ê¸°ê°€ .9ë³´ë‹¤ í´ ë•Œ
         {
-            Look(curLookInput);//½ÇÇà
+            Look(curLookInput);//ì‹¤í–‰
         }
     }
 
-    public void OnAttack()
-    {
 
-    }
 }
