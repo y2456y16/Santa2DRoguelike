@@ -49,7 +49,7 @@ public class HealthSystem : MonoBehaviour
 
     public bool ChangeHealth(float change)
     {
-        Debug.Log(1);
+        Debug.Log("체력이 변함");
         if (change == 0 || _timeSinceLastChange < healthChangeDelay)
         {
             return false;
@@ -67,6 +67,7 @@ public class HealthSystem : MonoBehaviour
         else
         {
             Debug.Log(CurrentHealth);
+            UIManager.Instance.BrokenHeart();
             OnDamage?.Invoke();
         }
 
@@ -103,6 +104,7 @@ public class HealthSystem : MonoBehaviour
     private void Resurrection()
     {
         CurrentHealth = MaxHealth;
+        UIManager.Instance.MakeHeart(CanResurrection);
         CanResurrection = false;
     }
 }

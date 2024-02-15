@@ -53,7 +53,8 @@ public class UIManager : MonoBehaviour
     //플레이어 체력 ----------------------------------------------------
     public void MakeHeart(bool resurrection)
     {
-        heart_count = GameManager.Instance.player_health;
+        heart_count = GameManager.Instance.characterStats.CurrentStats.maxHealth;
+        Debug.Log(GameManager.Instance.characterStats.CurrentStats.maxHealth);
         for(int i = 0; i < heart_count; i++)
         {
             GameObject newHeart = Instantiate(heart);

@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
                                                              // Start is called before the first frame update
 
 
-    private CharacterStatsHandler characterStats;
-    [HideInInspector] public int player_health;
+    public CharacterStatsHandler characterStats;
+    public int player_health;
     [HideInInspector] public float player_speed;
     [HideInInspector] public int player_atk;
     [HideInInspector] public int player_def;
