@@ -161,6 +161,7 @@ public class UIManager : MonoBehaviour
         {
             itemSkill.transform.Find("front").GetComponent<Image>().color = Color.white;
             itemSkill.transform.Find("front").GetComponent<Image>().sprite = itemsprite;
+            itemSkill.transform.Find("Text").gameObject.SetActive(false);
         }
     }
 
