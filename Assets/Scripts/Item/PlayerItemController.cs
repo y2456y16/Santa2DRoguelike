@@ -15,16 +15,36 @@ public class PlayerItemController : MonoBehaviour
         _controller.OnSkillEvent -= DoSkill;
         _controller.OnSkillEvent += DoSkill;
     }
-    public void UseItem(ItemID ID)
+    private void Update()
     {
-        Item item = ItemManager.Instance.GetItem(ID);
-        if (item != null)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if(item.data.Type == ItemType.Useable && item.data.Count > 0)
+            UseItem(0);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UseItem(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            UseItem(2);
+        }
+    }
+    public void UseItem(int index)
+    {
+        Item item = UIManager.Instance.usableItems[index];
+        if (item == null) return;
+        
+        if (item.data.Type == ItemType.Useable && item.count > 0)
+        {
+            if (!item.IsUsed)
             {
+                UIManager.Instance.usableItems[index].count--;
+                UIManager.Instance.UpdateItemCount(index);
                 item.Use(gameObject);
             }
         }
+        
     }
     public void DoSkill()
     {

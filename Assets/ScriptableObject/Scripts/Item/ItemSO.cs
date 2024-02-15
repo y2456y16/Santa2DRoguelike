@@ -9,7 +9,6 @@ public class ItemSO : ScriptableObject
     public string Name;
     public Sprite Sprite;
     public ItemType Type;
-    public int Count;
     public float Damage;
 
     public virtual void ApplyEffect(GameObject target){}
@@ -37,6 +36,8 @@ public enum ItemID
     // Item
     GiftBox,
     GodModePotion,
+    AttackPotion,
+    DefensePotion
 
 }
 

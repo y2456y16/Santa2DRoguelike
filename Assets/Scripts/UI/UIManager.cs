@@ -28,8 +28,9 @@ public class UIManager : MonoBehaviour
     public GameObject itemSkill;
 
 
-    public GameObject[] usableItems = new GameObject[3]; //GameObject말고 아이템 설정해둔 script로 설정필요할 것 같음.
+    public Item[] usableItems = new Item[3]; //GameObject말고 아이템 설정해둔 script로 설정필요할 것 같음.
     public int[] item_count = new int[3];
+    public GameObject[] itemSlots = new GameObject[3];
     public TMP_Text[] itemsText = new TMP_Text[3];
     List<GameObject> buffItems = new List<GameObject>();
 
@@ -76,7 +77,7 @@ public class UIManager : MonoBehaviour
         playerSpeed_Text.text = GameManager.Instance.player_speed.ToString();
     }
 
-    public void MakeItemSlot(ItemType itemType, Sprite itemsprite)
+    public void MakeItemSlot(ItemType itemType, Sprite itemsprite, ItemID ID = ItemID.Blueheart)
     {
         if(itemType == ItemType.Useable)
         {
@@ -84,13 +85,10 @@ public class UIManager : MonoBehaviour
             {
                 if (usableItems[i] == null)
                 {
-                    usableItems[i] = Resources.Load<GameObject>("item"); //먹은 아이템 넣어두기, 아이템 정보 필요함
-                    item_count[i] = 1; //itemManager Count가 1로 설정되어있으면 그거 가져오기
-                    GameObject newItemUsable = Instantiate(itemUsable);
-                    newItemUsable.transform.Find("Image").GetComponent<Image>().sprite = itemsprite;
-                    newItemUsable.transform.parent = itemUsableParent.transform;
-                    //ItemText = items[i].transform.Find("count").GameObject; 아이템갯수 표기 text 설정해줘야함.
-                    //ItemText(i, item_count[i]);
+                    usableItems[i] = Instantiate(ItemManager.Instance.FindUseItemByID(ID), new Vector3(-10000f,-10000f,0f), Quaternion.identity); //먹은 아이템 넣어두기, 아이템 정보 필요함
+                    item_count[i] = usableItems[i].count;
+                    itemSlots[i].transform.Find("Image").GetComponent<Image>().sprite = itemsprite;
+                    ItemText(i, item_count[i]);
                     break;
                 }
             }
@@ -112,5 +110,12 @@ public class UIManager : MonoBehaviour
     private void ItemText(int index, int itemCount)
     {
         itemsText[index].text = itemCount.ToString();
+    }
+
+    public void UpdateItemCount(int index)
+    {
+        item_count[index] = usableItems[index].count;
+        ItemText(index, item_count[index]);
+       
     }
 }

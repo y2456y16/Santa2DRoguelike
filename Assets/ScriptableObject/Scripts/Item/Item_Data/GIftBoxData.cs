@@ -12,7 +12,5 @@ public class GiftBoxData : ItemSO
     {
         // TODO 미정
     }
-    
-
-
+   
 }

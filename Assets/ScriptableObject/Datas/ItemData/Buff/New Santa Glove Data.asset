@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: SantaGlove
   Sprite: {fileID: -5795949666996084541, guid: a7de887affb12fd4fb584f290e09fd74, type: 3}
   Type: 0
-  Count: 3
+  Damage: 0
   Power: 10
