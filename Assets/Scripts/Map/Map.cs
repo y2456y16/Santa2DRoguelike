@@ -9,6 +9,7 @@ public class Map : MonoBehaviour
     public int EnemyCount;
     bool isInPlayer = false;
     IEnumerator SpawnCourt = null;
+
     public void InfoSetting(MapInfo _mapInfo)
     {
         mapInfo = _mapInfo;
