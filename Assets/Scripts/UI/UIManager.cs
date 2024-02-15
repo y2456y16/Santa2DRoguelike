@@ -106,7 +106,7 @@ public class UIManager : MonoBehaviour
                         Destroy(Hearts[i - 1]);
                     }
                     catch
-                    { Destroy(Hearts[0]); }
+                    { Destroy(heartParent.transform.GetChild(0)); }
                     break;
                 }
             }
