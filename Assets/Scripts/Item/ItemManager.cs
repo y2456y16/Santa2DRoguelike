@@ -29,19 +29,19 @@ public class ItemManager : MonoBehaviour
     {
         if (!curItems.ContainsKey(item.data.ID))
         {
-            if (item.data.Type == ItemType.Skill)
+            curItems.Add(item.data.ID, item);
+            if (item.data.Type == ItemType.Skill && curSkill != null && curSkill.data.ID != item.data.ID)
             {
-                RemoveItem(item.data.ID);
-                foreach(Item skill in skills)
+                RemoveItem(curSkill.data.ID);
+                foreach (Item skill in skills)
                 {
-                    if(skill.data.ID == item.data.ID)
+                    if (skill.data.ID == item.data.ID)
                     {
                         curSkill = skill;
                         break;
                     }
                 }
             }
-            curItems.Add(item.data.ID, item);
             item.ApplyEffect(player.gameObject);
         }
         else

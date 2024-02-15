@@ -14,9 +14,9 @@ public class SantaShoesData : ItemSO
     {
         // TODO 플레이어 이동속도 증가
         CharacterStatsHandler playerStat = target.GetComponent<CharacterStatsHandler>();
-        if(playerStat != null)
-        {
-            playerStat.CurrentStats.speed += Speed;
-        }
+        CharacterStats newStat = new CharacterStats();
+        newStat.statsChangeType = StatsChangeType.Add;
+        newStat.speed = Speed;
+        playerStat.AddStatModifier(newStat);
     }
 }

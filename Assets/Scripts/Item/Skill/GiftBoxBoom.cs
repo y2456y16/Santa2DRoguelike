@@ -8,16 +8,16 @@ public class GiftBoxBoom : MonoBehaviour
 {
     [SerializeField] private float _bulletSpeed = 20;
     [SerializeField] private float explosionRadius = 1.5f;
-    [SerializeField] private ParticleSystem _particle;
 
+    private Animator _ani;
     private Transform _player;
     private Vector3 _curMousePosiiton;
     private Rigidbody2D _rigid;
-   
 
     void Awake()
     {
         _rigid = GetComponent<Rigidbody2D>();
+        _ani = GetComponent<Animator>();
     }
     void Start()
     {
@@ -52,11 +52,8 @@ public class GiftBoxBoom : MonoBehaviour
             sprite.color = Color.red;
         }
         
-        //TODO 파티클 시스템에 trigger적용되게 변경
-        Debug.Log("Explode");
-        _particle.Play();
+        _ani.Play("Explode");
         ApplyExplosionDamage(transform.position);
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0f);
         Destroy(gameObject, 0.3f);
     }
 
@@ -71,6 +68,8 @@ public class GiftBoxBoom : MonoBehaviour
             if (hit.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 Debug.Log("몬스터 충돌");
+                //데미지 예상
+                //ItemManager.Instance.GetItem(ItemID.GiftBoxBoom).data.Damage + _player.GetComponent<CharacterStatsHandler>().CurrentStats.atk;
             }
         }
     }
