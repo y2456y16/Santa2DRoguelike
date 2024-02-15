@@ -132,8 +132,5 @@ public class CloseRangeEnemyController : TopDownCharacterController
         }
     }
 
-    public void OnAttack()
-    {
 
-    }
 }
