@@ -62,6 +62,10 @@ public class RangedAttackController:MonoBehaviour
             if (healthSystem != null)
             {
                 healthSystem.ChangeHealth(-_attackData.power);
+                if (collision.tag == "Player")//타겟이 플레이어일 때 , 제가 layer를 아직 잘 활용하지 못해서 tag로 했습니다. layer로 수정해주셔도 괜찮습니다.
+                {
+                    UIManager.Instance.BrokenHeart();
+                }
             }
             DestroyProjectile(collision.ClosestPoint(transform.position), fxOnDestory);
         }
