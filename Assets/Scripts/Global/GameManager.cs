@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
 
     public GameObject gameOverUI;   // 게임오버UI
+    public GameObject gameClearUI;  // 게임클리어UI
 
     [SerializeField] private string playerTag = "Player";
 
