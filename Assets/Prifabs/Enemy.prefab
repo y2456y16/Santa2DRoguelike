@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats:
     statsChangeType: 2
-    maxHealth: 7
+    maxHealth: 6
     atk: 1
     def: 1
     speed: 0
