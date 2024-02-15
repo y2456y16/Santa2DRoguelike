@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565c0b10bfdc03b468c6d50d91449183, type: 3}
   m_Name: Player_RangedAttackData
   m_EditorClassIdentifier: 
-  size: 1
   delay: 0.4
   power: 2
   speed: 10
   target:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   isOnKnockback: 1
   knockbackPower: 5
   knockbackTime: 0.1

@@ -13,6 +13,7 @@ public class DeathLogic : MonoBehaviour
     private void Start()
     {
         _healthSystem = GetComponent<HealthSystem>();
+        _rigidbody = GetComponent<Rigidbody2D>();
         _healthSystem.OnDeath += Dead;
     }
 
