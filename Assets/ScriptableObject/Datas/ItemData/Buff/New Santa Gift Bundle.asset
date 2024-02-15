@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: SantaGiftBundle
   Sprite: {fileID: 1193907992200426915, guid: b6ba7df4bcf4cfe4282791ca82362357, type: 3}
   Type: 0
-  Count: 2
+  Damage: 0
   Defense: 5

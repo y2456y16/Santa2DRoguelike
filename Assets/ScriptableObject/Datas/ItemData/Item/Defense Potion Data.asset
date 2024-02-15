@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 732232b4ffbc7874a85c262dc3ed0a9d, type: 3}
-  m_Name: New Santa Glove Data
+  m_Script: {fileID: 11500000, guid: c233805213474864993362f44c312401, type: 3}
+  m_Name: Defense Potion Data
   m_EditorClassIdentifier: 
-  ID: 5
-  Name: SantaGlove
-  Sprite: {fileID: -5795949666996084541, guid: a7de887affb12fd4fb584f290e09fd74, type: 3}
-  Type: 0
+  ID: 11
+  Name: Potion
+  Sprite: {fileID: 2582651288012322155, guid: d4458673452d1f947a94e7d0fb1e7e0f, type: 3}
+  Type: 2
   Damage: 0
-  Power: 10
+  potionType: 2
