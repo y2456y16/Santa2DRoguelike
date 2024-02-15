@@ -5,20 +5,29 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputController : TopDownCharacterController
 {
+    private GameManager gameManager;
     protected override void Awake()
     {
         base.Awake();
-
+        gameManager = GameManager.Instance;
     }
 
     public void OnMove(InputValue value)
     {
+        if (!gameManager.playing)
+        {
+            return;
+        }
         Vector2 moveInput = value.Get<Vector2>().normalized;
         CallMoveEvent(moveInput);
     }
 
     public void OnLook(InputValue value)
     {
+        if (!gameManager.playing)
+        {
+            return;
+        }
         Vector2 newAim = value.Get<Vector2>();
         Vector2 worldPos = _camera.ScreenToWorldPoint(newAim);
         newAim = (worldPos - (Vector2)transform.position).normalized;
@@ -31,20 +40,28 @@ public class PlayerInputController : TopDownCharacterController
 
     public void OnAttack(InputValue value)
     {
+        if (!GameManager.Instance.playing)
+        {
+            return;
+        }
         IsAttacking = value.isPressed;
     }
 
-    //¾Æ·¡ºÎÅÍ ´õ¹Ìµ¥ÀÌÅÍ ½ºÅ³À» ¾îµğ¿¡ »ç¿ëÇÒÁö ¸ğ¸£´Â»óÅÂÀÌ±â¶§¹®¿¡ Á¤ÇØÁö¸é Ãß°¡ÇÏ¸éµË´Ï´Ù.
+    //ì•„ë˜ë¶€í„° ë”ë¯¸ë°ì´í„° ìŠ¤í‚¬ì„ ì–´ë””ì— ì‚¬ìš©í• ì§€ ëª¨ë¥´ëŠ”ìƒíƒœì´ê¸°ë•Œë¬¸ì— ì •í•´ì§€ë©´ ì¶”ê°€í•˜ë©´ë©ë‹ˆë‹¤.
 
-    //»êÅ¸ÀÇ ¿À¸¥ÁÖ¸Ô°ø°İ(ÀÓ½Ã·Î ¿ìÅ¬¸¯À¸·Î ¼³Á¤ÇØµ×½À´Ï´Ù)
+    //ì‚°íƒ€ì˜ ì˜¤ë¥¸ì£¼ë¨¹ê³µê²©(ì„ì‹œë¡œ ìš°í´ë¦­ìœ¼ë¡œ ì„¤ì •í•´ë’€ìŠµë‹ˆë‹¤)
     public void OnAttack2(InputValue value)
     {
         IsAttacking2 = value.isPressed;
     }
 
-    //»êÅ¸ÀÇ ½ºÅ³°ø°İ (ÀÓ½Ã·Î EÅ°·Î ¼³Á¤ÇØµ×½À´Ï´Ù)
+    //ì‚°íƒ€ì˜ ìŠ¤í‚¬ê³µê²© (ì„ì‹œë¡œ Eí‚¤ë¡œ ì„¤ì •í•´ë’€ìŠµë‹ˆë‹¤)
     public void OnSkill(InputValue value)
     {
+        if (!gameManager.playing)
+        {
+            return;
+        }
         IsSkill = value.isPressed;
     }
 }

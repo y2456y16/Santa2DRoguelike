@@ -30,6 +30,10 @@ public class TopDownShooting : MonoBehaviour
 
     public void OnShoot(AttackSO attackSO)
     {
+        if (!GameManager.Instance.playing)
+        {
+            return;
+        }
         RangedAttackData rangedAttackData = attackSO as RangedAttackData;
         float projectilesAngleSpace = rangedAttackData.multipleProjectilesAngel;
         int numberOfProjectilesPerShot = rangedAttackData.numberofProjectilesPerShot;

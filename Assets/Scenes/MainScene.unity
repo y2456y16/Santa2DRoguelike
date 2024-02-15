@@ -1414,6 +1414,7 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   gameOverUI: {fileID: 566338334}
   gameClearUI: {fileID: 1295664098}
+  playing: 1
   playerTag: Player
   enemyLocation: []
   characterStats: {fileID: 0}
@@ -6889,7 +6890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStats:
     statsChangeType: 2
-    maxHealth: 10
+    maxHealth: 2
     atk: 1
     def: 1
     speed: 5

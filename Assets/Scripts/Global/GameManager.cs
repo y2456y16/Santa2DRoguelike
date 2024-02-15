@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;   // 게임오버UI
     public GameObject gameClearUI;  // 게임클리어UI
 
+    public bool playing = true;     //게임 플레이 상태
+
     [SerializeField] private string playerTag = "Player";
 
     public List<Vector3> enemyLocation = new List<Vector3>();//enemy start location list
@@ -45,12 +47,13 @@ public class GameManager : MonoBehaviour
 
     void gameOver()
     {
+        playing = false;
         StartCoroutine(GameOver());
     }
 
     IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         Time.timeScale = 0;
         gameOverUI.SetActive(true);
     }
