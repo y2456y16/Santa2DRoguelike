@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +13,7 @@ public class GameManager : MonoBehaviour
     public HealthSystem healthSystem;
     public UIManager uiManager;
 
-    private float EndTime = 1f; //게임오버후 애니메이션 출력을 위한 시간
+    public GameObject gameOverUI;   // 게임오버UI
 
     [SerializeField] private string playerTag = "Player";
 
@@ -37,7 +39,6 @@ public class GameManager : MonoBehaviour
         EnemyLocationSet();
 
         healthSystem = Player.GetComponent<HealthSystem>();
-        healthSystem.OnDamage += UpdateHealthUI;
         healthSystem.OnDeath += gameOver;
     }
 
@@ -48,8 +49,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         Time.timeScale = 0;
+        gameOverUI.SetActive(true);
     }
 
     void Start()
@@ -93,10 +95,16 @@ public class GameManager : MonoBehaviour
         player_def = characterStats.CurrentStats.def;
         player_speed = characterStats.CurrentStats.speed;
     }
-
-    void UpdateHealthUI()
+    public void RetryGame()
     {
-        Debug.Log("현재 체력은 " + player_health);
-        player_health = (int)healthSystem.CurrentHealth;
+        Time.timeScale = 1f;
+        healthSystem.ChangeHealth(characterStats.CurrentStats.maxHealth);
+        Player.transform.position = Vector3.zero;
+        SceneManager.LoadScene("MainScene");
+        gameOverUI.SetActive(false);
+    }
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("IntroScene");
     }
 }
