@@ -62,6 +62,10 @@ public class TopDownAnimationController:TopDownAnimations
 
     public void Move(Vector2 obj)
     {
+        if (!GameManager.Instance.playing)
+        {
+            return;
+        }
         animator.SetBool(IsWalking, obj.magnitude > .5f);
     }
 
@@ -73,6 +77,10 @@ public class TopDownAnimationController:TopDownAnimations
 
     public void Attacking(AttackSO obj)
     {
+        if (!GameManager.Instance.playing)
+        {
+            return;
+        }
         animator.SetTrigger(Attack);               
     }
 

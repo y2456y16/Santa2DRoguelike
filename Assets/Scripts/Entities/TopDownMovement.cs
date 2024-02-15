@@ -24,6 +24,11 @@ public class TopDownMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!GameManager.Instance.playing)
+        {
+            ApplyMovment(Vector2.zero);
+            return;
+        }
         ApplyMovment(_movementDirection);
     }
 
