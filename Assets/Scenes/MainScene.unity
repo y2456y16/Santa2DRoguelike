@@ -1198,6 +1198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _EnemyPrefabManager: {fileID: 702994687}
+  healthSystem: {fileID: 0}
+  uiManager: {fileID: 0}
   playerTag: Player
   enemyLocation: []
   player_health: 0
@@ -6399,7 +6401,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.3}
+  m_Size: {x: 1.1, y: 1.3}
   m_EdgeRadius: 0
 --- !u!114 &2067901131
 MonoBehaviour:

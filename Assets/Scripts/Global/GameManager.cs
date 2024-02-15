@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public HealthSystem healthSystem;
     public UIManager uiManager;
 
+    private float EndTime = 1f; //게임오버후 애니메이션 출력을 위한 시간
+
     [SerializeField] private string playerTag = "Player";
 
     public List<Vector3> enemyLocation = new List<Vector3>();//enemy start location list
@@ -33,8 +35,23 @@ public class GameManager : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag(playerTag).transform;//gets transform data of object(tag == player)
         characterStats = Player.GetComponent<CharacterStatsHandler>();
         EnemyLocationSet();
-        
+
+        healthSystem = Player.GetComponent<HealthSystem>();
+        healthSystem.OnDamage += UpdateHealthUI;
+        healthSystem.OnDeath += gameOver;
     }
+
+    void gameOver()
+    {
+        StartCoroutine(GameOver());
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(1);
+        Time.timeScale = 0;
+    }
+
     void Start()
     {
         SetPlayerStats();
@@ -79,6 +96,7 @@ public class GameManager : MonoBehaviour
 
     void UpdateHealthUI()
     {
+        Debug.Log("현재 체력은 " + player_health);
         player_health = (int)healthSystem.CurrentHealth;
     }
 }
