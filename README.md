@@ -1,7 +1,7 @@
 # Santa2DRoguelike
 
 # 프로젝트 명
-- 도와줘요 코딩산타님
+- 도와줘요 효승산타님
 
 # 프로젝트 소개
 - 산타가 코딩의 늪에 빠진 수강생들을 구하기 위해 로그라이크 던전으로 향하는 이야기
@@ -125,12 +125,10 @@
 
   
 - 하지혜
-  - UI 구현
-    1. Intro Scene 생성 : Main UI 및 Story UI, 버튼 클릭 시 Stroy UI 나타나도록 설정 후 Press Any Key를 통해 MainScene으로 이동.
-    2. Main Scene UI 생성 : 캐릭터 체력을 보여주는 Heart Object 위치, Status 버튼, Skill UI
-    3. Heart Object : 캐릭터 체력과 연결, 캐릭터 피격 시 heart object 파괴, 아이템 blue heart 습득 시 heart 추가
-    4. Status UI : 캐릭터 stats과 연결, 아이템 습득 시 변경되는 stats 연결, 아이템 습득 시 습득한 아이템을 슬롯 생성해서 나타내기.
-    5. Skill UI : skill을 사용할 수 있는 아이템 습득 시 UI 변경
-       
-  - 아이템 드랍
-    ItemMap에서 아이템 생성.
+  - Intro Scene 제작
+  - 시나리오 컷씬 제작 : Press Any Key -> MainScene 이동
+  - Main Scene UI 제작
+  - Heart Object 제작 : 캐릭터 체력과 연결(피격 시 object 파괴), 아이템 'blue heart' 습득 시 체력 추가
+  - Status UI 제작 : 캐릭터 스탯과 연결, 버프류 아이템 습득 시 슬롯 생성 및 아이템 추가
+  - Skill UI 제작 : 스킬류 아이템 습득 시 아이템 sprite로 변경
+  - 아이템 드랍 : ItemMap에서 아이템 생성
