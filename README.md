@@ -13,7 +13,8 @@
 - Unity v.2022.3.2f1
 - c#
 - Net8.0
-  
+
+![Unity](https://img.shields.io/badge/unity-%23121011.svg?style=for-the-badge&logo=unity&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![Visual Studio](https://img.shields.io/badge/visual%20studio-9B4DE3?style=for-the-badge&logo=visual%20studio&logoColor=white)
 
