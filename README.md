@@ -6,13 +6,16 @@
 # 프로젝트 소개
 - 산타가 코딩의 늪에 빠진 수강생들을 구하기 위해 로그라이크 던전으로 향하는 이야기
 
-#개발 기간
-- 2/8 ~2/16
+# 개발 기간
+- **2024/2/8 ~ 2024/2/16**
 
 # 개발 환경
 - Unity v.2022.3.2f1
 - c#
 - Net8.0
+  
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![Visual Studio](https://img.shields.io/badge/visual%20studio-9B4DE3?style=for-the-badge&logo=visual%20studio&logoColor=white)
 
 # 팀 구성
 - 김철우
