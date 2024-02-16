@@ -176,6 +176,7 @@ public class UIManager : MonoBehaviour
         {
             itemSlots[index].transform.Find("Image").GetComponent<Image>().sprite = null;
             ItemManager.Instance.RemoveItem(usableItems[index].data.ID);
+            usableItems[index] = null;
         }
     }
 }

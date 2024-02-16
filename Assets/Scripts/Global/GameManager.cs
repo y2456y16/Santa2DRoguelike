@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public List<Vector3> enemyLocation = new List<Vector3>();//enemy start location list
                                                              // Start is called before the first frame update
-
+    public Map currentMap;
 
     public CharacterStatsHandler characterStats;
     [HideInInspector] public int player_health;
@@ -58,6 +58,18 @@ public class GameManager : MonoBehaviour
         gameOverUI.SetActive(true);
     }
 
+    public void gameClear()
+    {
+        StartCoroutine(GameClear());
+    }
+
+    IEnumerator GameClear()
+    {
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 0;
+        gameClearUI.SetActive(true);
+    }
+
     void Start()
     {
         SetPlayerStats();
@@ -73,7 +85,12 @@ public class GameManager : MonoBehaviour
         GameObject enemyInstance = Instantiate(_EnemyPrefabManager.EnemyList[randomNumb]);//prefab 복제하여 적 객체 생성
         int enemyLocationlist = Random.Range(0, enemyLocation.Count);
         enemyInstance.transform.position = enemyLocation[enemyLocationlist];
+        enemyInstance.GetComponent<HealthSystem>().OnDeath += EnemyDeathCount;
+    }
 
+    public void EnemyDeathCount()
+    {
+        currentMap.EnemyDeathCount();
     }
 
     void EnemyLocationSet()//enemy start location set
@@ -101,14 +118,16 @@ public class GameManager : MonoBehaviour
     }
     public void RetryGame()
     {
-        Time.timeScale = 1f;
         healthSystem.ChangeHealth(characterStats.CurrentStats.maxHealth);
         Player.transform.position = Vector3.zero;
         SceneManager.LoadScene("MainScene");
         gameOverUI.SetActive(false);
+        Time.timeScale = 1f;
     }
+
     public void ExitGame()
     {
         SceneManager.LoadScene("IntroScene");
+        Time.timeScale = 1f;
     }
 }

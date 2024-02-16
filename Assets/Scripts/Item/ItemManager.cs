@@ -90,6 +90,15 @@ public class ItemManager : MonoBehaviour
             return null;
     }
 
+    public Item MakeItem()
+    {
+        Item newItem;
+        int index = Random.Range(0, items.Count);
+        newItem = items[index];
+
+        return newItem;
+    }
+
     //
     public Item FindUseItemByID(ItemID ID)
     {

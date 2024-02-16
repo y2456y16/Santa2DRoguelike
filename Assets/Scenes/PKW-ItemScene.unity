@@ -5815,6 +5815,8 @@ MonoBehaviour:
   healthSystem: {fileID: 0}
   uiManager: {fileID: 0}
   gameOverUI: {fileID: 0}
+  gameClearUI: {fileID: 0}
+  playing: 1
   playerTag: Player
   enemyLocation: []
   characterStats: {fileID: 0}
